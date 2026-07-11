@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-import Navbar from "../components/Navbar";
+import Navbar from "../../components/Navbar";
 import { register }
-from "../services/authService";
+from "../../services/authService";
 
 function Register() {
 

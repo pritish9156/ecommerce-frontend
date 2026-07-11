@@ -1,0 +1,13 @@
+import api from "./api";
+
+export const getLowStockProducts =
+    () =>
+        api.get(
+            "/admin/dashboard?type=low-stock"
+        );
+
+export const getRecentOrders =
+    () =>
+        api.get(
+            "/admin/dashboard?type=recent-orders"
+        );

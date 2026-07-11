@@ -1,0 +1,7 @@
+import api from "./api";
+
+export const getVariant =
+    (id) =>
+        api.get(
+            `/variant/${id}`
+        );

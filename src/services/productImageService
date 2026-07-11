@@ -1,0 +1,13 @@
+import api from "./api";
+
+export const getProductImages = (productId) =>
+    api.get(`/product-image/${productId}`);
+
+export const addProductImage = (data) =>
+    api.post("/product-image", data);
+
+export const updateProductImage = (data) =>
+    api.put("/product-image", data);
+
+export const deleteProductImage = (id) =>
+    api.delete(`/product-image/${id}`);

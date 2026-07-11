@@ -2,11 +2,21 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
 
-    const token = localStorage.getItem("token");
+    const token =
+        localStorage.getItem("token");
+
+    const role =
+        localStorage.getItem("role");
 
     const handleLogout = () => {
 
-        localStorage.removeItem("token");
+        localStorage.removeItem(
+            "token"
+        );
+
+        localStorage.removeItem(
+            "role"
+        );
 
         window.location.href = "/";
     };
@@ -26,7 +36,7 @@ function Navbar() {
                     to="/"
                     className="navbar-brand fw-bold fs-3"
                 >
-                    ShopSphere AI
+                    ShopSphere
                 </Link>
 
                 <button
@@ -146,6 +156,34 @@ function Navbar() {
                                                     My Orders
                                                 </Link>
                                             </li>
+
+                                            <li>
+                                                <Link
+                                                    to="/wishlist"
+                                                    className="dropdown-item"
+                                                >
+                                                    Wishlist
+                                                </Link>
+                                            </li>
+
+                                            {
+                                                role === "ADMIN" && (
+                                                    <>
+                                                        <li>
+                                                            <hr className="dropdown-divider" />
+                                                        </li>
+
+                                                        <li>
+                                                            <Link
+                                                                to="/admin/dashboard"
+                                                                className="dropdown-item text-primary fw-bold"
+                                                            >
+                                                                Admin Panel
+                                                            </Link>
+                                                        </li>
+                                                    </>
+                                                )
+                                            }
 
                                             <li>
                                                 <hr className="dropdown-divider" />

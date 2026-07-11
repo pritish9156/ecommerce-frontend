@@ -1,0 +1,20 @@
+import api from "./api";
+
+export const getAllOrders =
+    () =>
+        api.get(
+            "/orders/all"
+        );
+
+export const updateOrderStatus =
+    (data) =>
+        api.put(
+            "/orders",
+            data
+        );
+
+export const getAdminOrderDetails =
+    (id) =>
+        api.get(
+            `/orders/admin-details/${id}`
+        );

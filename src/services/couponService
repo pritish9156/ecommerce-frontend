@@ -1,0 +1,29 @@
+import api from "./api";
+
+export const getCoupons =
+    () => api.get("/coupon");
+
+export const addCoupon =
+    (data) => api.post("/coupon", data);
+
+export const updateCoupon =
+    (data) => api.put("/coupon", data);
+
+export const deleteCoupon =
+    (id) => api.delete(`/coupon/${id}`);
+
+export const applyCoupon =
+    (couponCode) =>
+        api.post(
+            "/coupon/apply",
+            {
+                couponCode
+            }
+        );
+
+export const applyBuyNowCoupon =
+    (data) =>
+        api.post(
+            "/coupon/apply-buy-now",
+            data
+        );

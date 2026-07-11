@@ -1,30 +1,13 @@
 import api from "./api";
 
-const authConfig = () => ({
-    headers: {
-        Authorization:
-            `Bearer ${localStorage.getItem("token")}`
-    }
-});
+export const getAddresses = () =>
+    api.get("/address");
 
-export const getAddresses =
-    () =>
-        api.get(
-            "/address",
-            authConfig()
-        );
+export const addAddress = (data) =>
+    api.post("/address", data);
 
-export const addAddress =
-    (data) =>
-        api.post(
-            "/address",
-            data,
-            authConfig()
-        );
+export const updateAddress = (data) =>
+    api.put("/address", data);
 
-export const deleteAddress =
-    (id) =>
-        api.delete(
-            `/address/${id}`,
-            authConfig()
-        );
+export const deleteAddress = (id) =>
+    api.delete(`/address/${id}`);

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import Navbar from "../components/Navbar";
-import ProductCard from "../components/ProductCard";
-import ProductCardSkeleton from "../components/ProductCardSkeleton";
-import api from "../services/api";
-import SearchBar from "../components/SearchBar";
+import Navbar from "../../components/Navbar";
+import ProductCard from "../../components/ProductCard";
+import ProductCardSkeleton from "../../components/ProductCardSkeleton";
+import api from "../../services/api";
+import SearchBar from "../../components/SearchBar";
 
 function Products() {
 

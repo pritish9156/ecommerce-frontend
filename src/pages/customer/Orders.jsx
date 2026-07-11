@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 
-import Navbar from "../components/Navbar";
+import Navbar from "../../components/Navbar";
 
-import api from "../services/api";
+import { Link } from "react-router-dom";
+
+import api from "../../services/api";
 
 function Orders() {
 
@@ -156,6 +158,17 @@ function Orders() {
                                     }
 
                                 </h4>
+
+                                <Link
+                                    to={`/orders/${order.id}`}
+                                    className="
+                                        btn
+                                        btn-dark
+                                        btn-sm
+                                    "
+                                >
+                                    View Details
+                                </Link>
 
                             </div>
 

@@ -41,11 +41,29 @@ function Login() {
                     response.data.token
                 );
 
+                localStorage.setItem(
+                    "role",
+                    response.data.role
+                );
+
                 toast.success(
                     response.data.message
                 );
 
-                navigate("/");
+                if(
+                    response.data.role
+                    === "ADMIN"
+                ) {
+
+                    navigate(
+                        "/admin/dashboard"
+                    );
+
+                } else {
+
+                    navigate("/");
+                }
+
             }
             else {
 

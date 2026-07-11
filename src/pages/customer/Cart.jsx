@@ -5,14 +5,14 @@ import {
     from "react";
 
 import Navbar
-    from "../components/Navbar";
+    from "../../components/Navbar";
 
 import {
     getCart,
     updateQuantity,
     removeItem
 }
-    from "../services/cartService";
+    from "../../services/cartService";
 
 import {
     toast

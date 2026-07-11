@@ -1,4 +1,4 @@
-import Navbar from "../components/Navbar";
+import Navbar from "../../components/Navbar";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
