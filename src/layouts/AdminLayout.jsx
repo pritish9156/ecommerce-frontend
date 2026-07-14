@@ -77,6 +77,15 @@ function AdminLayout() {
 
                     <li className="nav-item mb-2">
                         <Link
+                            to="/admin/category"
+                            className="nav-link text-white"
+                        >
+                            Product Category
+                        </Link>
+                    </li>
+
+                    <li className="nav-item mb-2">
+                        <Link
                             to="/admin/orders"
                             className="nav-link text-white"
                         >

@@ -13,7 +13,7 @@ import {
 import {
     getVariant
 }
-    from "../services/productVariantService";
+    from "../../services/productVariantService";
 
 import {
     getAddresses
@@ -23,7 +23,7 @@ import {
 import {
     placeOrder
 }
-    from "../services/checkoutService";
+    from "../../services/checkoutService";
 
 import { buyNow } from "../../services/orderService";
 
@@ -35,7 +35,7 @@ import {
 import {
     applyBuyNowCoupon
 }
-    from "../services/couponService";
+    from "../../services/couponService";
 
 import Navbar from "../../components/Navbar";
 

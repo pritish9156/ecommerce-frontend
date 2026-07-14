@@ -13,12 +13,12 @@ import {
 import {
     placeOrder
 }
-    from "../services/checkoutService";
+    from "../../services/checkoutService";
 
 import {
     applyCoupon
 }
-    from "../services/couponService";
+    from "../../services/couponService";
 
 import { toast }
     from "react-toastify";

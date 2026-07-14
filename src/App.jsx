@@ -1,17 +1,17 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Home from "./pages/Home";
+import Home from "./pages/customer/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Products from "./pages/Products.jsx";
-import ProductDetails from "./pages/ProductDetails.jsx";
-import Cart from "./pages/Cart";
+import Products from "./pages/customer/Products.jsx";
+import ProductDetails from "./pages/customer/ProductDetails.jsx";
+import Cart from "./pages/customer/Cart";
 import { ToastContainer } from "react-toastify";
 import ProtectedRoute from "./components/ProtectedRoute";
-import Checkout from "./pages/Checkout";
-import Orders from "./pages/Orders";
-import Profile from "./pages/Profile.jsx";
-import Addresses from "./pages/Addresses";
+import Checkout from "./pages/customer/Checkout";
+import Orders from "./pages/customer/Orders";
+import Profile from "./pages/customer/Profile.jsx";
+import Addresses from "./pages/customer/Addresses";
 import AdminLayout from "./layouts/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminBrands from "./pages/admin/AdminBrands";
@@ -21,12 +21,13 @@ import AdminImages from "./pages/admin/AdminImages";
 import AdminOrders from "./pages/admin/AdminOrders";
 import AdminUsers from "./pages/admin/AdminUsers";
 import AdminRoute from "./components/AdminRoute";
-import OrderDetails from "./pages/OrderDetails";
-import Wishlist from "./pages/Wishlist";
-import BuyNow from "./pages/BuyNow";
+import OrderDetails from "./pages/customer/OrderDetails";
+import Wishlist from "./pages/customer/Wishlist";
+import BuyNow from "./pages/customer/BuyNow";
 import AdminPayments from "./pages/admin/AdminPayments.jsx";
 import AdminCoupons from "./pages/admin/AdminCoupons";
 import AdminOrderDetails from "./pages/admin/AdminOrderDetails.jsx";
+import AdminCategoryManagement from "./pages/admin/AdminCategoryManagement.jsx";
 
 function App() {
   return (
@@ -172,6 +173,11 @@ function App() {
         <Route
             path="orders"
             element={<AdminOrders />}
+        />
+
+        <Route
+            path="category"
+            element={<AdminCategoryManagement />}
         />
 
         <Route
