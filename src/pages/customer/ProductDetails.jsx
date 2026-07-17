@@ -71,6 +71,14 @@ function ProductDetails() {
 
     const [improvingReview, setImprovingReview] = useState(false);
 
+    const storedUserId =
+        localStorage.getItem("userId");
+
+    const currentUserId =
+        storedUserId
+            ? Number(storedUserId)
+            : null;
+
     useEffect(() => {
 
         loadProduct();
@@ -468,6 +476,28 @@ function ProductDetails() {
         }
     };
 
+    const sortedReviews = [
+        ...reviews
+    ].sort((a, b) => {
+
+        if (currentUserId === null)
+            return 0;
+
+        const aIsMine =
+            a.user?.id === currentUserId;
+
+        const bIsMine =
+            b.user?.id === currentUserId;
+
+        if (aIsMine && !bIsMine)
+            return -1;
+
+        if (!aIsMine && bIsMine)
+            return 1;
+
+        return 0;
+    });
+
     return (
 
         <>
@@ -863,130 +893,130 @@ function ProductDetails() {
                 </div>
 
                 {
-                    reviews.map(review => (
+                    sortedReviews.map(review => {
 
-                        <div
-                            key={review.id}
-                            className="
-                                card
-                                shadow-sm
-                                mb-3
-                            "
-                        >
+                        const isMyReview =
+                            currentUserId !== null &&
+                            review.user?.id === currentUserId;
 
-                            <div className="card-body">
+                        return (
 
-                                <div
-                                    className="
+                            <div
+                                key={review.id}
+                                className="card shadow-sm mb-3"
+                            >
+
+                                <div className="card-body">
+
+                                    <div className="
                                         d-flex
                                         justify-content-between
-                                    "
-                                >
+                                    ">
 
-                                    <h5>
+                                        <div>
 
-                                        {
-                                            review.reviewTitle
-                                        }
+                                            <h5>
+                                                {review.reviewTitle}
+                                            </h5>
 
-                                    </h5>
+                                            {
+                                                isMyReview && (
 
-                                    <span>
+                                                    <span className="badge bg-primary mb-2">
+                                                        Your Review
+                                                    </span>
 
-                                        {
-                                            "⭐".repeat(
-                                                review.rating
-                                            )
-                                        }
+                                                )
+                                            }
 
-                                    </span>
+                                        </div>
 
-                                </div>
+                                        <span>
 
-                                <p className="mb-2">
+                                            {
+                                                "⭐".repeat(
+                                                    review.rating
+                                                )
+                                            }
 
-                                    {
-                                        review.reviewText
-                                    }
-
-                                </p>
-
-                                <small
-                                    className="
-                                        text-muted
-                                    "
-                                >
-
-                                    {
-                                        review.user
-                                            ?.firstName
-                                    }
-
-                                    {" "}
-
-                                    {
-                                        review.user
-                                            ?.lastName
-                                    }
-
-                                </small>
-
-                                {
-                                    review.verifiedPurchase && (
-
-                                        <span
-                                            className="
-                    badge
-                    bg-success
-                    ms-2
-                "
-                                        >
-                                            Verified Purchase
                                         </span>
 
-                                    )
-                                }
+                                    </div>
 
-                                <div className="mt-3">
+                                    <p className="mb-2">
+                                        {review.reviewText}
+                                    </p>
 
-                                    <button
-                                        className="
-                btn
-                btn-sm
-                btn-outline-primary
-                me-2
-            "
-                                        onClick={() =>
-                                            handleEditReview(
-                                                review
-                                            )
-                                        }
-                                    >
-                                        Edit
-                                    </button>
+                                    <small className="text-muted">
 
-                                    <button
-                                        className="
-                                            btn
-                                            btn-sm
-                                            btn-outline-danger
-                                        "
-                                        onClick={() =>
-                                            handleDeleteReview(
-                                                review.id
-                                            )
-                                        }
-                                    >
-                                        Delete
-                                    </button>
+                                        {review.user?.firstName}
+
+                                        {" "}
+
+                                        {review.user?.lastName}
+
+                                    </small>
+
+                                    {
+                                        review.verifiedPurchase && (
+
+                                            <span className="badge bg-success ms-2">
+                                                Verified Purchase
+                                            </span>
+
+                                        )
+                                    }
+
+                                    {/* Only owner gets Edit/Delete */}
+
+                                    {
+                                        isMyReview && (
+
+                                            <div className="mt-3">
+
+                                                <button
+                                                    className="
+                                                        btn
+                                                        btn-sm
+                                                        btn-outline-primary
+                                                        me-2
+                                                    "
+                                                    onClick={() =>
+                                                        handleEditReview(
+                                                            review
+                                                        )
+                                                    }
+                                                >
+                                                    Edit
+                                                </button>
+
+                                                <button
+                                                    className="
+                                                        btn
+                                                        btn-sm
+                                                        btn-outline-danger
+                                                    "
+                                                    onClick={() =>
+                                                        handleDeleteReview(
+                                                            review.id
+                                                        )
+                                                    }
+                                                >
+                                                    Delete
+                                                </button>
+
+                                            </div>
+
+                                        )
+                                    }
 
                                 </div>
 
                             </div>
 
-                        </div>
+                        );
 
-                    ))
+                    })
                 }
 
             </div>

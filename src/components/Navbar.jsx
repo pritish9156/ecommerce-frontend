@@ -18,6 +18,10 @@ function Navbar() {
             "role"
         );
 
+        localStorage.removeItem(
+            "userId"
+        );
+
         window.location.href = "/";
     };
 

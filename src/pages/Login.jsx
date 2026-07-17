@@ -46,6 +46,11 @@ function Login() {
                     response.data.role
                 );
 
+                localStorage.setItem(
+                    "userId",
+                    response.data.userId
+                );
+
                 toast.success(
                     response.data.message
                 );

@@ -25,8 +25,6 @@ import {
 }
     from "../../services/checkoutService";
 
-import { buyNow } from "../../services/orderService";
-
 import {
     toast
 }
@@ -36,6 +34,13 @@ import {
     applyBuyNowCoupon
 }
     from "../../services/couponService";
+
+import {
+    buyNow,
+    createRazorpayOrder,
+    markRazorpaySuccess,
+    markPaymentFailed
+} from "../../services/orderService";
 
 import Navbar from "../../components/Navbar";
 
@@ -153,20 +158,22 @@ function BuyNow() {
             }
         };
 
-    const handlePlaceOrder =
-        async () => {
+    const handlePlaceOrder = async () => {
 
-            if (!selectedAddress) {
+        if (!selectedAddress) {
 
-                toast.error(
-                    "Select Address"
-                );
+            toast.error(
+                "Select Address"
+            );
 
-                return;
-            }
+            return;
+        }
 
-            try {
+        try {
 
+            // First create the Buy Now order
+
+            const response =
                 await buyNow({
 
                     productVariantId:
@@ -184,21 +191,177 @@ function BuyNow() {
                         paymentMethod
                 });
 
+                console.log(
+                    "BUY NOW RESPONSE:",
+                    response.data
+                );
+
+            // Get created order ID
+
+            const orderId =
+                response.data.data.orderId;
+
+
+            // =========================
+            // CASH ON DELIVERY
+            // =========================
+
+            if (paymentMethod === "COD") {
+
                 toast.success(
-                    "Order Placed"
+                    response.data.message
+                    ||
+                    "Order Placed Successfully"
                 );
 
                 navigate(
                     "/orders"
                 );
 
-            } catch (error) {
-
-                toast.error(
-                    "Failed"
-                );
+                return;
             }
-        };
+
+
+            // =========================
+            // RAZORPAY
+            // =========================
+
+            const razorResponse =
+                await createRazorpayOrder(
+                    orderId
+                );
+
+
+            const options = {
+
+                key:
+                    "rzp_test_T2maD6MifbeAuB",
+
+                amount:
+                    razorResponse.data.amount
+                    * 100,
+
+                currency:
+                    "INR",
+
+                order_id:
+                    razorResponse.data
+                        .razorpayOrderId,
+
+                name:
+                    "ShopSphere AI",
+
+                description:
+                    "Buy Now Payment",
+
+                handler:
+                    async function (res) {
+
+                        try {
+
+                            await markRazorpaySuccess({
+
+                                orderId:
+                                    orderId,
+
+                                razorpayOrderId:
+                                    res.razorpay_order_id,
+
+                                razorpayPaymentId:
+                                    res.razorpay_payment_id,
+
+                                razorpaySignature:
+                                    res.razorpay_signature
+
+                            });
+
+
+                            toast.success(
+                                "Payment Successful"
+                            );
+
+
+                            navigate(
+                                "/orders"
+                            );
+
+                        } catch (error) {
+
+                            toast.error(
+                                "Payment verification failed."
+                            );
+
+                        }
+
+                    },
+
+
+                modal: {
+
+                    ondismiss:
+                        async function () {
+
+                            try {
+
+                                await markPaymentFailed(
+                                    orderId
+                                );
+
+                            } catch (error) {
+
+                                console.error(
+                                    error
+                                );
+
+                            }
+
+
+                            toast.error(
+                                "Payment Cancelled. You can retry payment from your order."
+                            );
+
+
+                            navigate(
+                                "/orders"
+                            );
+
+                        }
+
+                }
+
+            };
+
+
+            const razorpay =
+                new window.Razorpay(
+                    options
+                );
+
+
+            razorpay.open();
+
+
+        } catch (error) {
+
+            console.error(
+                error
+            );
+
+            toast.error(
+
+                error.response
+                    ?.data
+                    ?.message
+
+                ||
+
+                "Order Failed"
+
+            );
+
+        }
+
+    };
 
     if (!variant)
         return <h3>Loading...</h3>;
