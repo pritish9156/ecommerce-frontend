@@ -28,6 +28,7 @@ import AdminPayments from "./pages/admin/AdminPayments.jsx";
 import AdminCoupons from "./pages/admin/AdminCoupons";
 import AdminOrderDetails from "./pages/admin/AdminOrderDetails.jsx";
 import AdminCategoryManagement from "./pages/admin/AdminCategoryManagement.jsx";
+import AdminTags from "./pages/admin/AdminTags.jsx";
 
 function App() {
   return (
@@ -178,6 +179,11 @@ function App() {
         <Route
             path="category"
             element={<AdminCategoryManagement />}
+        />
+
+        <Route
+            path="tags"
+            element={<AdminTags />}
         />
 
         <Route

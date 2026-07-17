@@ -3,6 +3,9 @@ import api from "./api";
 export const getProducts = () =>
     api.get("/product");
 
+export const getProductDetails = (id) =>
+    api.get(`/product/${id}`);
+
 export const addProduct = (data) =>
     api.post("/product", data);
 

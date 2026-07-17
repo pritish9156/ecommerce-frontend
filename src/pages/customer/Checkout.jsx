@@ -105,6 +105,8 @@ function Checkout() {
         );
     };
 
+    console.log(cart)
+
     const handlePlaceOrder =
         async () => {
 
@@ -256,7 +258,7 @@ function Checkout() {
 
                 total +
                 (
-                    item.productVariant.price *
+                    item.price *
                     item.quantity
                 ),
 
@@ -415,7 +417,7 @@ function Checkout() {
                                             <span>
 
                                                 {
-                                                    item.productVariant.product.name
+                                                    item.productName
                                                 }
 
                                                 {" x "}
@@ -431,7 +433,7 @@ function Checkout() {
                                                 ₹
 
                                                 {
-                                                    item.productVariant.price
+                                                    item.price
                                                 }
 
                                             </span>

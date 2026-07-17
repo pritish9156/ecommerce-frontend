@@ -418,9 +418,7 @@ function AdminOrderDetails() {
 
                                                     {
                                                         item
-                                                        .productVariant
-                                                        ?.product
-                                                        ?.name
+                                                        .productName
                                                     }
 
                                                 </td>
@@ -429,8 +427,7 @@ function AdminOrderDetails() {
 
                                                     {
                                                         item
-                                                        .productVariant
-                                                        ?.sku
+                                                        .sku
                                                     }
 
                                                 </td>

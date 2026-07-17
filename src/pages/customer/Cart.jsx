@@ -123,7 +123,7 @@ function Cart() {
             (sum, item) =>
                 sum +
                 (
-                    item.productVariant.price *
+                    item.price *
                     item.quantity
                 ),
             0
@@ -208,9 +208,7 @@ function Cart() {
 
                                                                 {
                                                                     item
-                                                                        .productVariant
-                                                                        .product
-                                                                        .name
+                                                                        .productName
                                                                 }
 
                                                             </h5>
@@ -221,7 +219,6 @@ function Cart() {
                                                                 {" "}
                                                                 {
                                                                     item
-                                                                        .productVariant
                                                                         .sku
                                                                 }
 
@@ -238,7 +235,6 @@ function Cart() {
                                                             ₹
                                                             {
                                                                 item
-                                                                    .productVariant
                                                                     .price
                                                             }
 
@@ -281,7 +277,6 @@ function Cart() {
                                                             ₹
                                                             {
                                                                 item
-                                                                    .productVariant
                                                                     .price *
                                                                 item.quantity
                                                             }

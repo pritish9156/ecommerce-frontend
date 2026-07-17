@@ -59,6 +59,8 @@ function OrderDetails() {
         }
     };
 
+    console.log(data)
+
     const handleCancel =
         async () => {
 
@@ -233,9 +235,7 @@ function OrderDetails() {
 
                                     {
                                         item
-                                        .productVariant
-                                        .product
-                                        .name
+                                        .productName
                                     }
 
                                 </h5>
@@ -246,7 +246,6 @@ function OrderDetails() {
 
                                     {
                                         item
-                                        .productVariant
                                         .sku
                                     }
 

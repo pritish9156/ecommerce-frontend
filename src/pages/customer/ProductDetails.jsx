@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import ProductCard from "../../components/ProductCard";
 
 import {
+    getRelatedProducts,
     getProductDetails
 }
     from "../../services/productDetailsService";
@@ -29,7 +31,6 @@ import {
     from "../../services/wishlistService";
 
 import Navbar from "../../components/Navbar";
-import Products from "./Products";
 
 function ProductDetails() {
 
@@ -65,11 +66,30 @@ function ProductDetails() {
 
     const [editingReview, setEditingReview] = useState(null);
 
+    const [relatedProducts, setRelatedProducts] = useState([]);
+
     useEffect(() => {
 
         loadProduct();
+        loadRelatedProducts();
 
-    }, []);
+    }, [id]);
+
+    const loadRelatedProducts = async () => {
+
+    try {
+
+        const response =
+            await getRelatedProducts(id);
+
+        setRelatedProducts(response.data.data);
+
+    } catch (error) {
+
+        console.error(error);
+
+    }
+};
 
     const loadReviews = async () => {
 
@@ -618,7 +638,41 @@ function ProductDetails() {
 
                 <hr className="my-5" />
 
-                <Products />
+                {relatedProducts.length > 0 && (
+
+                    <section className="mb-5">
+
+                        <h3 className="mb-4">
+                            Related Products
+                        </h3>
+
+                        <div className="row">
+
+                            {relatedProducts.map(product => (
+
+                                <div
+                                    key={product.id}
+                                    className="
+                                        col-12
+                                        col-sm-6
+                                        col-lg-4
+                                        col-xl-3
+                                    "
+                                >
+
+                                    <ProductCard
+                                        product={product}
+                                    />
+
+                                </div>
+
+                            ))}
+
+                        </div>
+
+                    </section>
+
+                )}
 
                 <h3 className="mb-4">
                     Customer Reviews

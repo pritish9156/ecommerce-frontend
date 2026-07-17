@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import { Dropdown, Form } from "react-bootstrap";
+
 import {
     getProducts,
     addProduct,
@@ -18,11 +20,21 @@ import {
 }
     from "react-toastify";
 
+import { getAllCategories } from "../../services/categoryService";
+
+import { getAllTags } from "../../services/tagsService";
+
 function AdminProducts(){
 
     const [products, setProducts] = useState([]);
 
     const [brands, setBrands] = useState([]);
+
+    const [categories, setCategories] = useState([]);
+
+    const [tags, setTags] = useState([]);
+
+    const [tagSearch, setTagSearch] = useState("");
 
     const [editingId, setEditingId] =useState(null);
 
@@ -31,7 +43,9 @@ function AdminProducts(){
             name: "",
             description: "",
             slug: "",
-            brandId: ""
+            brandId: "",
+            categoryId: "",
+            tagIds: []
 
         });
 
@@ -39,6 +53,8 @@ function AdminProducts(){
 
         fetchProducts();
         fetchBrands();
+        fetchCategories();
+        fetchTags();
 
     }, []);
 
@@ -62,6 +78,7 @@ function AdminProducts(){
         }
     };
 
+
     const fetchBrands =
         async () => {
 
@@ -79,6 +96,34 @@ function AdminProducts(){
 
             console.error(error);
 
+        }
+    };
+
+    const fetchCategories = 
+        async () => {
+
+        try{
+
+            const response = await getAllCategories();
+
+            setCategories(response.data.data);
+        }
+        catch(error) {
+            console.error(error);
+        }
+    };
+
+    const fetchTags = 
+        async () => {
+
+        try{
+
+            const response = await getAllTags();
+
+            setTags(response.data.data);
+        }
+        catch(error) {
+            console.error(error);
         }
     };
 
@@ -151,33 +196,30 @@ function AdminProducts(){
             name: "",
             description: "",
             slug: "",
-            brandId: ""
+            brandId: "",
+            categoryId: "",
+            tagIds: []
 
         });
     };
 
-    const handleEdit =
-        (product) => {
+    const handleEdit = (product) => {
 
-        setEditingId(
-            product.id
-        );
+    setEditingId(product.id);
 
         setFormData({
+            name: product.name,
+            description: product.description,
+            slug: product.slug,
 
-            name:
-                product.name,
+            brandId: product.brand?.id || "",
 
-            description:
-                product.description,
+            categoryId: product.category?.id || "",
 
-            slug:
-                product.slug,
-
-            brandId:
-                product.brand.id
-
+            tagIds: product.tags?.map(tag => tag.id) || []
         });
+
+        setTagSearch("");
     };
 
     const handleDelete =
@@ -201,6 +243,38 @@ function AdminProducts(){
             );
         }
     };
+
+    const handleTagChange = (tagId) => {
+
+        const isAlreadySelected = formData.tagIds.includes(tagId);
+
+        if (isAlreadySelected) {
+
+            setFormData({
+                ...formData,
+                tagIds: formData.tagIds.filter(
+                    id => id !== tagId
+                )
+            });
+
+        } else {
+
+            setFormData({
+                ...formData,
+                tagIds: [
+                    ...formData.tagIds,
+                    tagId
+                ]
+            });
+
+        }
+    };
+
+    const filteredTags = tags.filter(tag =>
+        tag.name
+            .toLowerCase()
+            .includes(tagSearch.toLowerCase())
+    );
 
     return (
 
@@ -287,6 +361,121 @@ function AdminProducts(){
                                     }
 
                                 </select>
+
+                            </div>
+
+                            <div className="col-md-6 mb-3">
+
+                                <label className="form-label">
+                                    Category
+                                </label>
+
+                                <select
+                                    className="form-select"
+                                    name="categoryId"
+                                    value={formData.categoryId}
+                                    onChange={handleChange}
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select Category
+                                    </option>
+
+                                    {
+                                        categories.map(
+                                            category => (
+
+                                                <option
+                                                    key={category.id}
+                                                    value={category.id}
+                                                >
+                                                    {category.name}
+                                                </option>
+
+                                            )
+                                        )
+                                    }
+
+                                </select>
+
+                            </div>
+
+                           <div className="col-md-6 mb-3">
+
+                                <label className="form-label">
+                                    Tags
+                                </label>
+
+                                <Dropdown autoClose="outside">
+
+                                    <Dropdown.Toggle
+                                        variant="outline-secondary"
+                                        className="w-100 text-start d-flex justify-content-between align-items-center"
+                                    >
+                                        <span>
+                                            {
+                                                formData.tagIds.length > 0
+                                                    ? `${formData.tagIds.length} tag(s) selected`
+                                                    : "Select Tags"
+                                            }
+                                        </span>
+                                    </Dropdown.Toggle>
+
+                                    <Dropdown.Menu
+                                        className="w-100 p-3"
+                                        style={{
+                                            maxHeight: "300px",
+                                            overflowY: "auto"
+                                        }}
+                                    >
+
+                                        {/* Search Box */}
+
+                                        <Form.Control
+                                            type="text"
+                                            placeholder="Search tags..."
+                                            value={tagSearch}
+                                            onChange={(e) =>
+                                                setTagSearch(e.target.value)
+                                            }
+                                            onClick={(e) =>
+                                                e.stopPropagation()
+                                            }
+                                            className="mb-3"
+                                        />
+
+                                        {/* Tag Checkboxes */}
+
+                                        {
+                                            filteredTags.length > 0
+                                                ?
+                                                filteredTags.map(tag => (
+
+                                                    <Form.Check
+                                                        key={tag.id}
+                                                        type="checkbox"
+                                                        id={`tag-${tag.id}`}
+                                                        label={tag.name}
+                                                        checked={
+                                                            formData.tagIds.includes(tag.id)
+                                                        }
+                                                        onChange={() =>
+                                                            handleTagChange(tag.id)
+                                                        }
+                                                        className="mb-2"
+                                                    />
+
+                                                ))
+                                                :
+                                                <div className="text-muted text-center py-2">
+                                                    No tags found
+                                                </div>
+                                        }
+
+                                    </Dropdown.Menu>
+
+                                </Dropdown>
 
                             </div>
 

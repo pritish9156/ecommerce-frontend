@@ -168,7 +168,7 @@ function AdminVariants() {
         setFormData({
 
             productId:
-                variant.product.id,
+                variant.productId,
 
             sku:
                 variant.sku,
@@ -206,6 +206,7 @@ function AdminVariants() {
             );
         }
     };
+
 
     return (
 
@@ -411,7 +412,7 @@ function AdminVariants() {
 
                                             <td>
                                                 {
-                                                    variant.product.name
+                                                    variant.productName
                                                 }
                                             </td>
 

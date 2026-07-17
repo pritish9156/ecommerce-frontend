@@ -50,6 +50,24 @@ function AdminLayout() {
 
                     <li className="nav-item mb-2">
                         <Link
+                            to="/admin/category"
+                            className="nav-link text-white"
+                        >
+                            Category
+                        </Link>
+                    </li>
+
+                    <li className="nav-item mb-2">
+                        <Link
+                            to="/admin/tags"
+                            className="nav-link text-white"
+                        >
+                            Tags
+                        </Link>
+                    </li>
+
+                    <li className="nav-item mb-2">
+                        <Link
                             to="/admin/products"
                             className="nav-link text-white"
                         >
@@ -72,15 +90,6 @@ function AdminLayout() {
                             className="nav-link text-white"
                         >
                             Images
-                        </Link>
-                    </li>
-
-                    <li className="nav-item mb-2">
-                        <Link
-                            to="/admin/category"
-                            className="nav-link text-white"
-                        >
-                            Product Category
                         </Link>
                     </li>
 
