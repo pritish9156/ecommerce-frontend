@@ -14,7 +14,8 @@ import {
     getProductReviews,
     addReview,
     updateReview,
-    deleteReview
+    deleteReview,
+    improveReview
 }
     from "../../services/reviewService";
 
@@ -67,6 +68,8 @@ function ProductDetails() {
     const [editingReview, setEditingReview] = useState(null);
 
     const [relatedProducts, setRelatedProducts] = useState([]);
+
+    const [improvingReview, setImprovingReview] = useState(false);
 
     useEffect(() => {
 
@@ -394,6 +397,76 @@ function ProductDetails() {
                 );
             }
         };
+
+    const handleImproveReview =
+        async () => {
+
+        if (
+            !reviewForm.reviewText.trim()
+        ) {
+
+            toast.error(
+                "Write your review first."
+            );
+
+            return;
+        }
+
+        try {
+
+            setImprovingReview(true);
+
+            const response =
+                await improveReview({
+
+                    reviewTitle:
+                        reviewForm.reviewTitle,
+
+                    reviewText:
+                        reviewForm.reviewText
+
+                });
+
+            if (!response.data.success) {
+
+                toast.error(
+                    response.data.message
+                );
+
+                return;
+            }
+
+            setReviewForm({
+
+                ...reviewForm,
+
+                reviewTitle:
+                    response.data.data
+                        .reviewTitle,
+
+                reviewText:
+                    response.data.data
+                        .reviewText
+
+            });
+
+            toast.success(
+                "Review improved with AI."
+            );
+
+        } catch (error) {
+
+            console.error(error);
+
+            toast.error(
+                "Unable to improve review."
+            );
+
+        } finally {
+
+            setImprovingReview(false);
+        }
+    };
 
     return (
 
@@ -757,20 +830,33 @@ function ProductDetails() {
                             }
                         />
 
-                        <button
-                            className="btn btn-primary"
-                            onClick={
-                                handleReviewSubmit
-                            }
-                        >
-                            {
-                                editingReview
-                                    ?
-                                    "Update Review"
-                                    :
-                                    "Submit Review"
-                            }
-                        </button>
+                        <div className="d-flex gap-2">
+
+                            <button
+                                type="button"
+                                className="btn btn-outline-dark"
+                                onClick={handleImproveReview}
+                                disabled={improvingReview}
+                            >
+                                {
+                                    improvingReview
+                                        ? "Improving..."
+                                        : "✨ Improve with AI"
+                                }
+                            </button>
+
+                            <button
+                                className="btn btn-primary"
+                                onClick={handleReviewSubmit}
+                            >
+                                {
+                                    editingReview
+                                        ? "Update Review"
+                                        : "Submit Review"
+                                }
+                            </button>
+
+                        </div>
 
                     </div>
 

@@ -11,3 +11,9 @@ export const updateReview = (data) =>
 
 export const deleteReview = (id) =>
     api.delete(`/review/${id}`);
+
+export const improveReview = (data) =>
+    api.post(
+        "/review-ai/improve",
+        data
+    );
