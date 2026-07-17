@@ -11,7 +11,8 @@ from "react-router-dom";
 
 import {
     getOrderDetails,
-    cancelOrder
+    cancelOrder,
+    downloadInvoice
 }
 from "../../services/orderService";
 
@@ -87,12 +88,67 @@ function OrderDetails() {
         }
     };
 
+    const handleDownloadInvoice =
+        async () => {
+
+        try {
+
+            const response =
+                await downloadInvoice(id);
+
+            const url =
+                window.URL.createObjectURL(
+                    new Blob(
+                        [response.data],
+                        {
+                            type:
+                            "application/pdf"
+                        }
+                    )
+                );
+
+            const link =
+                document.createElement("a");
+
+            link.href = url;
+
+            link.setAttribute(
+                "download",
+                `Invoice-${data.order.orderNumber}.pdf`
+            );
+
+            document.body.appendChild(
+                link
+            );
+
+            link.click();
+
+            link.remove();
+
+            window.URL.revokeObjectURL(
+                url
+            );
+
+        } catch(error) {
+
+            console.error("Invoice download error:", error);
+            console.error("Status:", error.response?.status);
+            console.error("Response:", error.response?.data);
+
+            toast.error(
+                "Invoice is not available."
+            );
+        }
+    };
+
     if(!data)
         return (
             <h3>
                 Loading...
             </h3>
         );
+
+
 
     return (
 
@@ -199,6 +255,18 @@ function OrderDetails() {
 
                         )
                     }
+
+                    {data.order.orderStatus ===
+                        "DELIVERED" && (
+
+                        <button
+                            className="btn btn-dark ms-2"
+                            onClick={handleDownloadInvoice}
+                        >
+                            Download Invoice
+                        </button>
+
+                    )}
 
                 </div>
 

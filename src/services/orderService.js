@@ -47,3 +47,15 @@ export const markRazorpaySuccess =
             "/orders/razorpay-success",
             data
         );
+
+export const downloadInvoice = (
+    orderId
+) => {
+
+    return api.get(
+        `/invoice/${orderId}`,
+        {
+            responseType: "blob"
+        }
+    );
+};
