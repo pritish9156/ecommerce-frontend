@@ -1,27 +1,75 @@
-import { useEffect, useState } from "react";
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
-import { FaPlus } from "react-icons/fa";
+import {
+    useEffect,
+    useState,
+    useMemo
+}
+    from "react";
 
-import CategoryForm from "../../components/CategoryForm";
-import CategoryTable from "../../components/CategoryTable";
+import {
+    FaPlus,
+    FaLayerGroup,
+    FaCheck,
+    FaTriangleExclamation,
+    FaXmark,
+}
+    from "react-icons/fa6";
+
+import {
+    FaSearch
+}
+    from "react-icons/fa";
+
+import CategoryForm
+    from "../../components/CategoryForm";
+
+import CategoryTable
+    from "../../components/CategoryTable";
 
 import {
     createCategory,
     getAllCategories,
     updateCategory,
     deleteCategory
-} from "../../services/categoryService";
-import { create } from "axios";
+}
+    from "../../services/categoryService";
+
+import "../../css/admin/AdminCategoryManagement.css";
+
 
 function AdminCategoryManagement() {
 
-    const [categories, setCategories] = useState([]);
+    const [categories, setCategories] =
+        useState([]);
 
-    const [showModal, setShowModal] = useState(false);
+    const [showModal, setShowModal] =
+        useState(false);
 
-    const [selectedCategory, setSelectedCategory] = useState(null);
+    const [
+        selectedCategory,
+        setSelectedCategory
+    ] =
+        useState(null);
 
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] =
+        useState(true);
+
+    const [
+        deletingId,
+        setDeletingId
+    ] =
+        useState(null);
+
+    const [
+        notification,
+        setNotification
+    ] =
+        useState(null);
+
+    const [
+        searchTerm,
+        setSearchTerm
+    ] = useState("");
+
 
     useEffect(() => {
 
@@ -29,170 +77,858 @@ function AdminCategoryManagement() {
 
     }, []);
 
-    const fetchCategories = async () => {
 
-        try{
-            const response = await getAllCategories();
+    useEffect(() => {
 
-            setCategories(response.data.data);
+        if (!notification) {
 
-        }
-        catch(error) {
-            console.log(error);
-        }
-
-    };
-
-    const handleAdd = () => {
-
-        setSelectedCategory(null);
-
-        setShowModal(true);
-
-    };
-
-    const handleEdit = (category) => {
-
-        setSelectedCategory(category);
-
-        setShowModal(true);
-
-    };
-
-    const handleDelete = async (id) => {
-
-        try{
-
-            const response = await deleteCategory(id);
-
-            alert(response.data.message);
-
-            fetchCategories();
+            return;
 
         }
-        catch(error) {
-            console.log(error);
-        }
 
-    };
+        const timer =
+            setTimeout(
+                () => {
 
-    const handleSave = async (formData) => {
+                    setNotification(
+                        null
+                    );
 
-        try{
+                },
+                4000
+            );
 
-            const response = await createCategory(formData);
+        return () =>
+            clearTimeout(
+                timer
+            );
 
-            alert(response.data.message);
+    }, [notification]);
 
-            fetchCategories();
 
-        }
-        catch(error) {
-            console.log(error);
-        }
+    const showNotification =
+        (
+            type,
+            message
+        ) => {
 
-    };
+            setNotification({
 
-    const handleUpdate = async (formData) => {
+                type,
 
-        try{
+                message
 
-            const response = await updateCategory(formData);
+            });
 
-            alert(response.data.message);
+        };
 
-            fetchCategories();
-        }
-        catch(error){
-            console.log(error);
-        }
-    };
+
+    const fetchCategories =
+        async () => {
+
+            try {
+
+                setLoading(
+                    true
+                );
+
+                const response =
+                    await getAllCategories();
+
+                setCategories(
+
+                    response.data?.data
+                    ||
+                    []
+
+                );
+
+            }
+            catch (error) {
+
+                console.error(
+                    error
+                );
+
+                showNotification(
+
+                    "error",
+
+                    "Unable to load categories."
+
+                );
+
+            }
+            finally {
+
+                setLoading(
+                    false
+                );
+
+            }
+
+        };
+
+
+    const handleAdd =
+        () => {
+
+            setSelectedCategory(
+                null
+            );
+
+            setShowModal(
+                true
+            );
+
+        };
+
+
+    const handleEdit =
+        (category) => {
+
+            setSelectedCategory(
+                category
+            );
+
+            setShowModal(
+                true
+            );
+
+        };
+
+
+    const handleCloseModal =
+        () => {
+
+            setShowModal(
+                false
+            );
+
+            setSelectedCategory(
+                null
+            );
+
+        };
+
+
+    const handleDelete =
+        async (id) => {
+
+            const confirmed =
+                window.confirm(
+
+                    "Are you sure you want to delete this category?"
+
+                );
+
+            if (!confirmed) {
+
+                return;
+
+            }
+
+            try {
+
+                setDeletingId(
+                    id
+                );
+
+                const response =
+                    await deleteCategory(
+                        id
+                    );
+
+                showNotification(
+
+                    "success",
+
+                    response.data?.message
+                    ||
+                    "Category deleted successfully."
+
+                );
+
+                await fetchCategories();
+
+            }
+            catch (error) {
+
+                console.error(
+                    error
+                );
+
+                showNotification(
+
+                    "error",
+
+                    error.response?.data?.message
+                    ||
+                    "Unable to delete category."
+
+                );
+
+            }
+            finally {
+
+                setDeletingId(
+                    null
+                );
+
+            }
+
+        };
+
+
+    const handleSave =
+        async (formData) => {
+
+            try {
+
+                const response =
+                    await createCategory(
+                        formData
+                    );
+
+                showNotification(
+
+                    "success",
+
+                    response.data?.message
+                    ||
+                    "Category created successfully."
+
+                );
+
+                await fetchCategories();
+
+                handleCloseModal();
+
+            }
+            catch (error) {
+
+                console.error(
+                    error
+                );
+
+                showNotification(
+
+                    "error",
+
+                    error.response?.data?.message
+                    ||
+                    "Unable to create category."
+
+                );
+
+                throw error;
+
+            }
+
+        };
+
+
+    const handleUpdate =
+        async (formData) => {
+
+            try {
+
+                const response =
+                    await updateCategory(
+                        formData
+                    );
+
+                showNotification(
+
+                    "success",
+
+                    response.data?.message
+                    ||
+                    "Category updated successfully."
+
+                );
+
+                await fetchCategories();
+
+                handleCloseModal();
+
+            }
+            catch (error) {
+
+                console.error(
+                    error
+                );
+
+                showNotification(
+
+                    "error",
+
+                    error.response?.data?.message
+                    ||
+                    "Unable to update category."
+
+                );
+
+                throw error;
+
+            }
+
+        };
+
+    const filteredCategories =
+        useMemo(() => {
+
+            const search =
+                searchTerm
+                    .trim()
+                    .toLowerCase();
+
+
+            if (!search) {
+
+                return categories;
+
+            }
+
+
+            return categories.filter(
+
+                category => {
+
+                    const name =
+                        category.name
+                            ?.toLowerCase()
+                        || "";
+
+
+                    const description =
+                        category.description
+                            ?.toLowerCase()
+                        || "";
+
+
+                    const parentName =
+                        category.parentCategory
+                            ?.name
+                            ?.toLowerCase()
+                        || "";
+
+
+                    return (
+
+                        name.includes(
+                            search
+                        )
+
+                        ||
+
+                        description.includes(
+                            search
+                        )
+
+                        ||
+
+                        parentName.includes(
+                            search
+                        )
+
+                    );
+
+                }
+
+            );
+
+        }, [
+            categories,
+            searchTerm
+        ]);
+
 
     return (
 
-        <>
-            <Container fluid>
+        <div className="acm-page">
 
-                <Row className="mb-4 align-items-center">
 
-                    <Col>
+            {/* PAGE HEADER */}
 
-                        <h2 className="fw-bold">
+            <div className="acm-header">
 
-                            Category Management
+
+                <div className="acm-header-content">
+
+
+                    <span className="acm-eyebrow">
+
+                        CATALOG MANAGEMENT
+
+                    </span>
+
+
+                    <h1>
+
+                        Category Management
+
+                    </h1>
+
+
+                    <p>
+
+                        Organize your products into structured categories
+                        and build a clean catalog hierarchy.
+
+                    </p>
+
+
+                </div>
+
+
+                <div className="acm-header-actions">
+
+
+                    <div className="acm-category-count">
+
+
+                        <div className="acm-count-icon">
+
+                            <FaLayerGroup />
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+
+                                {
+                                    categories.length
+                                }
+
+                            </strong>
+
+                            <span>
+
+                                Total Categories
+
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <button
+
+                        type="button"
+
+                        className="acm-add-button"
+
+                        onClick={
+                            handleAdd
+                        }
+
+                    >
+
+                        <FaPlus />
+
+                        Add Category
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            {/* NOTIFICATION */}
+
+            {
+
+                notification
+
+                &&
+
+                <div
+
+                    className={
+
+                        notification.type ===
+                            "success"
+
+                            ?
+
+                            "acm-notification acm-notification-success"
+
+                            :
+
+                            "acm-notification acm-notification-error"
+
+                    }
+
+                >
+
+
+                    <div className="acm-notification-icon">
+
+
+                        {
+
+                            notification.type ===
+                                "success"
+
+                                ?
+
+                                <FaCheck />
+
+                                :
+
+                                <FaTriangleExclamation />
+
+                        }
+
+
+                    </div>
+
+
+                    <span>
+
+                        {
+                            notification.message
+                        }
+
+                    </span>
+
+
+                    <button
+
+                        type="button"
+
+                        onClick={
+                            () =>
+                                setNotification(
+                                    null
+                                )
+                        }
+
+                    >
+
+                        <FaXmark />
+
+                    </button>
+
+
+                </div>
+
+            }
+
+
+
+            {/* CATEGORY CONTENT */}
+
+            <section className="acm-content-card">
+
+
+                <div className="acm-card-header">
+
+
+                    <div>
+
+
+                        <h2>
+
+                            Category Directory
 
                         </h2>
 
-                        <p className="text-muted mb-0">
 
-                            Manage product categories and hierarchy.
+                        <p>
+
+                            View and manage your complete product category structure.
 
                         </p>
 
-                    </Col>
 
-                    <Col
-                        xs="auto"
-                    >
+                    </div>
 
-                        <Button
-                            variant="dark"
-                            onClick={handleAdd}
-                        >
 
-                            <FaPlus className="me-2" />
+                    <span className="acm-directory-count">
 
-                            Add Category
+                        {
+                            categories.length
+                        }
 
-                        </Button>
+                        {" "}
 
-                    </Col>
+                        categories
 
-                </Row>
+                    </span>
 
-                <Card
-                    className="shadow-sm border-0 rounded-4"
-                >
 
-                    <Card.Body>
+                </div>
 
-                        <CategoryTable
+                {/* QUICK SEARCH */}
 
-                            categories={categories}
+                <div className="acm-search-section">
 
-                            loading={loading}
 
-                            onEdit={handleEdit}
+                    <div className="acm-search-wrapper">
 
-                            onDelete={handleDelete}
+
+                        <FaSearch className="acm-search-icon" />
+
+
+                        <input
+
+                            type="text"
+
+                            className="acm-search-input"
+
+                            placeholder="Quick search by category, parent or description..."
+
+                            value={
+                                searchTerm
+                            }
+
+                            onChange={
+                                e =>
+                                    setSearchTerm(
+                                        e.target.value
+                                    )
+                            }
 
                         />
 
-                    </Card.Body>
 
-                </Card>
+                        {
 
-            </Container>
+                            searchTerm
+
+                            &&
+
+                            <button
+
+                                type="button"
+
+                                className="acm-search-clear"
+
+                                onClick={
+                                    () =>
+                                        setSearchTerm("")
+                                }
+
+                                aria-label="Clear search"
+
+                            >
+
+                                <FaXmark />
+
+                            </button>
+
+                        }
+
+
+                    </div>
+
+
+                    <div className="acm-search-result">
+
+
+                        {
+
+                            searchTerm
+
+                                ?
+
+                                <>
+
+                                    <strong>
+
+                                        {
+                                            filteredCategories.length
+                                        }
+
+                                    </strong>
+
+                                    {" "}
+
+                                    {
+                                        filteredCategories.length === 1
+
+                                            ? "result"
+
+                                            : "results"
+                                    }
+
+                                </>
+
+                                :
+
+                                <span>
+
+                                    Search directory
+
+                                </span>
+
+                        }
+
+
+                    </div>
+
+
+                </div>
+
+
+                <div className="acm-table-container">
+
+
+                    {
+
+                        loading
+
+                            ?
+
+                            <div className="acm-loading-table">
+
+
+                                {
+
+                                    Array.from({
+
+                                        length: 6
+
+                                    }).map(
+
+                                        (_, index) => (
+
+                                            <div
+
+                                                className="acm-skeleton-row"
+
+                                                key={
+                                                    index
+                                                }
+
+                                            >
+
+
+                                                <div className="acm-skeleton-number" />
+
+
+                                                <div className="acm-skeleton-category">
+
+
+                                                    <div className="acm-skeleton-icon" />
+
+
+                                                    <div className="acm-skeleton-text acm-skeleton-name" />
+
+
+                                                </div>
+
+
+                                                <div className="acm-skeleton-text acm-skeleton-parent" />
+
+
+                                                <div className="acm-skeleton-text acm-skeleton-description" />
+
+
+                                                <div className="acm-skeleton-status" />
+
+
+                                                <div className="acm-skeleton-actions" />
+
+
+                                            </div>
+
+                                        )
+
+                                    )
+
+                                }
+
+
+                            </div>
+
+                            :
+
+                            <CategoryTable
+
+                                categories={
+                                    filteredCategories
+                                }
+
+                                 searchTerm={
+                                    searchTerm
+                                }
+
+                                onClearSearch={
+                                    () =>
+                                        setSearchTerm("")
+                                }
+
+                                onEdit={
+                                    handleEdit
+                                }
+
+                                onDelete={
+                                    handleDelete
+                                }
+
+                                deletingId={
+                                    deletingId
+                                }
+
+                            />
+
+                    }
+
+
+                </div>
+
+
+            </section>
+
+
+
+            {/* CATEGORY MODAL */}
 
             <CategoryForm
 
-                show={showModal}
+                show={
+                    showModal
+                }
 
-                onHide={() => setShowModal(false)}
+                onHide={
+                    handleCloseModal
+                }
 
-                category={selectedCategory}
+                category={
+                    selectedCategory
+                }
 
-                categories={categories}
+                categories={
+                    categories
+                }
 
-                onSave={handleSave}
+                onSave={
+                    handleSave
+                }
 
-                onEdit={handleUpdate}
+                onEdit={
+                    handleUpdate
+                }
 
             />
-        </>
+
+
+        </div>
 
     );
 
 }
+
 
 export default AdminCategoryManagement;

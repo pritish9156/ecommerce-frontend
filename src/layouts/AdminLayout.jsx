@@ -1,161 +1,510 @@
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import {
+    useState
+}
+from "react";
+
+import {
+    NavLink,
+    Outlet,
+    useNavigate
+}
+from "react-router-dom";
+
+import {
+    FaChartPie,
+    FaTags,
+    FaBoxOpen,
+    FaLayerGroup,
+    FaImages,
+    FaCartShopping,
+    FaCreditCard,
+    FaTicket,
+    FaUsers,
+    FaRightFromBracket,
+    FaBars,
+    FaXmark,
+    FaStore,
+    FaArrowLeft,
+    FaShapes
+}
+from "react-icons/fa6";
+
+import "../css/admin/AdminLayout.css";
+
 
 function AdminLayout() {
 
-    const navigate = useNavigate();
+    const navigate =
+        useNavigate();
+
+
+    const [sidebarOpen,
+        setSidebarOpen] =
+        useState(false);
+
+
+    const navigationItems = [
+
+        {
+            label: "Dashboard",
+            path: "/admin/dashboard",
+            icon: <FaChartPie />
+        },
+
+        {
+            label: "Brands",
+            path: "/admin/brands",
+            icon: <FaShapes />
+        },
+
+        {
+            label: "Categories",
+            path: "/admin/category",
+            icon: <FaLayerGroup />
+        },
+
+        {
+            label: "Tags",
+            path: "/admin/tags",
+            icon: <FaTags />
+        },
+
+        {
+            label: "Products",
+            path: "/admin/products",
+            icon: <FaBoxOpen />
+        },
+
+        {
+            label: "Variants",
+            path: "/admin/variants",
+            icon: <FaShapes />
+        },
+
+        {
+            label: "Images",
+            path: "/admin/images",
+            icon: <FaImages />
+        },
+
+        {
+            label: "Orders",
+            path: "/admin/orders",
+            icon: <FaCartShopping />
+        },
+
+        {
+            label: "Payments",
+            path: "/admin/payments",
+            icon: <FaCreditCard />
+        },
+
+        {
+            label: "Coupons",
+            path: "/admin/coupons",
+            icon: <FaTicket />
+        },
+
+        {
+            label: "Users",
+            path: "/admin/users",
+            icon: <FaUsers />
+        }
+
+    ];
+
 
     const handleLogout = () => {
 
-        localStorage.clear();
+        localStorage.removeItem(
+            "token"
+        );
 
-        navigate("/login");
+        localStorage.removeItem(
+            "role"
+        );
+
+        localStorage.removeItem(
+            "userId"
+        );
+
+        navigate(
+            "/login",
+            {
+                replace: true
+            }
+        );
+
     };
+
+
+    const closeSidebar = () => {
+
+        setSidebarOpen(
+            false
+        );
+
+    };
+
 
     return (
 
-        <div className="d-flex">
+        <div className="sal-layout">
 
-            <div
-                className="text-white p-3"
-                style={{
-                    width: "260px",
-                    minHeight: "100vh",
-                    background: "#0f172a"
-                }}
+
+            {/* MOBILE OVERLAY */}
+
+            {
+
+                sidebarOpen
+
+                &&
+
+                <div
+
+                    className="sal-overlay"
+
+                    onClick={
+                        closeSidebar
+                    }
+
+                />
+
+            }
+
+
+
+            {/* SIDEBAR */}
+
+            <aside
+
+                className={
+
+                    sidebarOpen
+
+                        ?
+
+                        "sal-sidebar sal-sidebar-open"
+
+                        :
+
+                        "sal-sidebar"
+
+                }
+
             >
 
-                <h3 className="mb-4">
-                    Admin Panel
-                </h3>
 
-                <ul className="nav flex-column">
+                {/* BRAND */}
 
-                    <li className="nav-item mb-2">
-                        <Link
-                            to="/admin/dashboard"
-                            className="nav-link text-white"
-                        >
-                            Dashboard
-                        </Link>
-                    </li>
+                <div className="sal-brand">
 
-                    <li className="nav-item mb-2">
-                        <Link
-                            to="/admin/brands"
-                            className="nav-link text-white"
-                        >
-                            Brands
-                        </Link>
-                    </li>
 
-                    <li className="nav-item mb-2">
-                        <Link
-                            to="/admin/category"
-                            className="nav-link text-white"
-                        >
-                            Category
-                        </Link>
-                    </li>
+                    <div className="sal-brand-icon">
 
-                    <li className="nav-item mb-2">
-                        <Link
-                            to="/admin/tags"
-                            className="nav-link text-white"
-                        >
-                            Tags
-                        </Link>
-                    </li>
+                        <FaStore />
 
-                    <li className="nav-item mb-2">
-                        <Link
-                            to="/admin/products"
-                            className="nav-link text-white"
-                        >
-                            Products
-                        </Link>
-                    </li>
+                    </div>
 
-                    <li className="nav-item mb-2">
-                        <Link
-                            to="/admin/variants"
-                            className="nav-link text-white"
-                        >
-                            Variants
-                        </Link>
-                    </li>
 
-                    <li className="nav-item mb-2">
-                        <Link
-                            to="/admin/images"
-                            className="nav-link text-white"
-                        >
-                            Images
-                        </Link>
-                    </li>
+                    <div className="sal-brand-content">
 
-                    <li className="nav-item mb-2">
-                        <Link
-                            to="/admin/orders"
-                            className="nav-link text-white"
-                        >
-                            Orders
-                        </Link>
-                    </li>
-                    
-                    <li className="nav-item mb-2">
-                        <Link
-                            to="/admin/payments"
-                            className="nav-link text-white"
-                        >
-                            Payments
-                        </Link>
-                    </li>
+                        <h2>
 
-                    <li className="nav-item mb-2">
-                        <Link
-                            to="/admin/coupons"
-                            className="nav-link text-white"
-                        >
-                            Coupons
-                        </Link>
-                    </li>
+                            ShopSphere
 
-                    <li className="nav-item mb-2">
-                        <Link
-                            to="/admin/users"
-                            className="nav-link text-white"
-                        >
-                            Users
-                        </Link>
-                    </li>
+                        </h2>
 
-                    <li className="mt-4">
+                        <span>
+
+                            ADMIN CONSOLE
+
+                        </span>
+
+                    </div>
+
+
+                    <button
+
+                        type="button"
+
+                        className="sal-mobile-close"
+
+                        onClick={
+                            closeSidebar
+                        }
+
+                        aria-label="Close navigation"
+
+                    >
+
+                        <FaXmark />
+
+                    </button>
+
+
+                </div>
+
+
+
+                {/* ADMIN LABEL */}
+
+                <div className="sal-navigation-label">
+
+                    MANAGEMENT
+
+                </div>
+
+
+
+                {/* NAVIGATION */}
+
+                <nav className="sal-navigation">
+
+
+                    {
+
+                        navigationItems.map(
+
+                            item => (
+
+                                <NavLink
+
+                                    key={
+                                        item.path
+                                    }
+
+                                    to={
+                                        item.path
+                                    }
+
+                                    onClick={
+                                        closeSidebar
+                                    }
+
+                                    className={
+
+                                        ({
+                                            isActive
+                                        }) =>
+
+                                            isActive
+
+                                                ?
+
+                                                "sal-nav-item sal-nav-item-active"
+
+                                                :
+
+                                                "sal-nav-item"
+
+                                    }
+
+                                >
+
+
+                                    <span className="sal-nav-icon">
+
+                                        {
+                                            item.icon
+                                        }
+
+                                    </span>
+
+
+                                    <span className="sal-nav-label">
+
+                                        {
+                                            item.label
+                                        }
+
+                                    </span>
+
+
+                                    <span className="sal-active-indicator" />
+
+
+                                </NavLink>
+
+                            )
+
+                        )
+
+                    }
+
+
+                </nav>
+
+
+
+                {/* SIDEBAR FOOTER */}
+
+                <div className="sal-sidebar-footer">
+
+
+                    <button
+
+                        type="button"
+
+                        className="sal-store-button"
+
+                        onClick={
+                            () =>
+                                navigate("/")
+                        }
+
+                    >
+
+                        <FaArrowLeft />
+
+                        <span>
+
+                            Back to Store
+
+                        </span>
+
+                    </button>
+
+
+
+                    <button
+
+                        type="button"
+
+                        className="sal-logout-button"
+
+                        onClick={
+                            handleLogout
+                        }
+
+                    >
+
+                        <FaRightFromBracket />
+
+                        <span>
+
+                            Sign Out
+
+                        </span>
+
+                    </button>
+
+
+                </div>
+
+
+            </aside>
+
+
+
+            {/* MAIN AREA */}
+
+            <div className="sal-main">
+
+
+                {/* TOPBAR */}
+
+                <header className="sal-topbar">
+
+
+                    <div className="sal-topbar-left">
+
 
                         <button
-                            className="btn btn-danger w-100"
-                            onClick={handleLogout}
+
+                            type="button"
+
+                            className="sal-menu-button"
+
+                            onClick={
+                                () =>
+                                    setSidebarOpen(
+                                        true
+                                    )
+                            }
+
+                            aria-label="Open navigation"
+
                         >
-                            Logout
+
+                            <FaBars />
+
                         </button>
 
-                    </li>
 
-                </ul>
+                        <div>
+
+                            <span className="sal-topbar-eyebrow">
+
+                                SHOPSPHERE
+
+                            </span>
+
+
+                            <h1>
+
+                                Administration
+
+                            </h1>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div className="sal-admin-profile">
+
+
+                        <div className="sal-admin-avatar">
+
+                            A
+
+                        </div>
+
+
+                        <div className="sal-admin-info">
+
+                            <strong>
+
+                                Administrator
+
+                            </strong>
+
+                            <span>
+
+                                Full access
+
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+
+                </header>
+
+
+
+                {/* PAGE CONTENT */}
+
+                <main className="sal-content">
+
+                    <Outlet />
+
+                </main>
+
 
             </div>
 
-            <div
-                className="flex-grow-1 p-4"
-                style={{
-                    background: "#f8fafc",
-                    minHeight: "100vh"
-                }}
-            >
-                <Outlet />
-            </div>
 
         </div>
+
     );
+
 }
+
 
 export default AdminLayout;

@@ -1,10 +1,18 @@
 import axios from "axios";
 
+export const API_BASE_URL =
+    import.meta.env.VITE_API_BASE_URL;
+
 const api = axios.create({
-  baseURL: "http://localhost:8080/ecommerce-backend"
+
+    baseURL:
+        API_BASE_URL
+
 });
 
+
 api.interceptors.request.use(
+
     (config) => {
 
         const token =
@@ -12,14 +20,18 @@ api.interceptors.request.use(
                 "token"
             );
 
-        if(token) {
+        if (token) {
 
             config.headers.Authorization =
                 `Bearer ${token}`;
+
         }
 
         return config;
+
     }
+
 );
+
 
 export default api;

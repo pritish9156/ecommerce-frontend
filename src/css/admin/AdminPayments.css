@@ -1,0 +1,1009 @@
+/* =========================================================
+   ADMIN PAYMENTS
+   ========================================================= */
+
+.ap-page {
+    width: 100%;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.ap-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 24px;
+
+    margin-bottom: 26px;
+}
+
+
+.ap-eyebrow {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #9aa1ab;
+
+    font-size: 10px;
+    font-weight: 850;
+
+    letter-spacing: 1.5px;
+}
+
+
+.ap-header h1 {
+    margin: 0;
+
+    color: #1c2330;
+
+    font-size: 30px;
+    font-weight: 850;
+
+    letter-spacing: -1px;
+}
+
+
+.ap-header p {
+    max-width: 600px;
+
+    margin:
+        8px
+        0
+        0;
+
+    color: #858d99;
+
+    font-size: 14px;
+
+    line-height: 1.65;
+}
+
+
+.ap-refresh-button {
+    height: 42px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding:
+        0
+        15px;
+
+    border: 1px solid #dfe3e8;
+
+    border-radius: 11px;
+
+    background: #ffffff;
+
+    color: #454d59;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.ap-refresh-button:hover {
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        0 6px 16px
+        rgba(15, 23, 42, 0.07);
+}
+
+
+/* =========================================================
+   NOTIFICATION
+   ========================================================= */
+
+.ap-notification {
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    margin-bottom: 20px;
+
+    padding:
+        13px
+        15px;
+
+    border-radius: 12px;
+
+    font-size: 13px;
+}
+
+
+.ap-notification p {
+    flex: 1;
+
+    margin: 0;
+}
+
+
+.ap-notification button {
+    border: none;
+
+    background: transparent;
+
+    color: inherit;
+
+    cursor: pointer;
+}
+
+
+.ap-notification-success {
+    border: 1px solid #ccebdc;
+
+    background: #f0faf5;
+
+    color: #247d56;
+}
+
+
+.ap-notification-error {
+    border: 1px solid #f0d1d1;
+
+    background: #fff5f5;
+
+    color: #b64d4d;
+}
+
+
+/* =========================================================
+   SUMMARY CARDS
+   ========================================================= */
+
+.ap-summary-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            minmax(0, 1fr)
+        );
+
+    gap: 14px;
+
+    margin-bottom: 20px;
+}
+
+
+.ap-summary-card {
+    min-height: 92px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    padding:
+        17px;
+
+    border: 1px solid #e6e9ed;
+
+    border-radius: 15px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 5px 18px
+        rgba(15, 23, 42, 0.035);
+}
+
+
+.ap-summary-icon {
+    width: 41px;
+    height: 41px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background: #f2f4f7;
+
+    color: #626b78;
+
+    font-size: 14px;
+}
+
+
+.ap-summary-success {
+    background: #edf9f3;
+
+    color: #25805a;
+}
+
+
+.ap-summary-pending {
+    background: #fff8e8;
+
+    color: #a87316;
+}
+
+
+.ap-summary-revenue {
+    background: #eef2ff;
+
+    color: #5d67a7;
+}
+
+
+.ap-summary-card > div:last-child {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+
+.ap-summary-card span {
+    color: #9299a4;
+
+    font-size: 11px;
+    font-weight: 650;
+}
+
+
+.ap-summary-card strong {
+    overflow: hidden;
+
+    color: #242b36;
+
+    font-size: 19px;
+    font-weight: 850;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   TOOLBAR
+   ========================================================= */
+
+.ap-toolbar {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    margin-bottom: 20px;
+}
+
+
+.ap-search {
+    position: relative;
+
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+}
+
+
+.ap-search > svg {
+    position: absolute;
+
+    left: 15px;
+
+    color: #a0a6af;
+
+    font-size: 13px;
+}
+
+
+.ap-search input {
+    width: 100%;
+    height: 46px;
+
+    padding:
+        0
+        44px
+        0
+        42px;
+
+    border: 1px solid #e1e4e8;
+
+    border-radius: 12px;
+
+    outline: none;
+
+    background: #ffffff;
+
+    color: #29303b;
+
+    font-size: 14px;
+}
+
+
+.ap-search input:focus {
+    border-color: #aeb5bf;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(17, 24, 39, 0.04);
+}
+
+
+.ap-search button {
+    position: absolute;
+
+    right: 10px;
+
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #f3f4f6;
+
+    color: #7f8792;
+
+    cursor: pointer;
+}
+
+
+.ap-filter {
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding:
+        0
+        13px;
+
+    border: 1px solid #e1e4e8;
+
+    border-radius: 12px;
+
+    background: #ffffff;
+}
+
+
+.ap-filter > span {
+    color: #999fa9;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+.ap-filter select {
+    min-width: 150px;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: #343b46;
+
+    font-size: 13px;
+    font-weight: 650;
+}
+
+
+/* =========================================================
+   TABLE CARD
+   ========================================================= */
+
+.ap-table-card {
+    overflow: hidden;
+
+    border: 1px solid #e6e9ed;
+
+    border-radius: 18px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 8px 28px
+        rgba(15, 23, 42, 0.04);
+}
+
+
+.ap-table-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding:
+        20px
+        22px;
+
+    border-bottom: 1px solid #eceef1;
+}
+
+
+.ap-table-header h2 {
+    margin: 0;
+
+    color: #252c37;
+
+    font-size: 17px;
+    font-weight: 800;
+}
+
+
+.ap-table-header p {
+    margin:
+        5px
+        0
+        0;
+
+    color: #969da7;
+
+    font-size: 12px;
+}
+
+
+.ap-table-header > span {
+    padding:
+        6px
+        10px;
+
+    border-radius: 50px;
+
+    background: #f3f4f6;
+
+    color: #737b86;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.ap-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+
+.ap-table {
+    width: 100%;
+
+    min-width: 950px;
+
+    border-collapse: collapse;
+}
+
+
+.ap-table th {
+    padding:
+        14px
+        18px;
+
+    border-bottom: 1px solid #e9ebef;
+
+    background: #fafbfc;
+
+    color: #9299a4;
+
+    font-size: 10px;
+    font-weight: 850;
+
+    letter-spacing: 0.7px;
+
+    text-align: left;
+
+    text-transform: uppercase;
+
+    white-space: nowrap;
+}
+
+
+.ap-table td {
+    padding:
+        16px
+        18px;
+
+    border-bottom: 1px solid #f0f1f3;
+
+    color: #4c5460;
+
+    font-size: 13px;
+
+    vertical-align: middle;
+}
+
+
+.ap-table tbody tr {
+    transition:
+        background 0.2s ease;
+}
+
+
+.ap-table tbody tr:hover {
+    background: #fafbfc;
+}
+
+
+/* =========================================================
+   ORDER
+   ========================================================= */
+
+.ap-order {
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+
+.ap-order strong {
+    color: #252c37;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+
+.ap-order span {
+    color: #a0a6af;
+
+    font-size: 10px;
+    font-weight: 650;
+}
+
+
+/* =========================================================
+   CUSTOMER
+   ========================================================= */
+
+.ap-customer {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.ap-customer-avatar {
+    width: 35px;
+    height: 35px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #e2e5e9;
+
+    border-radius: 10px;
+
+    background: #f7f8fa;
+
+    color: #626b77;
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+
+.ap-customer > div:last-child {
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+
+.ap-customer strong {
+    color: #343b46;
+
+    font-size: 13px;
+}
+
+
+.ap-customer span {
+    color: #9ca3ad;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   AMOUNT
+   ========================================================= */
+
+.ap-amount {
+    color: #202732;
+
+    font-size: 14px;
+    font-weight: 850;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   METHOD
+   ========================================================= */
+
+.ap-method {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 7px;
+
+    color: #505864;
+
+    font-size: 12px;
+    font-weight: 650;
+}
+
+
+.ap-method svg {
+    color: #8b929d;
+}
+
+
+.ap-unavailable,
+.ap-no-action {
+    color: #a1a7b0;
+
+    font-size: 11px;
+    font-style: italic;
+}
+
+
+/* =========================================================
+   PAYMENT STATUS
+   ========================================================= */
+
+.ap-status {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 7px;
+
+    padding:
+        6px
+        9px;
+
+    border-radius: 50px;
+
+    font-size: 10px;
+    font-weight: 750;
+
+    white-space: nowrap;
+}
+
+
+.ap-status-dot {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+}
+
+
+.ap-status-success {
+    background: #edf9f3;
+
+    color: #25805a;
+}
+
+
+.ap-status-success
+.ap-status-dot {
+    background: #2ca66f;
+}
+
+
+.ap-status-pending {
+    background: #fff8e8;
+
+    color: #a87316;
+}
+
+
+.ap-status-pending
+.ap-status-dot {
+    background: #d49a32;
+}
+
+
+.ap-status-failed {
+    background: #fff0f0;
+
+    color: #b84d4d;
+}
+
+
+.ap-status-failed
+.ap-status-dot {
+    background: #d45d5d;
+}
+
+
+.ap-status-none {
+    background: #f3f4f6;
+
+    color: #818893;
+}
+
+
+.ap-status-none
+.ap-status-dot {
+    background: #9ba1aa;
+}
+
+
+/* =========================================================
+   ACTION
+   ========================================================= */
+
+.ap-mark-paid {
+    min-width: 105px;
+    height: 34px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    padding:
+        0
+        11px;
+
+    border: 1px solid #cce8da;
+
+    border-radius: 9px;
+
+    background: #f0faf5;
+
+    color: #287b58;
+
+    font-size: 11px;
+    font-weight: 750;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.ap-mark-paid:hover:not(:disabled) {
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        0 5px 12px
+        rgba(40, 123, 88, 0.1);
+}
+
+
+.ap-mark-paid:disabled {
+    opacity: 0.65;
+
+    cursor: wait;
+}
+
+
+.ap-completed {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 6px;
+
+    color: #27805b;
+
+    font-size: 11px;
+    font-weight: 750;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.ap-empty-state {
+    padding:
+        70px
+        20px;
+
+    text-align: center;
+}
+
+
+.ap-empty-icon {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin:
+        0
+        auto
+        16px;
+
+    border-radius: 17px;
+
+    background: #f3f5f7;
+
+    color: #8f97a2;
+
+    font-size: 20px;
+}
+
+
+.ap-empty-state h3 {
+    margin:
+        0
+        0
+        7px;
+
+    color: #29303b;
+
+    font-size: 17px;
+}
+
+
+.ap-empty-state p {
+    max-width: 420px;
+
+    margin: auto;
+
+    color: #949ba5;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   ANIMATION
+   ========================================================= */
+
+.ap-spin {
+    animation:
+        ap-spin
+        0.8s
+        linear
+        infinite;
+}
+
+
+@keyframes ap-spin {
+
+    to {
+        transform:
+            rotate(360deg);
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .ap-summary-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+    }
+
+}
+
+
+@media (max-width: 768px) {
+
+    .ap-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+
+    .ap-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+
+    .ap-filter {
+        width: 100%;
+    }
+
+
+    .ap-filter select {
+        flex: 1;
+    }
+
+}
+
+
+@media (max-width: 520px) {
+
+    .ap-summary-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .ap-table-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (
+    prefers-reduced-motion:
+    reduce
+) {
+
+    .ap-refresh-button,
+    .ap-mark-paid,
+    .ap-table tbody tr {
+        transition: none;
+    }
+
+
+    .ap-refresh-button:hover,
+    .ap-mark-paid:hover {
+        transform: none;
+    }
+
+
+    .ap-spin {
+        animation: none;
+    }
+
+}

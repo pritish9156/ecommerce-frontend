@@ -1,12 +1,156 @@
-import { Link } from "react-router-dom";
+import {
+    Link,
+    NavLink,
+    useNavigate
+}
+from "react-router-dom";
+
+import {
+    FaBars,
+    FaXmark,
+    FaChevronDown,
+    FaRegUser,
+    FaRegHeart,
+    FaCartShopping,
+    FaBoxOpen,
+    FaLocationDot,
+    FaArrowRightFromBracket,
+    FaGaugeHigh,
+    FaStore
+}
+from "react-icons/fa6";
+
+import {
+    useEffect,
+    useRef,
+    useState
+}
+from "react";
+
+import "../css/components/Navbar.css";
+
 
 function Navbar() {
 
+    const navigate =
+        useNavigate();
+
+
     const token =
-        localStorage.getItem("token");
+        localStorage.getItem(
+            "token"
+        );
+
 
     const role =
-        localStorage.getItem("role");
+        localStorage.getItem(
+            "role"
+        );
+
+
+    const [profileOpen,
+        setProfileOpen] =
+        useState(false);
+
+
+    const [mobileOpen,
+        setMobileOpen] =
+        useState(false);
+
+
+    const [scrolled,
+        setScrolled] =
+        useState(false);
+
+
+    const profileRef =
+        useRef(null);
+
+
+    /* =========================================
+       NAVBAR SCROLL EFFECT
+    ========================================= */
+
+    useEffect(() => {
+
+        const handleScroll = () => {
+
+            setScrolled(
+                window.scrollY > 15
+            );
+
+        };
+
+
+        window.addEventListener(
+            "scroll",
+            handleScroll
+        );
+
+
+        return () => {
+
+            window.removeEventListener(
+                "scroll",
+                handleScroll
+            );
+
+        };
+
+    }, []);
+
+
+    /* =========================================
+       CLOSE PROFILE DROPDOWN
+    ========================================= */
+
+    useEffect(() => {
+
+        const handleOutsideClick =
+            (event) => {
+
+                if (
+
+                    profileRef.current
+
+                    &&
+
+                    !profileRef.current.contains(
+                        event.target
+                    )
+
+                ) {
+
+                    setProfileOpen(
+                        false
+                    );
+
+                }
+
+            };
+
+
+        document.addEventListener(
+            "mousedown",
+            handleOutsideClick
+        );
+
+
+        return () => {
+
+            document.removeEventListener(
+                "mousedown",
+                handleOutsideClick
+            );
+
+        };
+
+    }, []);
+
+
+    /* =========================================
+       LOGOUT
+    ========================================= */
 
     const handleLogout = () => {
 
@@ -22,201 +166,1068 @@ function Navbar() {
             "userId"
         );
 
-        window.location.href = "/";
+
+        setProfileOpen(
+            false
+        );
+
+
+        setMobileOpen(
+            false
+        );
+
+
+        navigate(
+            "/"
+        );
+
+
+        window.location.reload();
+
     };
+
+
+    const closeMobileMenu = () => {
+
+        setMobileOpen(
+            false
+        );
+
+    };
+
 
     return (
 
-        <nav
-            className="navbar navbar-expand-lg navbar-dark"
-            style={{
-                backgroundColor: "#0f172a"
-            }}
-        >
+        <>
 
-            <div className="container">
+            <header
 
-                <Link
-                    to="/"
-                    className="navbar-brand fw-bold fs-3"
-                >
-                    ShopSphere
-                </Link>
+                className={
 
-                <button
-                    className="navbar-toggler"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbar"
-                >
-                    <span className="navbar-toggler-icon"></span>
-                </button>
+                    `sv-navbar
+                    ${
+                        scrolled
 
-                <div
-                    className="collapse navbar-collapse"
-                    id="navbar"
-                >
+                            ?
 
-                    <ul className="navbar-nav ms-auto align-items-lg-center">
+                            "sv-navbar-scrolled"
 
-                        <li className="nav-item">
-                            <Link
-                                to="/"
-                                className="nav-link"
-                            >
-                                Home
-                            </Link>
-                        </li>
+                            :
 
-                        <li className="nav-item">
-                            <Link
-                                to="/products"
-                                className="nav-link"
-                            >
-                                Products
-                            </Link>
-                        </li>
+                            ""
+                    }`
 
-                        {
-                            !token && (
-                                <>
-                                    <li className="nav-item">
-                                        <Link
-                                            to="/login"
-                                            className="nav-link"
-                                        >
-                                            Login
-                                        </Link>
-                                    </li>
+                }
 
-                                    <li className="nav-item">
-                                        <Link
-                                            to="/register"
-                                            className="btn btn-warning ms-lg-3"
-                                        >
-                                            Get Started
-                                        </Link>
-                                    </li>
-                                </>
-                            )
+            >
+
+                <div className="sv-navbar-container">
+
+
+                    {/* =========================================
+                        BRAND
+                    ========================================= */}
+
+                    <Link
+
+                        to="/"
+
+                        className="sv-navbar-brand"
+
+                        onClick={
+                            closeMobileMenu
                         }
 
+                    >
+
+                        <div className="sv-brand-logo">
+
+                            <FaStore />
+
+                        </div>
+
+
+                        <div className="sv-brand-text">
+
+                            Shop
+
+                            <span>
+
+                                Sphere
+
+                            </span>
+
+                        </div>
+
+                    </Link>
+
+
+
+                    {/* =========================================
+                        DESKTOP NAVIGATION
+                    ========================================= */}
+
+                    <nav className="sv-desktop-nav">
+
+
+                        <NavLink
+
+                            to="/"
+
+                            end
+
+                            className={
+
+                                ({ isActive }) =>
+
+                                    isActive
+
+                                        ?
+
+                                        "sv-nav-link sv-nav-link-active"
+
+                                        :
+
+                                        "sv-nav-link"
+
+                            }
+
+                        >
+
+                            Home
+
+                        </NavLink>
+
+
+                        <NavLink
+
+                            to="/products"
+
+                            className={
+
+                                ({ isActive }) =>
+
+                                    isActive
+
+                                        ?
+
+                                        "sv-nav-link sv-nav-link-active"
+
+                                        :
+
+                                        "sv-nav-link"
+
+                            }
+
+                        >
+
+                            Products
+
+                        </NavLink>
+
+
+                    </nav>
+
+
+
+                    {/* =========================================
+                        DESKTOP ACTIONS
+                    ========================================= */}
+
+                    <div className="sv-navbar-actions">
+
+
                         {
-                            token && (
+
+                            !token
+
+                                ?
+
                                 <>
-                                    <li className="nav-item">
-                                        <Link
-                                            to="/cart"
-                                            className="nav-link"
-                                        >
-                                            Cart
-                                        </Link>
-                                    </li>
 
-                                    <li className="nav-item">
-                                        <Link
-                                            to="/orders"
-                                            className="nav-link"
-                                        >
-                                            Orders
-                                        </Link>
-                                    </li>
 
-                                    <li className="nav-item dropdown">
+                                    <Link
 
-                                        <a
-                                            href="#"
-                                            className="nav-link dropdown-toggle"
-                                            role="button"
-                                            data-bs-toggle="dropdown"
-                                        >
-                                            Profile
-                                        </a>
+                                        to="/login"
 
-                                        <ul className="dropdown-menu dropdown-menu-end">
+                                        className="sv-login-link"
 
-                                            <li>
-                                                <Link
-                                                    to="/profile"
-                                                    className="dropdown-item"
-                                                >
-                                                    My Profile
-                                                </Link>
-                                            </li>
+                                    >
 
-                                            <li>
-                                                <Link
-                                                    to="/addresses"
-                                                    className="dropdown-item"
-                                                >
-                                                    My Addresses
-                                                </Link>
-                                            </li>
+                                        Sign in
 
-                                            <li>
-                                                <Link
-                                                    to="/orders"
-                                                    className="dropdown-item"
-                                                >
-                                                    My Orders
-                                                </Link>
-                                            </li>
+                                    </Link>
 
-                                            <li>
-                                                <Link
-                                                    to="/wishlist"
-                                                    className="dropdown-item"
-                                                >
-                                                    Wishlist
-                                                </Link>
-                                            </li>
 
-                                            {
-                                                role === "ADMIN" && (
-                                                    <>
-                                                        <li>
-                                                            <hr className="dropdown-divider" />
-                                                        </li>
+                                    <Link
 
-                                                        <li>
-                                                            <Link
-                                                                to="/admin/dashboard"
-                                                                className="dropdown-item text-primary fw-bold"
-                                                            >
-                                                                Admin Panel
-                                                            </Link>
-                                                        </li>
-                                                    </>
-                                                )
+                                        to="/register"
+
+                                        className="sv-register-btn"
+
+                                    >
+
+                                        Get Started
+
+                                    </Link>
+
+
+                                </>
+
+                                :
+
+                                <>
+
+
+                                    {/* WISHLIST */}
+
+                                    <Link
+
+                                        to="/wishlist"
+
+                                        className="sv-navbar-icon-btn"
+
+                                        aria-label="Wishlist"
+
+                                    >
+
+                                        <FaRegHeart />
+
+                                    </Link>
+
+
+
+                                    {/* ORDERS */}
+
+                                    <Link
+
+                                        to="/orders"
+
+                                        className="
+                                            sv-navbar-icon-btn
+                                            sv-orders-desktop
+                                        "
+
+                                        aria-label="Orders"
+
+                                    >
+
+                                        <FaBoxOpen />
+
+                                    </Link>
+
+
+
+                                    {/* CART */}
+
+                                    <Link
+
+                                        to="/cart"
+
+                                        className="
+                                            sv-navbar-icon-btn
+                                            sv-cart-btn
+                                        "
+
+                                        aria-label="Shopping cart"
+
+                                    >
+
+                                        <FaCartShopping />
+
+
+                                        {/*
+
+                                            Later when we have
+                                            cart count globally:
+
+                                            <span className="sv-cart-count">
+                                                {cartCount}
+                                            </span>
+
+                                        */}
+
+                                    </Link>
+
+
+
+                                    <div className="sv-navbar-divider" />
+
+
+
+                                    {/* PROFILE */}
+
+                                    <div
+
+                                        className="sv-profile-wrapper"
+
+                                        ref={
+                                            profileRef
+                                        }
+
+                                    >
+
+
+                                        <button
+
+                                            type="button"
+
+                                            className={
+
+                                                `sv-profile-trigger
+                                                ${
+                                                    profileOpen
+
+                                                        ?
+
+                                                        "sv-profile-trigger-active"
+
+                                                        :
+
+                                                        ""
+                                                }`
+
                                             }
 
-                                            <li>
-                                                <hr className="dropdown-divider" />
-                                            </li>
+                                            onClick={() =>
 
-                                            <li>
-                                                <button
-                                                    className="dropdown-item text-danger"
-                                                    onClick={handleLogout}
-                                                >
-                                                    Logout
-                                                </button>
-                                            </li>
+                                                setProfileOpen(
+                                                    !profileOpen
+                                                )
 
-                                        </ul>
+                                            }
 
-                                    </li>
+                                        >
+
+                                            <div className="sv-profile-avatar">
+
+                                                <FaRegUser />
+
+                                            </div>
+
+
+                                            <div className="sv-profile-trigger-text">
+
+                                                <span>
+
+                                                    My Account
+
+                                                </span>
+
+
+                                                <strong>
+
+                                                    {
+
+                                                        role === "ADMIN"
+
+                                                            ?
+
+                                                            "Administrator"
+
+                                                            :
+
+                                                            "Customer"
+
+                                                    }
+
+                                                </strong>
+
+                                            </div>
+
+
+                                            <FaChevronDown
+
+                                                className={
+
+                                                    profileOpen
+
+                                                        ?
+
+                                                        "sv-profile-arrow sv-profile-arrow-open"
+
+                                                        :
+
+                                                        "sv-profile-arrow"
+
+                                                }
+
+                                            />
+
+
+                                        </button>
+
+
+
+                                        {/* PROFILE DROPDOWN */}
+
+                                        {
+
+                                            profileOpen
+
+                                            &&
+
+                                            (
+
+                                                <div className="sv-profile-dropdown">
+
+
+                                                    <div className="sv-dropdown-header">
+
+                                                        <div className="sv-dropdown-avatar">
+
+                                                            <FaRegUser />
+
+                                                        </div>
+
+
+                                                        <div>
+
+                                                            <span>
+
+                                                                Signed in as
+
+                                                            </span>
+
+
+                                                            <strong>
+
+                                                                {
+
+                                                                    role === "ADMIN"
+
+                                                                        ?
+
+                                                                        "Administrator"
+
+                                                                        :
+
+                                                                        "ShopSphere Customer"
+
+                                                                }
+
+                                                            </strong>
+
+                                                        </div>
+
+                                                    </div>
+
+
+
+                                                    <div className="sv-dropdown-links">
+
+
+                                                        <Link
+
+                                                            to="/profile"
+
+                                                            onClick={() =>
+                                                                setProfileOpen(false)
+                                                            }
+
+                                                        >
+
+                                                            <span className="sv-dropdown-link-icon">
+
+                                                                <FaRegUser />
+
+                                                            </span>
+
+
+                                                            <div>
+
+                                                                <strong>
+
+                                                                    My Profile
+
+                                                                </strong>
+
+                                                                <small>
+
+                                                                    Manage account details
+
+                                                                </small>
+
+                                                            </div>
+
+                                                        </Link>
+
+
+
+                                                        <Link
+
+                                                            to="/orders"
+
+                                                            onClick={() =>
+                                                                setProfileOpen(false)
+                                                            }
+
+                                                        >
+
+                                                            <span className="sv-dropdown-link-icon">
+
+                                                                <FaBoxOpen />
+
+                                                            </span>
+
+
+                                                            <div>
+
+                                                                <strong>
+
+                                                                    My Orders
+
+                                                                </strong>
+
+                                                                <small>
+
+                                                                    Track and manage orders
+
+                                                                </small>
+
+                                                            </div>
+
+                                                        </Link>
+
+
+
+                                                        <Link
+
+                                                            to="/addresses"
+
+                                                            onClick={() =>
+                                                                setProfileOpen(false)
+                                                            }
+
+                                                        >
+
+                                                            <span className="sv-dropdown-link-icon">
+
+                                                                <FaLocationDot />
+
+                                                            </span>
+
+
+                                                            <div>
+
+                                                                <strong>
+
+                                                                    Addresses
+
+                                                                </strong>
+
+                                                                <small>
+
+                                                                    Manage delivery addresses
+
+                                                                </small>
+
+                                                            </div>
+
+                                                        </Link>
+
+
+
+                                                        <Link
+
+                                                            to="/wishlist"
+
+                                                            onClick={() =>
+                                                                setProfileOpen(false)
+                                                            }
+
+                                                        >
+
+                                                            <span className="sv-dropdown-link-icon">
+
+                                                                <FaRegHeart />
+
+                                                            </span>
+
+
+                                                            <div>
+
+                                                                <strong>
+
+                                                                    Wishlist
+
+                                                                </strong>
+
+                                                                <small>
+
+                                                                    Your saved products
+
+                                                                </small>
+
+                                                            </div>
+
+                                                        </Link>
+
+
+                                                    </div>
+
+
+
+                                                    {
+
+                                                        role === "ADMIN"
+
+                                                        &&
+
+                                                        <>
+
+                                                            <div className="sv-dropdown-divider" />
+
+
+                                                            <Link
+
+                                                                to="/admin/dashboard"
+
+                                                                className="sv-admin-panel-link"
+
+                                                                onClick={() =>
+                                                                    setProfileOpen(false)
+                                                                }
+
+                                                            >
+
+                                                                <div className="sv-admin-icon">
+
+                                                                    <FaGaugeHigh />
+
+                                                                </div>
+
+
+                                                                <div>
+
+                                                                    <strong>
+
+                                                                        Admin Dashboard
+
+                                                                    </strong>
+
+                                                                    <span>
+
+                                                                        Manage ShopSphere
+
+                                                                    </span>
+
+                                                                </div>
+
+                                                            </Link>
+
+                                                        </>
+
+                                                    }
+
+
+
+                                                    <div className="sv-dropdown-divider" />
+
+
+                                                    <button
+
+                                                        type="button"
+
+                                                        className="sv-logout-btn"
+
+                                                        onClick={
+                                                            handleLogout
+                                                        }
+
+                                                    >
+
+                                                        <FaArrowRightFromBracket />
+
+                                                        Sign out
+
+                                                    </button>
+
+
+                                                </div>
+
+                                            )
+
+                                        }
+
+
+                                    </div>
+
+
                                 </>
-                            )
+
                         }
 
-                    </ul>
+
+
+                        {/* MOBILE MENU BUTTON */}
+
+                        <button
+
+                            type="button"
+
+                            className="sv-mobile-toggle"
+
+                            onClick={() =>
+
+                                setMobileOpen(
+                                    !mobileOpen
+                                )
+
+                            }
+
+                            aria-label="Toggle navigation"
+
+                        >
+
+                            {
+
+                                mobileOpen
+
+                                    ?
+
+                                    <FaXmark />
+
+                                    :
+
+                                    <FaBars />
+
+                            }
+
+                        </button>
+
+
+                    </div>
+
+
+                </div>
+
+            </header>
+
+
+
+            {/* =========================================
+                MOBILE NAVIGATION
+            ========================================= */}
+
+            <div
+
+                className={
+
+                    mobileOpen
+
+                        ?
+
+                        "sv-mobile-menu sv-mobile-menu-open"
+
+                        :
+
+                        "sv-mobile-menu"
+
+                }
+
+            >
+
+                <div className="sv-mobile-menu-content">
+
+
+                    <div className="sv-mobile-navigation">
+
+
+                        <NavLink
+
+                            to="/"
+
+                            end
+
+                            onClick={
+                                closeMobileMenu
+                            }
+
+                        >
+
+                            Home
+
+                        </NavLink>
+
+
+                        <NavLink
+
+                            to="/products"
+
+                            onClick={
+                                closeMobileMenu
+                            }
+
+                        >
+
+                            Products
+
+                        </NavLink>
+
+
+                    </div>
+
+
+
+                    {
+
+                        token
+
+                            ?
+
+                            <>
+
+
+                                <div className="sv-mobile-section-label">
+
+                                    My Shopping
+
+                                </div>
+
+
+                                <div className="sv-mobile-grid">
+
+
+                                    <Link
+
+                                        to="/cart"
+
+                                        onClick={
+                                            closeMobileMenu
+                                        }
+
+                                    >
+
+                                        <FaCartShopping />
+
+                                        <span>
+
+                                            Cart
+
+                                        </span>
+
+                                    </Link>
+
+
+                                    <Link
+
+                                        to="/wishlist"
+
+                                        onClick={
+                                            closeMobileMenu
+                                        }
+
+                                    >
+
+                                        <FaRegHeart />
+
+                                        <span>
+
+                                            Wishlist
+
+                                        </span>
+
+                                    </Link>
+
+
+                                    <Link
+
+                                        to="/orders"
+
+                                        onClick={
+                                            closeMobileMenu
+                                        }
+
+                                    >
+
+                                        <FaBoxOpen />
+
+                                        <span>
+
+                                            Orders
+
+                                        </span>
+
+                                    </Link>
+
+
+                                    <Link
+
+                                        to="/profile"
+
+                                        onClick={
+                                            closeMobileMenu
+                                        }
+
+                                    >
+
+                                        <FaRegUser />
+
+                                        <span>
+
+                                            Profile
+
+                                        </span>
+
+                                    </Link>
+
+
+                                </div>
+
+
+
+                                <Link
+
+                                    to="/addresses"
+
+                                    className="sv-mobile-simple-link"
+
+                                    onClick={
+                                        closeMobileMenu
+                                    }
+
+                                >
+
+                                    <FaLocationDot />
+
+                                    My Addresses
+
+                                </Link>
+
+
+
+                                {
+
+                                    role === "ADMIN"
+
+                                    &&
+
+                                    <Link
+
+                                        to="/admin/dashboard"
+
+                                        className="sv-mobile-admin"
+
+                                        onClick={
+                                            closeMobileMenu
+                                        }
+
+                                    >
+
+                                        <FaGaugeHigh />
+
+                                        <div>
+
+                                            <strong>
+
+                                                Admin Dashboard
+
+                                            </strong>
+
+                                            <span>
+
+                                                Manage your store
+
+                                            </span>
+
+                                        </div>
+
+                                    </Link>
+
+                                }
+
+
+
+                                <button
+
+                                    type="button"
+
+                                    className="sv-mobile-logout"
+
+                                    onClick={
+                                        handleLogout
+                                    }
+
+                                >
+
+                                    <FaArrowRightFromBracket />
+
+                                    Sign out
+
+                                </button>
+
+
+                            </>
+
+                            :
+
+                            <div className="sv-mobile-auth">
+
+
+                                <Link
+
+                                    to="/login"
+
+                                    onClick={
+                                        closeMobileMenu
+                                    }
+
+                                >
+
+                                    Sign In
+
+                                </Link>
+
+
+                                <Link
+
+                                    to="/register"
+
+                                    onClick={
+                                        closeMobileMenu
+                                    }
+
+                                >
+
+                                    Create Account
+
+                                </Link>
+
+
+                            </div>
+
+                    }
+
 
                 </div>
 
             </div>
 
-        </nav>
+
+            {
+
+                mobileOpen
+
+                &&
+
+                <div
+
+                    className="sv-mobile-overlay"
+
+                    onClick={
+                        closeMobileMenu
+                    }
+
+                />
+
+            }
+
+        </>
+
     );
+
 }
+
 
 export default Navbar;

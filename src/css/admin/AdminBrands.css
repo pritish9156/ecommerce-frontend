@@ -1,0 +1,1599 @@
+/* =========================================================
+   ADMIN BRANDS PAGE
+   ========================================================= */
+
+.sab-page {
+    width: 100%;
+    max-width: 1500px;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+   ========================================================= */
+
+.sab-page-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 25px;
+
+    margin-bottom: 25px;
+}
+
+
+.sab-eyebrow {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #9ca3ad;
+
+    font-size: 7px;
+    font-weight: 850;
+
+    letter-spacing: 1.5px;
+}
+
+
+.sab-page-header h1 {
+    margin:
+        0
+        0
+        6px;
+
+    color: #222934;
+
+    font-size: 25px;
+    font-weight: 850;
+
+    letter-spacing: -0.8px;
+}
+
+
+.sab-page-header p {
+    margin: 0;
+
+    color: #8d949e;
+
+    font-size: 10px;
+}
+
+
+.sab-brand-count {
+    min-width: 115px;
+
+    display: flex;
+    flex-direction: column;
+
+    padding:
+        13px
+        17px;
+
+    border: 1px solid #e4e7eb;
+
+    border-radius: 13px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 5px 18px
+        rgba(15, 23, 42, 0.04);
+}
+
+
+.sab-brand-count strong {
+    color: #252c36;
+
+    font-size: 18px;
+    font-weight: 850;
+}
+
+
+.sab-brand-count span {
+    color: #9aa1ab;
+
+    font-size: 7px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   NOTIFICATION
+   ========================================================= */
+
+.sab-notification {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 20px;
+
+    padding:
+        12px
+        14px;
+
+    border-radius: 11px;
+
+    font-size: 9px;
+    font-weight: 650;
+}
+
+
+.sab-notification-success {
+    border: 1px solid #cbe9da;
+
+    background: #f0faf5;
+
+    color: #267b57;
+}
+
+
+.sab-notification-error {
+    border: 1px solid #f0d0d0;
+
+    background: #fff5f5;
+
+    color: #b94d4d;
+}
+
+
+.sab-notification-icon {
+    width: 25px;
+    height: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 7px;
+
+    background:
+        rgba(255, 255, 255, 0.7);
+}
+
+
+.sab-notification span {
+    flex: 1;
+}
+
+
+.sab-notification button {
+    border: none;
+
+    background: transparent;
+
+    color: inherit;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   SHARED CARDS
+   ========================================================= */
+
+.sab-form-card,
+.sab-table-card {
+    overflow: hidden;
+
+    border: 1px solid #e7eaee;
+
+    border-radius: 18px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 8px 30px
+        rgba(15, 23, 42, 0.04);
+}
+
+
+.sab-form-card {
+    margin-bottom: 25px;
+}
+
+
+/* =========================================================
+   SECTION HEADER
+   ========================================================= */
+
+.sab-section-header,
+.sab-table-header {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding:
+        20px
+        23px;
+
+    border-bottom: 1px solid #eceef1;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #fbfcfd
+        );
+}
+
+
+.sab-section-icon {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border: 1px solid #e1e5e9;
+
+    border-radius: 10px;
+
+    background: #f6f8fa;
+
+    color: #4b535e;
+
+    font-size: 11px;
+}
+
+
+.sab-section-header h2,
+.sab-table-header h2 {
+    margin:
+        0
+        0
+        3px;
+
+    color: #303741;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+
+.sab-section-header p,
+.sab-table-header p {
+    margin: 0;
+
+    color: #9aa1aa;
+
+    font-size: 8px;
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.sab-form {
+    padding:
+        24px;
+}
+
+
+.sab-form-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 2fr)
+        minmax(210px, 0.75fr);
+
+    gap: 30px;
+}
+
+
+.sab-form-fields {
+    min-width: 0;
+}
+
+
+.sab-two-column {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 15px;
+}
+
+
+.sab-field {
+    margin-bottom: 19px;
+}
+
+
+.sab-field label,
+.sab-logo-label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #505762;
+
+    font-size: 9px;
+    font-weight: 750;
+}
+
+
+.sab-field label span {
+    margin-left: 3px;
+
+    color: #d85656;
+}
+
+
+/* =========================================================
+   INPUTS
+   ========================================================= */
+
+.sab-input-wrapper {
+    position: relative;
+}
+
+
+.sab-input-wrapper svg {
+    position: absolute;
+
+    top: 50%;
+    left: 14px;
+
+    transform:
+        translateY(-50%);
+
+    color: #9ba2ac;
+
+    font-size: 10px;
+}
+
+
+.sab-input-wrapper input,
+.sab-field textarea {
+    width: 100%;
+
+    border: 1px solid #e0e4e8;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    background: #fafbfc;
+
+    color: #303741;
+
+    font-family: inherit;
+
+    font-size: 10px;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.sab-input-wrapper input {
+    height: 44px;
+
+    padding:
+        0
+        14px
+        0
+        39px;
+}
+
+
+.sab-field textarea {
+    min-height: 115px;
+
+    padding:
+        13px
+        14px;
+
+    resize: vertical;
+
+    line-height: 1.6;
+}
+
+
+.sab-input-wrapper input:focus,
+.sab-field textarea:focus {
+    border-color: #aeb4bc;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(17, 24, 39, 0.04);
+}
+
+
+.sab-field small,
+.sab-character-count {
+    display: block;
+
+    margin-top: 6px;
+
+    color: #a0a6af;
+
+    font-size: 7px;
+}
+
+
+.sab-character-count {
+    text-align: right;
+}
+
+
+/* =========================================================
+   LOGO UPLOAD
+   ========================================================= */
+
+.sab-logo-section {
+    min-width: 0;
+}
+
+
+.sab-upload-area {
+    width: 100%;
+    min-height: 190px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    overflow: hidden;
+
+    padding: 15px;
+
+    border: 1px dashed #ccd1d7;
+
+    border-radius: 13px;
+
+    background: #fafbfc;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.sab-upload-area:hover {
+    border-color: #929aa5;
+
+    background: #f6f8fa;
+}
+
+
+.sab-upload-area img {
+    width: 100%;
+    height: 160px;
+
+    object-fit: contain;
+}
+
+
+.sab-upload-icon {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background: #eef1f4;
+
+    color: #68717d;
+
+    font-size: 15px;
+}
+
+
+.sab-upload-area strong {
+    color: #4a515c;
+
+    font-size: 9px;
+}
+
+
+.sab-upload-area span {
+    color: #a0a6af;
+
+    font-size: 7px;
+}
+
+
+.sab-selected-file {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    margin-top: 9px;
+
+    color: #818893;
+
+    font-size: 8px;
+}
+
+
+/* =========================================================
+   FORM ACTIONS
+   ========================================================= */
+
+.sab-form-actions {
+    display: flex;
+    justify-content: flex-end;
+
+    gap: 9px;
+
+    padding-top: 4px;
+}
+
+
+.sab-cancel-button,
+.sab-submit-button {
+    min-height: 40px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    padding:
+        0
+        17px;
+
+    border-radius: 9px;
+
+    font-size: 9px;
+    font-weight: 750;
+
+    cursor: pointer;
+}
+
+
+.sab-cancel-button {
+    border: 1px solid #dfe3e7;
+
+    background: #ffffff;
+
+    color: #68707b;
+}
+
+
+.sab-submit-button {
+    min-width: 120px;
+
+    border: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            #111827,
+            #2c3543
+        );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 6px 15px
+        rgba(17, 24, 39, 0.14);
+}
+
+
+.sab-submit-button:disabled {
+    opacity: 0.65;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   TABLE HEADER
+   ========================================================= */
+
+.sab-table-header {
+    justify-content: space-between;
+}
+
+
+.sab-table-count {
+    padding:
+        5px
+        9px;
+
+    border: 1px solid #e1e5e9;
+
+    border-radius: 50px;
+
+    background: #f8f9fa;
+
+    color: #8e959f;
+
+    font-size: 7px;
+    font-weight: 750;
+}
+
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.sab-table-wrapper {
+    overflow-x: auto;
+}
+
+
+.sab-table {
+    width: 100%;
+
+    min-width: 800px;
+
+    border-collapse: collapse;
+}
+
+
+.sab-table th {
+    padding:
+        13px
+        18px;
+
+    border-bottom: 1px solid #e9ecef;
+
+    background: #fafbfc;
+
+    color: #969da7;
+
+    font-size: 7px;
+    font-weight: 850;
+
+    letter-spacing: 0.7px;
+
+    text-align: left;
+
+    text-transform: uppercase;
+}
+
+
+.sab-table td {
+    padding:
+        15px
+        18px;
+
+    border-bottom: 1px solid #f0f1f3;
+
+    color: #5d6570;
+
+    font-size: 9px;
+
+    vertical-align: middle;
+}
+
+
+.sab-table tbody tr {
+    transition:
+        background 0.2s ease;
+}
+
+
+.sab-table tbody tr:hover {
+    background: #fafbfc;
+}
+
+
+.sab-brand-id {
+    color: #a0a6af;
+
+    font-size: 7px;
+    font-weight: 750;
+}
+
+
+/* =========================================================
+   BRAND TABLE INFORMATION
+   ========================================================= */
+
+.sab-brand-info {
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+}
+
+
+.sab-brand-logo {
+    width: 44px;
+    height: 44px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    border: 1px solid #e5e8eb;
+
+    border-radius: 10px;
+
+    background: #ffffff;
+
+    color: #9ca3ad;
+}
+
+
+.sab-brand-logo img {
+    width: 100%;
+    height: 100%;
+
+    padding: 5px;
+
+    object-fit: contain;
+}
+
+
+.sab-brand-info > div:last-child {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+
+.sab-brand-info strong {
+    color: #303741;
+
+    font-size: 10px;
+}
+
+
+.sab-brand-info span {
+    color: #a0a6af;
+
+    font-size: 7px;
+}
+
+
+.sab-country {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+}
+
+
+.sab-country svg {
+    color: #a2a8b1;
+
+    font-size: 8px;
+}
+
+
+.sab-website-link {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 6px;
+
+    color: #535d6a;
+
+    font-size: 8px;
+    font-weight: 650;
+
+    text-decoration: none;
+}
+
+
+.sab-website-link:hover {
+    color: #111827;
+}
+
+
+.sab-website-link svg {
+    font-size: 7px;
+}
+
+
+.sab-not-available {
+    color: #b0b5bc;
+
+    font-size: 8px;
+}
+
+
+/* =========================================================
+   TABLE ACTIONS
+   ========================================================= */
+
+.sab-actions {
+    display: flex;
+
+    gap: 7px;
+}
+
+
+.sab-action-button {
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    font-size: 9px;
+
+    cursor: pointer;
+}
+
+
+.sab-edit-button {
+    border: 1px solid #dfe3e7;
+
+    color: #555e69;
+}
+
+
+.sab-edit-button:hover {
+    background: #f4f6f8;
+
+    color: #171d25;
+}
+
+
+.sab-delete-button {
+    border: 1px solid #efd5d5;
+
+    color: #c75d5d;
+}
+
+
+.sab-delete-button:hover {
+    background: #fff4f4;
+
+    color: #b63d3d;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.sab-empty-state {
+    padding:
+        65px
+        20px;
+
+    text-align: center;
+}
+
+
+.sab-empty-icon {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin:
+        0
+        auto
+        14px;
+
+    border: 1px solid #e2e5e9;
+
+    border-radius: 15px;
+
+    background: #f7f9fa;
+
+    color: #949ba5;
+
+    font-size: 18px;
+}
+
+
+.sab-empty-state h3 {
+    margin-bottom: 6px;
+
+    color: #303741;
+
+    font-size: 13px;
+}
+
+
+.sab-empty-state p {
+    max-width: 340px;
+
+    margin: auto;
+
+    color: #9aa1aa;
+
+    font-size: 8px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   LOADING SKELETON
+   ========================================================= */
+
+.sab-loading {
+    padding:
+        5px
+        18px;
+}
+
+
+.sab-skeleton-row {
+    min-height: 73px;
+
+    display: grid;
+    grid-template-columns:
+        55px
+        1fr
+        130px
+        90px;
+
+    align-items: center;
+
+    gap: 15px;
+
+    border-bottom: 1px solid #f0f1f3;
+}
+
+
+.sab-skeleton-logo,
+.sab-skeleton-line,
+.sab-skeleton-actions {
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 7px;
+
+    background: #edf0f3;
+}
+
+
+.sab-skeleton-logo {
+    width: 42px;
+    height: 42px;
+}
+
+
+.sab-skeleton-line {
+    height: 9px;
+}
+
+
+.sab-skeleton-name {
+    width: 130px;
+}
+
+
+.sab-skeleton-country {
+    width: 75px;
+}
+
+
+.sab-skeleton-actions {
+    width: 70px;
+    height: 30px;
+}
+
+
+.sab-skeleton-logo::after,
+.sab-skeleton-line::after,
+.sab-skeleton-actions::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    transform:
+        translateX(-100%);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.7),
+            transparent
+        );
+
+    animation:
+        sab-shimmer
+        1.5s
+        infinite;
+}
+
+
+@keyframes sab-shimmer {
+
+    100% {
+        transform:
+            translateX(100%);
+    }
+
+}
+
+
+/* =========================================================
+   SPINNERS
+   ========================================================= */
+
+.sab-button-spinner,
+.sab-small-spinner {
+    display: inline-block;
+
+    border-style: solid;
+    border-radius: 50%;
+
+    animation:
+        sab-spin
+        0.7s
+        linear
+        infinite;
+}
+
+
+.sab-button-spinner {
+    width: 12px;
+    height: 12px;
+
+    border-width: 2px;
+
+    border-color:
+        rgba(255, 255, 255, 0.35);
+
+    border-top-color: #ffffff;
+}
+
+
+.sab-small-spinner {
+    width: 11px;
+    height: 11px;
+
+    border-width: 2px;
+
+    border-color: #e4baba;
+
+    border-top-color: #b74747;
+}
+
+
+@keyframes sab-spin {
+
+    to {
+        transform:
+            rotate(360deg);
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .sab-form-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .sab-logo-section {
+        max-width: 350px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .sab-page-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .sab-brand-count {
+        width: 100%;
+    }
+
+
+    .sab-two-column {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .sab-form {
+        padding:
+            18px;
+    }
+
+
+    .sab-section-header,
+    .sab-table-header {
+        padding:
+            17px
+            18px;
+    }
+
+
+    .sab-form-actions {
+        flex-direction: column-reverse;
+    }
+
+
+    .sab-cancel-button,
+    .sab-submit-button {
+        width: 100%;
+    }
+
+
+    .sab-skeleton-row {
+        grid-template-columns:
+            50px
+            1fr
+            70px;
+    }
+
+
+    .sab-skeleton-country {
+        display: none;
+    }
+
+}
+
+
+@media (
+    prefers-reduced-motion:
+    reduce
+) {
+
+    .sab-skeleton-logo::after,
+    .sab-skeleton-line::after,
+    .sab-skeleton-actions::after,
+    .sab-button-spinner,
+    .sab-small-spinner {
+        animation: none;
+    }
+
+}
+
+/* =========================================================
+   TYPOGRAPHY READABILITY UPGRADE
+   ========================================================= */
+
+.sab-eyebrow {
+    font-size: 10px;
+}
+
+.sab-page-header h1 {
+    font-size: 30px;
+}
+
+.sab-page-header p {
+    font-size: 14px;
+}
+
+.sab-brand-count strong {
+    font-size: 22px;
+}
+
+.sab-brand-count span {
+    font-size: 11px;
+}
+
+.sab-notification {
+    font-size: 13px;
+}
+
+.sab-section-header h2,
+.sab-table-header h2 {
+    font-size: 17px;
+}
+
+.sab-section-header p,
+.sab-table-header p {
+    font-size: 12px;
+}
+
+.sab-field label,
+.sab-logo-label {
+    font-size: 13px;
+}
+
+.sab-input-wrapper input,
+.sab-field textarea {
+    font-size: 14px;
+}
+
+.sab-field small,
+.sab-character-count {
+    font-size: 11px;
+}
+
+.sab-upload-area strong {
+    font-size: 13px;
+}
+
+.sab-upload-area span {
+    font-size: 11px;
+}
+
+.sab-selected-file {
+    font-size: 12px;
+}
+
+.sab-cancel-button,
+.sab-submit-button {
+    font-size: 13px;
+}
+
+.sab-table-count {
+    font-size: 11px;
+}
+
+.sab-table th {
+    font-size: 10px;
+}
+
+.sab-table td {
+    font-size: 13px;
+}
+
+.sab-brand-id {
+    font-size: 11px;
+}
+
+.sab-brand-info strong {
+    font-size: 14px;
+}
+
+.sab-brand-info span {
+    font-size: 11px;
+}
+
+.sab-country {
+    font-size: 13px;
+}
+
+.sab-website-link {
+    font-size: 12px;
+}
+
+.sab-not-available {
+    font-size: 12px;
+}
+
+.sab-action-button {
+    font-size: 12px;
+}
+
+.sab-empty-state h3 {
+    font-size: 17px;
+}
+
+.sab-empty-state p {
+    font-size: 12px;
+}
+
+/* =========================================================
+   HEADER ACTIONS
+   ========================================================= */
+
+.sab-header-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    flex-shrink: 0;
+}
+
+
+.sab-add-brand-button {
+    height: 45px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding:
+        0
+        17px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background: #202731;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 750;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.sab-add-brand-button:hover {
+    transform:
+        translateY(-1px);
+
+    background: #111820;
+
+    box-shadow:
+        0 8px 18px
+        rgba(17, 24, 39, 0.15);
+}
+
+
+/* =========================================================
+   QUICK SEARCH
+   ========================================================= */
+
+.sab-search-section {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    padding:
+        14px
+        22px;
+
+    border-bottom:
+        1px solid
+        #eceef1;
+
+    background: #fafbfc;
+}
+
+
+.sab-search-wrapper {
+    position: relative;
+
+    flex: 1;
+
+    max-width: 520px;
+
+    display: flex;
+    align-items: center;
+}
+
+
+.sab-search-icon {
+    position: absolute;
+
+    left: 14px;
+
+    color: #969da7;
+
+    font-size: 12px;
+
+    pointer-events: none;
+}
+
+
+.sab-search-input {
+    width: 100%;
+    height: 42px;
+
+    padding:
+        0
+        42px
+        0
+        40px;
+
+    border:
+        1px solid
+        #dfe3e8;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    background: #ffffff;
+
+    color: #303743;
+
+    font-size: 13px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.sab-search-input::placeholder {
+    color: #a4aab3;
+}
+
+
+.sab-search-input:focus {
+    border-color: #aeb5bf;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(17, 24, 39, 0.04);
+}
+
+
+.sab-search-clear {
+    position: absolute;
+
+    right: 8px;
+
+    width: 27px;
+    height: 27px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #f1f3f5;
+
+    color: #7d8590;
+
+    font-size: 10px;
+
+    cursor: pointer;
+}
+
+
+.sab-search-clear:hover {
+    background: #e8eaed;
+
+    color: #343b46;
+}
+
+
+.sab-search-result {
+    flex-shrink: 0;
+
+    color: #969da7;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+.sab-search-result strong {
+    color: #3d4551;
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+
+@media (max-width: 700px) {
+
+    .sab-page-header {
+        align-items: stretch;
+    }
+
+
+    .sab-header-actions {
+        width: 100%;
+    }
+
+
+    .sab-brand-count,
+    .sab-add-brand-button {
+        flex: 1;
+    }
+
+
+    .sab-search-section {
+        align-items: stretch;
+        flex-direction: column;
+
+        gap: 8px;
+
+        padding:
+            13px
+            16px;
+    }
+
+
+    .sab-search-wrapper {
+        max-width: none;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .sab-header-actions {
+        flex-direction: column;
+    }
+
+
+    .sab-brand-count,
+    .sab-add-brand-button {
+        width: 100%;
+    }
+
+}
+
+.sab-clear-search-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    margin-top: 16px;
+
+    padding:
+        9px
+        14px;
+
+    border: 1px solid #dfe3e7;
+
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    color: #555e69;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.sab-clear-search-button:hover {
+    background: #f4f6f8;
+
+    color: #171d25;
+}

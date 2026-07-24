@@ -1,0 +1,697 @@
+/* =========================================================
+   ADMIN TAG MANAGEMENT
+   ========================================================= */
+
+.atm-page {
+    width: 100%;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+   ========================================================= */
+
+.atm-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+
+    margin-bottom: 24px;
+}
+
+
+.atm-header-content {
+    max-width: 650px;
+}
+
+
+.atm-eyebrow {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #9299a4;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+
+.atm-header h1 {
+    margin: 0;
+
+    color: #202733;
+
+    font-size: 30px;
+    font-weight: 850;
+
+    letter-spacing: -1px;
+}
+
+
+.atm-header p {
+    margin: 8px 0 0;
+
+    color: #858d99;
+
+    font-size: 13px;
+
+    line-height: 1.65;
+}
+
+
+.atm-header-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    flex-shrink: 0;
+}
+
+
+.atm-tag-count {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 8px 13px;
+
+    border: 1px solid #e3e6ea;
+
+    border-radius: 12px;
+
+    background: #ffffff;
+}
+
+
+.atm-count-icon {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background: #f1f3f6;
+
+    color: #626b77;
+
+    font-size: 12px;
+}
+
+
+.atm-tag-count > div:last-child {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.atm-tag-count strong {
+    color: #252c37;
+
+    font-size: 15px;
+    font-weight: 850;
+}
+
+
+.atm-tag-count span {
+    color: #979ea8;
+
+    font-size: 9px;
+}
+
+
+.atm-add-button {
+    height: 43px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 0 16px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background: #202731;
+
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 750;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.atm-add-button:hover {
+    transform: translateY(-1px);
+
+    background: #111820;
+
+    box-shadow:
+        0 8px 18px
+        rgba(17, 24, 39, 0.15);
+}
+
+
+/* =========================================================
+   NOTIFICATION
+   ========================================================= */
+
+.atm-notification {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 18px;
+
+    padding: 12px 14px;
+
+    border-radius: 11px;
+
+    font-size: 11px;
+    font-weight: 650;
+}
+
+
+.atm-notification-success {
+    border: 1px solid #cfe9dc;
+
+    background: #f1faf5;
+
+    color: #287456;
+}
+
+
+.atm-notification-error {
+    border: 1px solid #efd3d3;
+
+    background: #fff5f5;
+
+    color: #ae5050;
+}
+
+
+.atm-notification-icon {
+    width: 26px;
+    height: 26px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 7px;
+
+    background: rgba(255, 255, 255, 0.7);
+}
+
+
+.atm-notification > span {
+    flex: 1;
+}
+
+
+.atm-notification button {
+    border: none;
+
+    background: transparent;
+
+    color: inherit;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   CONTENT CARD
+   ========================================================= */
+
+.atm-content-card {
+    overflow: hidden;
+
+    border: 1px solid #e5e8ec;
+
+    border-radius: 18px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 7px 26px
+        rgba(15, 23, 42, 0.04);
+}
+
+
+.atm-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 19px 22px;
+
+    border-bottom: 1px solid #eceef1;
+}
+
+
+.atm-card-header h2 {
+    margin: 0;
+
+    color: #252c37;
+
+    font-size: 16px;
+    font-weight: 800;
+}
+
+
+.atm-card-header p {
+    margin: 5px 0 0;
+
+    color: #969da7;
+
+    font-size: 11px;
+}
+
+
+.atm-directory-count {
+    padding: 6px 10px;
+
+    border-radius: 50px;
+
+    background: #f2f4f6;
+
+    color: #727a85;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+
+.atm-table-container {
+    width: 100%;
+}
+
+
+/* =========================================================
+   LOADING SKELETON
+   ========================================================= */
+
+.atm-loading-table {
+    padding: 10px 22px 20px;
+}
+
+
+.atm-skeleton-row {
+    min-height: 69px;
+
+    display: grid;
+
+    grid-template-columns:
+        55px
+        minmax(190px, 1.2fr)
+        minmax(260px, 2fr)
+        130px
+        140px;
+
+    align-items: center;
+
+    gap: 18px;
+
+    border-bottom: 1px solid #f0f1f3;
+}
+
+
+.atm-skeleton-number,
+.atm-skeleton-icon,
+.atm-skeleton-text,
+.atm-skeleton-status,
+.atm-skeleton-actions {
+    background:
+        linear-gradient(
+            90deg,
+            #f1f2f4,
+            #f8f9fa,
+            #f1f2f4
+        );
+
+    background-size: 200% 100%;
+
+    animation:
+        atm-skeleton
+        1.4s
+        infinite;
+}
+
+
+.atm-skeleton-number {
+    width: 24px;
+    height: 10px;
+
+    border-radius: 5px;
+}
+
+
+.atm-skeleton-tag {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.atm-skeleton-icon {
+    width: 36px;
+    height: 36px;
+
+    border-radius: 10px;
+}
+
+
+.atm-skeleton-name {
+    width: 100px;
+    height: 11px;
+
+    border-radius: 5px;
+}
+
+
+.atm-skeleton-description {
+    width: 80%;
+    height: 10px;
+
+    border-radius: 5px;
+}
+
+
+.atm-skeleton-status {
+    width: 68px;
+    height: 24px;
+
+    border-radius: 50px;
+}
+
+
+.atm-skeleton-actions {
+    width: 90px;
+    height: 34px;
+
+    border-radius: 8px;
+}
+
+
+@keyframes atm-skeleton {
+
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .atm-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+
+    .atm-header-actions {
+        width: 100%;
+    }
+
+
+    .atm-tag-count {
+        flex: 1;
+    }
+
+
+    .atm-add-button {
+        flex: 1;
+    }
+
+
+    .atm-card-header {
+        align-items: flex-start;
+    }
+
+}
+
+
+@media (max-width: 520px) {
+
+    .atm-header-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+
+    .atm-add-button {
+        width: 100%;
+    }
+
+
+    .atm-card-header {
+        flex-direction: column;
+    }
+
+}
+
+/* =========================================================
+   TYPOGRAPHY READABILITY UPGRADE
+   MATCH CATEGORY MANAGEMENT
+   ========================================================= */
+
+.atm-eyebrow {
+    font-size: 10px;
+}
+
+.atm-header h1 {
+    font-size: 30px;
+}
+
+.atm-header p {
+    font-size: 14px;
+}
+
+.atm-tag-count strong {
+    font-size: 20px;
+}
+
+.atm-tag-count span {
+    font-size: 11px;
+}
+
+.atm-add-button {
+    font-size: 13px;
+}
+
+.atm-notification {
+    font-size: 13px;
+}
+
+.atm-card-header h2 {
+    font-size: 17px;
+}
+
+.atm-card-header p {
+    font-size: 12px;
+}
+
+.atm-directory-count {
+    font-size: 11px;
+}
+
+/* =========================================================
+   QUICK SEARCH
+   ========================================================= */
+
+.atm-search-section {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 14px 22px;
+
+    border-bottom: 1px solid #eceef1;
+
+    background: #fafbfc;
+}
+
+
+.atm-search-wrapper {
+    position: relative;
+
+    flex: 1;
+
+    max-width: 520px;
+
+    display: flex;
+    align-items: center;
+}
+
+
+.atm-search-icon {
+    position: absolute;
+
+    left: 14px;
+
+    color: #969da7;
+
+    font-size: 12px;
+
+    pointer-events: none;
+}
+
+
+.atm-search-input {
+    width: 100%;
+    height: 42px;
+
+    padding:
+        0
+        42px
+        0
+        40px;
+
+    border: 1px solid #dfe3e8;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    background: #ffffff;
+
+    color: #303743;
+
+    font-size: 13px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.atm-search-input::placeholder {
+    color: #a4aab3;
+}
+
+
+.atm-search-input:focus {
+    border-color: #aeb5bf;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(
+            17,
+            24,
+            39,
+            0.04
+        );
+}
+
+
+.atm-search-clear {
+    position: absolute;
+
+    right: 8px;
+
+    width: 27px;
+    height: 27px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #f1f3f5;
+
+    color: #7d8590;
+
+    font-size: 10px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.atm-search-clear:hover {
+    background: #e8eaed;
+
+    color: #343b46;
+}
+
+
+.atm-search-result {
+    flex-shrink: 0;
+
+    color: #969da7;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+.atm-search-result strong {
+    color: #3d4551;
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+
+@media (max-width: 600px) {
+
+    .atm-search-section {
+        align-items: stretch;
+        flex-direction: column;
+
+        gap: 8px;
+
+        padding: 13px 16px;
+    }
+
+
+    .atm-search-wrapper {
+        max-width: none;
+    }
+
+
+    .atm-search-result {
+        padding-left: 2px;
+    }
+
+}

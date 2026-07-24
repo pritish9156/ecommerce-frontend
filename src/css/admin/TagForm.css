@@ -1,0 +1,589 @@
+/* =========================================================
+   TAG FORM MODAL
+   ========================================================= */
+
+.tag-form-modal {
+    max-width: 760px;
+}
+
+
+.tag-form-content {
+    overflow: hidden;
+
+    border: 1px solid #e5e8ec !important;
+
+    border-radius: 20px !important;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 28px 70px
+        rgba(15, 23, 42, 0.18);
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.tf-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 22px 24px;
+
+    border-bottom: 1px solid #eceef1;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #fafbfc
+        );
+}
+
+
+.tf-header-content {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 13px;
+}
+
+
+.tf-header-icon {
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #f1f3f6;
+
+    color: #5e6773;
+
+    font-size: 14px;
+}
+
+
+.tf-eyebrow {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #a0a6af;
+
+    font-size: 9px;
+    font-weight: 850;
+
+    letter-spacing: 1.2px;
+
+    text-transform: uppercase;
+}
+
+
+.tf-title {
+    margin: 0;
+
+    color: #252c37;
+
+    font-size: 19px;
+    font-weight: 850;
+
+    letter-spacing: -0.4px;
+}
+
+
+.tf-subtitle {
+    max-width: 470px;
+
+    margin: 5px 0 0;
+
+    color: #9097a1;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+}
+
+
+.tf-close-btn {
+    width: 34px;
+    height: 34px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #e3e6ea;
+
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    color: #858d98;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   BODY
+   ========================================================= */
+
+.tf-body {
+    display: flex;
+    flex-direction: column;
+
+    gap: 18px;
+
+    padding: 24px;
+}
+
+
+.tf-form-section {
+    padding: 20px;
+
+    border: 1px solid #e7e9ed;
+
+    border-radius: 14px;
+
+    background: #ffffff;
+}
+
+
+.tf-section-heading {
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    margin-bottom: 22px;
+}
+
+
+.tf-section-icon {
+    width: 37px;
+    height: 37px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: #f1f3f6;
+
+    color: #626b77;
+
+    font-size: 12px;
+}
+
+
+.tf-section-heading h5 {
+    margin: 0;
+
+    color: #343b46;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+
+.tf-section-heading p {
+    margin: 3px 0 0;
+
+    color: #9aa1ab;
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   FIELDS
+   ========================================================= */
+
+.tf-field {
+    margin-bottom: 20px;
+}
+
+
+.tf-field-last {
+    margin-bottom: 0;
+}
+
+
+.tf-label-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.tf-label {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    margin-bottom: 7px;
+
+    color: #555d69;
+
+    font-size: 10px;
+    font-weight: 750;
+}
+
+
+.tf-label svg {
+    color: #969da7;
+
+    font-size: 10px;
+}
+
+
+.tf-required {
+    color: #c45d5d;
+}
+
+
+.tf-character-count {
+    color: #a0a6af;
+
+    font-size: 9px;
+}
+
+
+.tf-input,
+.tf-textarea {
+    width: 100%;
+
+    border: 1px solid #dfe3e8;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    background: #ffffff;
+
+    color: #303743;
+
+    font-size: 12px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.tf-input {
+    height: 44px;
+
+    padding: 0 13px;
+}
+
+
+.tf-textarea {
+    min-height: 115px;
+
+    padding: 12px 13px;
+
+    line-height: 1.6;
+
+    resize: vertical;
+}
+
+
+.tf-input:focus,
+.tf-textarea:focus {
+    border-color: #aeb5bf;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(17, 24, 39, 0.04);
+}
+
+
+.tf-field-hint {
+    display: block;
+
+    margin-top: 6px;
+
+    color: #a0a6af;
+
+    font-size: 8px;
+}
+
+
+/* =========================================================
+   INFORMATION PANEL
+   ========================================================= */
+
+.tf-info-panel {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 11px;
+
+    padding: 14px;
+
+    border: 1px solid #e4e7eb;
+
+    border-radius: 12px;
+
+    background: #f8f9fa;
+}
+
+
+.tf-info-icon {
+    width: 32px;
+    height: 32px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    color: #69727e;
+
+    font-size: 11px;
+}
+
+
+.tf-info-panel strong {
+    color: #4a525e;
+
+    font-size: 10px;
+}
+
+
+.tf-info-panel p {
+    margin: 4px 0 0;
+
+    color: #9097a1;
+
+    font-size: 9px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.tf-footer {
+    display: flex;
+    justify-content: flex-end;
+
+    gap: 9px;
+
+    padding: 17px 24px;
+
+    border-top: 1px solid #eceef1;
+
+    background: #fafbfc;
+}
+
+
+.tf-btn {
+    min-height: 40px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    padding: 0 15px;
+
+    border-radius: 9px;
+
+    font-size: 10px;
+    font-weight: 750;
+
+    cursor: pointer;
+}
+
+
+.tf-btn-cancel {
+    border: 1px solid #dfe3e8;
+
+    background: #ffffff;
+
+    color: #626a76;
+}
+
+
+.tf-btn-primary {
+    min-width: 120px;
+
+    border: 1px solid #202731;
+
+    background: #202731;
+
+    color: #ffffff;
+}
+
+
+.tf-btn-primary:hover:not(:disabled) {
+    background: #111820;
+}
+
+
+.tf-btn:disabled,
+.tf-close-btn:disabled {
+    opacity: 0.6;
+
+    cursor: wait;
+}
+
+
+/* =========================================================
+   SPINNER
+   ========================================================= */
+
+.tf-spinner {
+    width: 12px;
+    height: 12px;
+
+    border: 2px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.35
+        );
+
+    border-top-color: #ffffff;
+
+    border-radius: 50%;
+
+    animation:
+        tf-spin
+        0.7s
+        linear
+        infinite;
+}
+
+
+@keyframes tf-spin {
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 576px) {
+
+    .tag-form-modal {
+        margin: 12px;
+    }
+
+
+    .tf-header,
+    .tf-body {
+        padding: 18px;
+    }
+
+
+    .tf-form-section {
+        padding: 16px;
+    }
+
+
+    .tf-subtitle {
+        display: none;
+    }
+
+
+    .tf-footer {
+        padding: 15px 18px;
+
+        flex-direction: column-reverse;
+    }
+
+
+    .tf-btn {
+        width: 100%;
+    }
+
+}
+
+/* =========================================================
+   TYPOGRAPHY READABILITY UPGRADE
+   ========================================================= */
+
+.tf-eyebrow {
+    font-size: 10px;
+}
+
+.tf-title {
+    font-size: 21px;
+}
+
+.tf-subtitle {
+    font-size: 13px;
+}
+
+.tf-section-heading h5 {
+    font-size: 15px;
+}
+
+.tf-section-heading p {
+    font-size: 11px;
+}
+
+.tf-label {
+    font-size: 13px;
+}
+
+.tf-label svg {
+    font-size: 12px;
+}
+
+.tf-character-count {
+    font-size: 11px;
+}
+
+.tf-input,
+.tf-textarea {
+    font-size: 14px;
+}
+
+.tf-field-hint {
+    font-size: 11px;
+}
+
+.tf-info-panel strong {
+    font-size: 13px;
+}
+
+.tf-info-panel p {
+    font-size: 11px;
+}
+
+.tf-btn {
+    font-size: 13px;
+}

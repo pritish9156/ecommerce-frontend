@@ -115,6 +115,8 @@ function BuyNow() {
 
         };
 
+    console.log(variant)
+
     const handleApplyCoupon =
         async () => {
 
@@ -393,7 +395,7 @@ function BuyNow() {
 
                             <img
                                 src={
-                                    `http://localhost:8080/ecommerce-backend${variant.product?.images?.[0]?.imageUrl}`
+                                    `http://localhost:8080/ecommerce-backend${variant.image.imageUrl}`
                                 }
                                 alt=""
                                 width="100"
@@ -403,7 +405,7 @@ function BuyNow() {
                             <div>
 
                                 <h5>
-                                    {variant.product?.name}
+                                    {variant.productName}
                                 </h5>
 
                                 <p>

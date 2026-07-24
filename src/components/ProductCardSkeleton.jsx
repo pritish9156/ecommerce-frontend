@@ -1,49 +1,90 @@
+import "../css/components/ProductCardSkeleton.css";
+
+
 function ProductCardSkeleton() {
 
-  return (
+    return (
 
-    <div className="card shadow-sm">
+        <div className="spcs-card">
 
-      <div
-        className="placeholder-glow"
-      >
 
-        <span
-          className="placeholder col-12"
-          style={{
-            height: "250px"
-          }}
-        ></span>
+            {/* IMAGE SKELETON */}
 
-      </div>
+            <div className="spcs-image">
 
-      <div className="card-body">
+                <div className="spcs-shimmer" />
 
-        <p className="placeholder-glow">
+                <div className="spcs-brand-badge" />
 
-          <span className="placeholder col-8"></span>
+            </div>
 
-        </p>
 
-        <p className="placeholder-glow">
 
-          <span className="placeholder col-12"></span>
+            {/* CONTENT */}
 
-          <span className="placeholder col-10"></span>
+            <div className="spcs-content">
 
-        </p>
 
-        <p className="placeholder-glow">
+                {/* BRAND */}
 
-          <span className="placeholder col-4"></span>
+                <div className="spcs-line spcs-brand" />
 
-        </p>
 
-      </div>
+                {/* PRODUCT NAME */}
 
-    </div>
+                <div className="spcs-name-wrapper">
 
-  );
+                    <div className="spcs-line spcs-name-line-one" />
+
+                    <div className="spcs-line spcs-name-line-two" />
+
+                </div>
+
+
+                {/* RATING */}
+
+                <div className="spcs-rating-row">
+
+                    <div className="spcs-rating-box" />
+
+                    <div className="spcs-line spcs-review-text" />
+
+                </div>
+
+
+                {/* DIVIDER */}
+
+                <div className="spcs-divider" />
+
+
+                {/* FOOTER */}
+
+                <div className="spcs-footer">
+
+
+                    <div className="spcs-price-wrapper">
+
+                        <div className="spcs-line spcs-price-label" />
+
+                        <div className="spcs-line spcs-price" />
+
+                    </div>
+
+
+                    <div className="spcs-button" />
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    );
+
 }
+
 
 export default ProductCardSkeleton;

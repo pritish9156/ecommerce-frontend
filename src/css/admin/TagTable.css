@@ -1,0 +1,673 @@
+/* =========================================================
+   TAG DIRECTORY
+   ========================================================= */
+
+.tt-container {
+    width: 100%;
+}
+
+
+/* =========================================================
+   TOPBAR
+   ========================================================= */
+
+.tt-topbar {
+    display: none;
+}
+
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.tt-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+
+.tt-table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    table-layout: fixed;
+}
+
+
+.tt-table th {
+    padding: 12px 16px;
+
+    border-bottom: 1px solid #e9ebee;
+
+    background: #fafbfc;
+
+    color: #9299a4;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 0.6px;
+
+    text-align: left;
+
+    text-transform: uppercase;
+}
+
+
+.tt-table td {
+    padding: 14px 16px;
+
+    border-bottom: 1px solid #eff1f3;
+
+    vertical-align: middle;
+}
+
+
+.tt-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+.tt-row {
+    transition:
+        background 0.2s ease;
+}
+
+
+.tt-row:hover {
+    background: #fcfcfd;
+}
+
+
+.tt-number-column {
+    width: 65px;
+
+    text-align: center !important;
+}
+
+
+.tt-row-number {
+    color: #a0a6af;
+
+    font-size: 10px;
+    font-weight: 750;
+}
+
+
+/* =========================================================
+   TAG
+   ========================================================= */
+
+.tt-tag-cell {
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    min-width: 0;
+}
+
+
+.tt-tag-icon {
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: #f1f3f6;
+
+    color: #626b77;
+
+    font-size: 12px;
+}
+
+
+.tt-tag-info {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+
+.tt-tag-name {
+    overflow: hidden;
+
+    color: #303743;
+
+    font-size: 12px;
+    font-weight: 750;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+.tt-tag-id {
+    color: #a0a6af;
+
+    font-size: 8px;
+    font-weight: 650;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.tt-description {
+    display: -webkit-box;
+
+    max-width: 500px;
+
+    margin: 0;
+
+    overflow: hidden;
+
+    color: #7e8692;
+
+    font-size: 10px;
+
+    line-height: 1.55;
+
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+
+.tt-no-description {
+    color: #b0b5bd;
+
+    font-size: 9px;
+
+    font-style: italic;
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.tt-status {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 5px;
+
+    padding: 6px 8px;
+
+    border-radius: 50px;
+
+    font-size: 9px;
+    font-weight: 700;
+}
+
+
+.tt-status svg {
+    font-size: 9px;
+}
+
+
+.tt-status-active {
+    background: #edf9f3;
+
+    color: #27805b;
+}
+
+
+.tt-status-inactive {
+    background: #fff0f0;
+
+    color: #b45151;
+}
+
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
+
+.tt-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 6px;
+}
+
+
+.tt-actions-heading {
+    text-align: right !important;
+}
+
+
+.tt-action-btn {
+    height: 34px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    border-radius: 8px;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.tt-action-btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+}
+
+
+.tt-edit-btn {
+    padding: 0 10px;
+
+    border: 1px solid #dfe3e8;
+
+    background: #ffffff;
+
+    color: #59616d;
+}
+
+
+.tt-delete-btn {
+    width: 34px;
+
+    border: 1px solid #efd5d5;
+
+    background: #fff6f6;
+
+    color: #b65757;
+}
+
+
+.tt-delete-btn:disabled {
+    opacity: 0.6;
+
+    cursor: wait;
+}
+
+
+.tt-delete-spinner {
+    width: 12px;
+    height: 12px;
+
+    border: 2px solid #e9caca;
+    border-top-color: #b65757;
+
+    border-radius: 50%;
+
+    animation:
+        tt-spin
+        0.7s
+        linear
+        infinite;
+}
+
+
+@keyframes tt-spin {
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.tt-empty-cell {
+    padding: 0 !important;
+}
+
+
+.tt-empty-state {
+    padding: 70px 20px;
+
+    text-align: center;
+}
+
+
+.tt-empty-visual {
+    position: relative;
+
+    width: 76px;
+    height: 76px;
+
+    margin: 0 auto 17px;
+}
+
+
+.tt-empty-circle {
+    position: absolute;
+
+    border-radius: 50%;
+
+    background: #f3f4f6;
+}
+
+
+.tt-circle-one {
+    width: 65px;
+    height: 65px;
+
+    top: 0;
+    left: 0;
+}
+
+
+.tt-circle-two {
+    width: 43px;
+    height: 43px;
+
+    right: 0;
+    bottom: 0;
+
+    background: #e9ecf0;
+}
+
+
+.tt-empty-icon {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background: #ffffff;
+
+    color: #77808c;
+
+    font-size: 16px;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    box-shadow:
+        0 8px 20px
+        rgba(15, 23, 42, 0.08);
+}
+
+
+.tt-empty-state h4 {
+    margin: 0 0 7px;
+
+    color: #303743;
+
+    font-size: 16px;
+}
+
+
+.tt-empty-state p {
+    max-width: 420px;
+
+    margin: auto;
+
+    color: #9198a3;
+
+    font-size: 11px;
+
+    line-height: 1.65;
+}
+
+
+.tt-empty-hint {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 7px;
+
+    margin-top: 15px;
+
+    padding: 7px 10px;
+
+    border-radius: 8px;
+
+    background: #f5f6f8;
+
+    color: #858d98;
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+.tt-mobile-list {
+    display: none;
+}
+
+
+@media (max-width: 768px) {
+
+    .tt-table-wrapper {
+        display: none;
+    }
+
+
+    .tt-mobile-list {
+        display: flex;
+        flex-direction: column;
+
+        gap: 12px;
+
+        padding: 16px;
+    }
+
+
+    .tt-mobile-card {
+        overflow: hidden;
+
+        border: 1px solid #e5e8ec;
+
+        border-radius: 13px;
+
+        background: #ffffff;
+    }
+
+
+    .tt-mobile-card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        gap: 12px;
+
+        padding: 14px;
+
+        border-bottom: 1px solid #eceef1;
+    }
+
+
+    .tt-mobile-content {
+        padding: 14px;
+    }
+
+
+    .tt-mobile-label {
+        display: block;
+
+        margin-bottom: 6px;
+
+        color: #a0a6af;
+
+        font-size: 8px;
+        font-weight: 750;
+
+        text-transform: uppercase;
+    }
+
+
+    .tt-mobile-field p {
+        margin: 0;
+
+        color: #7d8591;
+
+        font-size: 10px;
+
+        line-height: 1.6;
+    }
+
+
+    .tt-mobile-actions {
+        display: flex;
+
+        gap: 7px;
+
+        padding: 12px 14px;
+
+        border-top: 1px solid #eceef1;
+
+        background: #fafbfc;
+    }
+
+
+    .tt-mobile-actions .tt-edit-btn {
+        flex: 1;
+    }
+
+}
+
+/* =========================================================
+   TYPOGRAPHY READABILITY UPGRADE
+   MATCH CATEGORY TABLE
+   ========================================================= */
+
+.tt-table th {
+    font-size: 10px;
+}
+
+.tt-table td {
+    font-size: 13px;
+}
+
+.tt-row-number {
+    font-size: 12px;
+}
+
+.tt-tag-name {
+    font-size: 14px;
+}
+
+.tt-tag-id {
+    font-size: 10px;
+}
+
+.tt-description {
+    font-size: 13px;
+}
+
+.tt-no-description {
+    font-size: 12px;
+}
+
+.tt-status {
+    font-size: 10px;
+}
+
+.tt-status svg {
+    font-size: 10px;
+}
+
+.tt-action-btn {
+    font-size: 12px;
+}
+
+
+/* MOBILE READABILITY */
+
+@media (max-width: 768px) {
+
+    .tt-tag-name {
+        font-size: 14px;
+    }
+
+    .tt-tag-id {
+        font-size: 10px;
+    }
+
+    .tt-mobile-label {
+        font-size: 10px;
+    }
+
+    .tt-mobile-field p {
+        font-size: 13px;
+    }
+
+}
+
+.tt-clear-search-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    margin-top: 16px;
+
+    padding:
+        9px
+        14px;
+
+    border: 1px solid #dfe3e7;
+
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    color: #555e69;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.tt-clear-search-button:hover {
+    transform:
+        translateY(-1px);
+
+    background: #f4f6f8;
+
+    color: #171d25;
+}

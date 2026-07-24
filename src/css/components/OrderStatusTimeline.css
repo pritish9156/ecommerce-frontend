@@ -1,0 +1,817 @@
+/* =========================================================
+   ORDER STATUS TIMELINE
+   ========================================================= */
+
+.ost-container {
+    width: 100%;
+
+    margin:
+        28px
+        0;
+
+    padding:
+        25px
+        24px
+        30px;
+
+    border: 1px solid #e8ebef;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #fbfcfd
+        );
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.ost-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 35px;
+}
+
+
+.ost-eyebrow {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #9ca3af;
+
+    font-size: 8px;
+    font-weight: 850;
+
+    letter-spacing: 1.5px;
+}
+
+
+.ost-header h4 {
+    margin: 0;
+
+    color: #202633;
+
+    font-size: 16px;
+    font-weight: 800;
+
+    letter-spacing: -0.3px;
+}
+
+
+.ost-current-status {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 7px;
+
+    padding:
+        7px
+        11px;
+
+    border: 1px solid #d9efe4;
+
+    border-radius: 50px;
+
+    background: #f2fbf6;
+
+    color: #23855a;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 0.3px;
+}
+
+
+.ost-status-dot {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #22a06b;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(
+            34,
+            160,
+            107,
+            0.1
+        );
+
+    animation:
+        ost-status-pulse
+        1.8s
+        ease-in-out
+        infinite;
+}
+
+
+/* =========================================================
+   DESKTOP TIMELINE
+   ========================================================= */
+
+.ost-desktop-timeline {
+    display: flex;
+
+    width: 100%;
+}
+
+
+.ost-step {
+    position: relative;
+
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   CONNECTING LINE
+   ========================================================= */
+
+.ost-line {
+    position: absolute;
+
+    top: 21px;
+    left: calc(50% + 23px);
+
+    z-index: 1;
+
+    width: calc(100% - 46px);
+    height: 2px;
+
+    overflow: hidden;
+
+    border-radius: 50px;
+
+    background: #e7e9ed;
+}
+
+
+.ost-line-progress {
+    width: 0;
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            #22a06b,
+            #38b980
+        );
+
+    transition:
+        width
+        0.6s
+        ease;
+}
+
+
+.ost-line-completed {
+    width: 100%;
+}
+
+
+/* =========================================================
+   STEP CIRCLE
+   ========================================================= */
+
+.ost-step-circle {
+    position: relative;
+    z-index: 2;
+
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    font-size: 14px;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease;
+}
+
+
+.ost-step-completed {
+    border: 1px solid #c9efdc;
+
+    background: #effaf4;
+
+    color: #22a06b;
+}
+
+
+.ost-step-current {
+    border: 1px solid #111827;
+
+    background:
+        linear-gradient(
+            145deg,
+            #111827,
+            #293243
+        );
+
+    color: #ffffff;
+
+    transform:
+        translateY(
+            -3px
+        );
+
+    box-shadow:
+        0 10px 22px
+        rgba(
+            17,
+            24,
+            39,
+            0.18
+        );
+}
+
+
+.ost-step-upcoming {
+    border: 1px solid #e5e8ed;
+
+    background: #f7f8fa;
+
+    color: #a1a7b1;
+}
+
+
+/* =========================================================
+   CURRENT PULSE
+   ========================================================= */
+
+.ost-current-pulse {
+    position: absolute;
+
+    inset: -5px;
+
+    z-index: -1;
+
+    border: 1px solid
+        rgba(
+            17,
+            24,
+            39,
+            0.2
+        );
+
+    border-radius: 17px;
+
+    animation:
+        ost-current-pulse
+        2s
+        infinite;
+}
+
+
+/* =========================================================
+   STEP INFORMATION
+   ========================================================= */
+
+.ost-step-info {
+    max-width: 150px;
+
+    margin-top: 14px;
+}
+
+
+.ost-step-number {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #b0b5be;
+
+    font-size: 7px;
+    font-weight: 800;
+
+    letter-spacing: 0.8px;
+}
+
+
+.ost-step-info strong {
+    display: block;
+
+    color: #404754;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+
+.ost-step-current
++
+.ost-step-info strong {
+    color: #111827;
+}
+
+
+.ost-step-info p {
+    max-width: 130px;
+
+    margin:
+        5px
+        auto
+        0;
+
+    color: #9aa1ad;
+
+    font-size: 8px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   CANCELLED ORDER
+   ========================================================= */
+
+.ost-cancelled {
+    display: flex;
+    align-items: center;
+
+    gap: 17px;
+
+    margin:
+        28px
+        0;
+
+    padding:
+        22px
+        24px;
+
+    border: 1px solid #f1d3d3;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff8f8,
+            #fffdfd
+        );
+}
+
+
+.ost-cancelled-icon {
+    width: 48px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: #feeaea;
+
+    color: #dc5555;
+
+    font-size: 17px;
+}
+
+
+.ost-cancelled-label {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #dc6666;
+
+    font-size: 8px;
+    font-weight: 850;
+
+    letter-spacing: 1.2px;
+}
+
+
+.ost-cancelled h4 {
+    margin:
+        0
+        0
+        4px;
+
+    color: #492f2f;
+
+    font-size: 14px;
+    font-weight: 800;
+}
+
+
+.ost-cancelled p {
+    margin: 0;
+
+    color: #9c7474;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   MOBILE TIMELINE
+   ========================================================= */
+
+.ost-mobile-timeline {
+    display: none;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes ost-current-pulse {
+
+    0% {
+
+        opacity: 0.8;
+
+        transform:
+            scale(
+                0.95
+            );
+
+    }
+
+    70% {
+
+        opacity: 0;
+
+        transform:
+            scale(
+                1.25
+            );
+
+    }
+
+    100% {
+
+        opacity: 0;
+
+    }
+
+}
+
+
+@keyframes ost-status-pulse {
+
+    0%,
+    100% {
+
+        opacity: 1;
+
+    }
+
+    50% {
+
+        opacity: 0.45;
+
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .ost-desktop-timeline {
+
+        display: none;
+
+    }
+
+
+    .ost-mobile-timeline {
+
+        display: block;
+
+    }
+
+
+    .ost-mobile-step {
+
+        display: flex;
+
+        gap: 15px;
+
+        min-height: 82px;
+
+    }
+
+
+    .ost-mobile-indicator {
+
+        position: relative;
+
+        width: 38px;
+
+        flex-shrink: 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+
+    .ost-mobile-circle {
+
+        position: relative;
+        z-index: 2;
+
+        width: 38px;
+        height: 38px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border: 1px solid #e4e7eb;
+
+        border-radius: 11px;
+
+        background: #f7f8fa;
+
+        color: #a0a6b0;
+
+        font-size: 12px;
+
+    }
+
+
+    .ost-mobile-completed
+    .ost-mobile-circle {
+
+        border-color: #c9efdc;
+
+        background: #effaf4;
+
+        color: #22a06b;
+
+    }
+
+
+    .ost-mobile-current
+    .ost-mobile-circle {
+
+        border-color: #111827;
+
+        background: #111827;
+
+        color: #ffffff;
+
+        box-shadow:
+            0 7px 17px
+            rgba(
+                17,
+                24,
+                39,
+                0.16
+            );
+
+    }
+
+
+    .ost-mobile-line {
+
+        width: 2px;
+
+        flex: 1;
+
+        background: #e6e9ed;
+
+    }
+
+
+    .ost-mobile-line-active {
+
+        background: #38b980;
+
+    }
+
+
+    .ost-mobile-info {
+
+        flex: 1;
+
+        padding:
+            5px
+            0
+            20px;
+
+    }
+
+
+    .ost-mobile-title-row {
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        gap: 10px;
+
+    }
+
+
+    .ost-mobile-info strong {
+
+        color: #434a56;
+
+        font-size: 11px;
+
+    }
+
+
+    .ost-mobile-info p {
+
+        margin:
+            5px
+            0
+            0;
+
+        color: #969da8;
+
+        font-size: 9px;
+
+    }
+
+
+    .ost-you-are-here {
+
+        padding:
+            4px
+            7px;
+
+        border-radius: 50px;
+
+        background: #111827;
+
+        color: #ffffff;
+
+        font-size: 7px;
+        font-weight: 800;
+
+        text-transform: uppercase;
+
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .ost-container {
+
+        padding:
+            20px
+            17px;
+
+        border-radius: 16px;
+
+    }
+
+
+    .ost-header {
+
+        align-items: flex-start;
+
+        margin-bottom: 27px;
+
+    }
+
+
+    .ost-current-status {
+
+        max-width: 140px;
+
+        text-align: center;
+
+    }
+
+
+    .ost-cancelled {
+
+        align-items: flex-start;
+
+        padding: 18px;
+
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (
+    prefers-reduced-motion:
+    reduce
+) {
+
+    .ost-status-dot,
+    .ost-current-pulse {
+
+        animation: none;
+
+    }
+
+}
+
+/* =========================================================
+   TYPOGRAPHY READABILITY UPGRADE
+   ========================================================= */
+
+/* HEADER */
+
+.ost-eyebrow {
+    font-size: 10px;
+}
+
+.ost-header h4 {
+    font-size: 18px;
+}
+
+.ost-current-status {
+    font-size: 11px;
+}
+
+
+/* TIMELINE STEPS */
+
+.ost-step-number {
+    font-size: 10px;
+}
+
+.ost-step-info strong {
+    font-size: 13px;
+}
+
+.ost-step-info p {
+    font-size: 11px;
+}
+
+
+/* CANCELLED ORDER */
+
+.ost-cancelled-label {
+    font-size: 10px;
+}
+
+.ost-cancelled h4 {
+    font-size: 17px;
+}
+
+.ost-cancelled p {
+    font-size: 12px;
+}
+
+
+/* MOBILE TIMELINE */
+
+@media (max-width: 900px) {
+
+    .ost-mobile-info strong {
+        font-size: 14px;
+    }
+
+    .ost-mobile-info p {
+        font-size: 12px;
+    }
+
+    .ost-you-are-here {
+        font-size: 9px;
+    }
+
+}

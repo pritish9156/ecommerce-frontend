@@ -1,0 +1,1500 @@
+/* =========================================================
+   ADMIN ORDER DETAILS
+   ========================================================= */
+
+.aod-page {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+   ========================================================= */
+
+.aod-page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 25px;
+
+    margin-bottom: 24px;
+}
+
+
+.aod-header-left {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 13px;
+}
+
+
+.aod-back-button {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    margin-top: 2px;
+
+    border: 1px solid #e0e4e8;
+    border-radius: 10px;
+
+    background: #ffffff;
+
+    color: #69727c;
+
+    font-size: 10px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.aod-back-button:hover {
+    transform: translateX(-2px);
+
+    border-color: #c9cfd6;
+
+    box-shadow:
+        0 5px 14px
+        rgba(15, 23, 42, 0.06);
+}
+
+
+.aod-eyebrow {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #a0a6ae;
+
+    font-size: 7px;
+    font-weight: 850;
+
+    letter-spacing: 1.5px;
+}
+
+
+.aod-title-row {
+    display: flex;
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+}
+
+
+.aod-title-row h1 {
+    margin: 0;
+
+    color: #252c35;
+
+    font-size: 25px;
+    font-weight: 850;
+
+    letter-spacing: -0.8px;
+}
+
+
+.aod-order-reference {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    margin-top: 6px;
+}
+
+
+.aod-order-reference > span {
+    color: #8e959e;
+
+    font-size: 9px;
+    font-weight: 600;
+}
+
+
+.aod-order-reference button {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 5px;
+
+    padding: 4px 6px;
+
+    border: none;
+    border-radius: 5px;
+
+    background: transparent;
+
+    color: #939aa3;
+
+    font-size: 7px;
+
+    cursor: pointer;
+}
+
+
+.aod-order-reference button:hover {
+    background: #f0f2f4;
+
+    color: #555e69;
+}
+
+
+.aod-header-meta {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 11px 14px;
+
+    border: 1px solid #e4e7eb;
+    border-radius: 11px;
+
+    background: #ffffff;
+
+    color: #858d97;
+
+    box-shadow:
+        0 6px 18px
+        rgba(15, 23, 42, 0.025);
+}
+
+
+.aod-header-meta > svg {
+    font-size: 12px;
+}
+
+
+.aod-header-meta span {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #a0a6ae;
+
+    font-size: 6.5px;
+}
+
+
+.aod-header-meta strong {
+    display: block;
+
+    color: #4e5660;
+
+    font-size: 8px;
+    font-weight: 750;
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.aod-status {
+    width: fit-content;
+
+    display: inline-flex;
+    align-items: center;
+
+    gap: 5px;
+
+    padding: 5px 8px;
+
+    border: 1px solid transparent;
+    border-radius: 50px;
+
+    font-size: 6.5px;
+    font-weight: 800;
+
+    white-space: nowrap;
+}
+
+
+.aod-status-dot {
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: currentColor;
+}
+
+
+.aod-status-success {
+    border-color: #cce9db;
+
+    background: #effaf5;
+
+    color: #2d835e;
+}
+
+
+.aod-status-warning {
+    border-color: #efe1bd;
+
+    background: #fff9e9;
+
+    color: #9a7422;
+}
+
+
+.aod-status-danger {
+    border-color: #f0d1d1;
+
+    background: #fff4f4;
+
+    color: #b65353;
+}
+
+
+.aod-status-info {
+    border-color: #cee2ed;
+
+    background: #f0f8fc;
+
+    color: #437d9c;
+}
+
+
+.aod-status-primary {
+    border-color: #d5dbed;
+
+    background: #f3f5fb;
+
+    color: #596d9f;
+}
+
+
+/* =========================================================
+   SUMMARY CARDS
+   ========================================================= */
+
+.aod-summary-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            minmax(0, 1fr)
+        );
+
+    gap: 13px;
+
+    margin-bottom: 18px;
+}
+
+
+.aod-summary-card {
+    min-height: 88px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 15px;
+
+    border: 1px solid #e5e8ec;
+    border-radius: 13px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 5px 18px
+        rgba(15, 23, 42, 0.025);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.aod-summary-card:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 25px
+        rgba(15, 23, 42, 0.055);
+}
+
+
+.aod-summary-icon {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border: 1px solid #e4e7ea;
+    border-radius: 10px;
+
+    background: #f7f8fa;
+
+    color: #747d87;
+
+    font-size: 12px;
+}
+
+
+.aod-summary-content {
+    min-width: 0;
+}
+
+
+.aod-summary-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #a0a6ae;
+
+    font-size: 6px;
+    font-weight: 850;
+
+    letter-spacing: 0.8px;
+}
+
+
+.aod-summary-value {
+    display: block;
+
+    color: #2d343d;
+
+    font-size: 14px;
+    font-weight: 850;
+}
+
+
+.aod-summary-date {
+    display: block;
+
+    color: #515964;
+
+    font-size: 8px;
+    font-weight: 750;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   INFORMATION GRID
+   ========================================================= */
+
+.aod-information-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0, 1fr)
+        );
+
+    gap: 16px;
+
+    margin-bottom: 18px;
+}
+
+
+.aod-info-card,
+.aod-items-card {
+    overflow: hidden;
+
+    border: 1px solid #e5e8ec;
+    border-radius: 15px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 7px 24px
+        rgba(15, 23, 42, 0.03);
+}
+
+
+.aod-card-header,
+.aod-items-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 15px 17px;
+
+    border-bottom: 1px solid #eceef1;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #fbfcfd
+        );
+}
+
+
+.aod-card-heading {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.aod-card-icon {
+    width: 33px;
+    height: 33px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #e3e6e9;
+    border-radius: 9px;
+
+    background: #f5f7f8;
+
+    color: #747d87;
+
+    font-size: 10px;
+}
+
+
+.aod-card-heading span {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #a1a7af;
+
+    font-size: 5.5px;
+    font-weight: 850;
+
+    letter-spacing: 0.8px;
+}
+
+
+.aod-card-heading h2 {
+    margin: 0;
+
+    color: #363d46;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   CUSTOMER
+   ========================================================= */
+
+.aod-customer-profile {
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    margin: 17px;
+
+    padding: 13px;
+
+    border: 1px solid #e9ebee;
+    border-radius: 11px;
+
+    background: #fafbfc;
+}
+
+
+.aod-avatar {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 12px;
+
+    background: #303740;
+
+    color: #ffffff;
+
+    font-size: 10px;
+    font-weight: 850;
+
+    letter-spacing: 0.5px;
+}
+
+
+.aod-customer-profile strong {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #3a424c;
+
+    font-size: 9px;
+    font-weight: 800;
+}
+
+
+.aod-customer-profile span {
+    color: #9ba1aa;
+
+    font-size: 7px;
+}
+
+
+.aod-detail-list {
+    padding:
+        0
+        17px
+        17px;
+}
+
+
+.aod-detail-row {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 10px 0;
+
+    border-bottom: 1px solid #f0f1f3;
+}
+
+
+.aod-detail-row:last-child {
+    border-bottom: none;
+}
+
+
+.aod-detail-icon {
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 8px;
+
+    background: #f4f6f7;
+
+    color: #858d96;
+
+    font-size: 8px;
+}
+
+
+.aod-detail-row span {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #a0a6ae;
+
+    font-size: 6px;
+}
+
+
+.aod-detail-row strong {
+    display: block;
+
+    color: #505862;
+
+    font-size: 8px;
+    font-weight: 700;
+
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   SHIPPING
+   ========================================================= */
+
+.aod-shipping-name {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin:
+        17px
+        17px
+        12px;
+
+    padding: 12px;
+
+    border: 1px solid #e9ebee;
+    border-radius: 11px;
+
+    background: #fafbfc;
+}
+
+
+.aod-house-icon {
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: #ffffff;
+
+    color: #737c86;
+
+    font-size: 10px;
+}
+
+
+.aod-shipping-name span {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #9ca3ab;
+
+    font-size: 6px;
+}
+
+
+.aod-shipping-name strong {
+    color: #414953;
+
+    font-size: 9px;
+    font-weight: 800;
+}
+
+
+.aod-address {
+    margin: 0;
+
+    padding:
+        2px
+        20px
+        20px;
+
+    color: #68717b;
+
+    font-size: 8px;
+    font-style: normal;
+
+    line-height: 1.7;
+}
+
+
+.aod-address p {
+    margin: 2px 0;
+}
+
+
+/* =========================================================
+   ORDER ITEMS
+   ========================================================= */
+
+.aod-items-card {
+    margin-bottom: 16px;
+}
+
+
+.aod-item-count {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 6px 9px;
+
+    border: 1px solid #e2e5e9;
+    border-radius: 50px;
+
+    background: #f8f9fa;
+
+    color: #818994;
+
+    font-size: 6.5px;
+    font-weight: 750;
+}
+
+
+.aod-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+
+.aod-items-table {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+
+.aod-items-table thead {
+    background: #fafbfc;
+}
+
+
+.aod-items-table th {
+    padding: 11px 15px;
+
+    border-bottom: 1px solid #e9ecef;
+
+    color: #969da6;
+
+    font-size: 5.5px;
+    font-weight: 850;
+
+    letter-spacing: 0.7px;
+
+    text-align: left;
+
+    white-space: nowrap;
+}
+
+
+.aod-items-table td {
+    padding: 13px 15px;
+
+    border-bottom: 1px solid #eff1f3;
+
+    color: #606873;
+
+    font-size: 8px;
+
+    vertical-align: middle;
+}
+
+
+.aod-items-table tbody tr {
+    transition:
+        background 0.2s ease;
+}
+
+
+.aod-items-table tbody tr:hover {
+    background: #fbfcfd;
+}
+
+
+.aod-items-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+.aod-product-cell {
+    min-width: 190px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.aod-product-icon {
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border: 1px solid #e4e7ea;
+    border-radius: 9px;
+
+    background: #f6f7f8;
+
+    color: #818994;
+
+    font-size: 9px;
+}
+
+
+.aod-product-cell strong {
+    display: block;
+
+    max-width: 280px;
+
+    margin-bottom: 3px;
+
+    overflow: hidden;
+
+    color: #3d454f;
+
+    font-size: 8px;
+    font-weight: 750;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+.aod-product-cell span {
+    color: #a1a7af;
+
+    font-size: 6px;
+}
+
+
+.aod-sku {
+    padding: 5px 7px;
+
+    border-radius: 6px;
+
+    background: #f1f3f5;
+
+    color: #747d87;
+
+    font-family:
+        monospace;
+
+    font-size: 7px;
+}
+
+
+.aod-price {
+    color: #626b75;
+
+    font-weight: 650;
+}
+
+
+.aod-quantity {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 30px;
+
+    padding: 5px 7px;
+
+    border: 1px solid #e2e5e8;
+    border-radius: 7px;
+
+    background: #fafbfc;
+
+    color: #626a74;
+
+    font-weight: 750;
+}
+
+
+.aod-subtotal {
+    color: #303740;
+
+    font-size: 8.5px;
+    font-weight: 850;
+}
+
+
+/* =========================================================
+   TOTAL
+   ========================================================= */
+
+.aod-total-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 45px;
+
+    padding: 15px 18px;
+
+    border-top: 1px solid #e8ebee;
+
+    background: #fafbfc;
+}
+
+
+.aod-total-label {
+    text-align: right;
+}
+
+
+.aod-total-label span {
+    display: block;
+
+    color: #555e68;
+
+    font-size: 8px;
+    font-weight: 750;
+}
+
+
+.aod-total-label small {
+    display: block;
+
+    margin-top: 2px;
+
+    color: #a0a6ae;
+
+    font-size: 6px;
+}
+
+
+.aod-total-section > strong {
+    color: #252c35;
+
+    font-size: 16px;
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   EMPTY ITEMS
+   ========================================================= */
+
+.aod-empty-items {
+    padding: 50px 20px;
+
+    color: #959ca5;
+
+    text-align: center;
+}
+
+
+.aod-empty-items > svg {
+    margin-bottom: 10px;
+
+    font-size: 22px;
+}
+
+
+.aod-empty-items h3 {
+    margin: 0 0 5px;
+
+    color: #464e58;
+
+    font-size: 10px;
+}
+
+
+.aod-empty-items p {
+    margin: 0;
+
+    font-size: 7px;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.aod-footer-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    padding: 10px;
+
+    color: #9aa1aa;
+
+    font-size: 6.5px;
+}
+
+
+.aod-footer-note svg {
+    color: #6f9f88;
+}
+
+
+.aod-footer-note strong {
+    color: #626a74;
+}
+
+
+/* =========================================================
+   ERROR STATE
+   ========================================================= */
+
+.aod-error-state {
+    min-height: 450px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+
+    padding: 40px;
+
+    border: 1px solid #e6e8eb;
+    border-radius: 16px;
+
+    background: #ffffff;
+
+    text-align: center;
+}
+
+
+.aod-error-icon {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 15px;
+
+    border-radius: 16px;
+
+    background: #fff4f4;
+
+    color: #c15b5b;
+
+    font-size: 19px;
+}
+
+
+.aod-error-state h2 {
+    margin: 0 0 6px;
+
+    color: #353d47;
+
+    font-size: 15px;
+}
+
+
+.aod-error-state p {
+    max-width: 400px;
+
+    margin: 0;
+
+    color: #9299a2;
+
+    font-size: 8px;
+
+    line-height: 1.6;
+}
+
+
+.aod-error-actions {
+    display: flex;
+
+    gap: 8px;
+
+    margin-top: 18px;
+}
+
+
+.aod-primary-button,
+.aod-secondary-button {
+    min-height: 36px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    padding: 0 13px;
+
+    border-radius: 8px;
+
+    font-size: 7px;
+    font-weight: 750;
+
+    cursor: pointer;
+}
+
+
+.aod-primary-button {
+    border: 1px solid #303740;
+
+    background: #303740;
+
+    color: #ffffff;
+}
+
+
+.aod-secondary-button {
+    border: 1px solid #dfe3e7;
+
+    background: #ffffff;
+
+    color: #68717b;
+}
+
+
+/* =========================================================
+   LOADING SKELETON
+   ========================================================= */
+
+.aod-skeleton {
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 6px;
+
+    background: #eceff2;
+}
+
+
+.aod-skeleton::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    transform: translateX(-100%);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.75),
+            transparent
+        );
+
+    animation:
+        aod-shimmer
+        1.5s
+        infinite;
+}
+
+
+.aod-header-skeleton {
+    margin-bottom: 24px;
+
+    padding: 10px 0;
+}
+
+
+.aod-skeleton-small {
+    width: 80px;
+    height: 6px;
+
+    margin-bottom: 9px;
+}
+
+
+.aod-skeleton-heading {
+    width: 220px;
+    height: 25px;
+
+    margin-bottom: 9px;
+}
+
+
+.aod-skeleton-subtitle {
+    width: 160px;
+    height: 8px;
+}
+
+
+.aod-skeleton-icon {
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    border-radius: 10px;
+}
+
+
+.aod-skeleton-value {
+    width: 80px;
+    height: 11px;
+}
+
+
+.aod-skeleton-card-title {
+    width: 140px;
+    height: 11px;
+
+    margin:
+        18px
+        18px
+        22px;
+}
+
+
+.aod-skeleton-row {
+    height: 9px;
+
+    margin:
+        15px
+        18px;
+}
+
+
+.aod-skeleton-table-row {
+    height: 42px;
+
+    margin:
+        10px
+        18px;
+}
+
+
+.aod-loading-card {
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   ANIMATION
+   ========================================================= */
+
+@keyframes aod-shimmer {
+
+    100% {
+        transform: translateX(100%);
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .aod-summary-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+    }
+
+}
+
+
+@media (max-width: 800px) {
+
+    .aod-page-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .aod-header-meta {
+        width: 100%;
+    }
+
+
+    .aod-information-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+}
+
+
+@media (max-width: 550px) {
+
+    .aod-summary-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .aod-title-row {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .aod-title-row h1 {
+        font-size: 21px;
+    }
+
+
+    .aod-total-section {
+        align-items: flex-end;
+
+        flex-direction: column;
+
+        gap: 8px;
+    }
+
+
+    .aod-total-label {
+        text-align: right;
+    }
+
+
+    .aod-error-actions {
+        width: 100%;
+
+        flex-direction: column;
+    }
+
+
+    .aod-primary-button,
+    .aod-secondary-button {
+        width: 100%;
+    }
+
+}
+
+
+@media (
+    prefers-reduced-motion:
+    reduce
+) {
+
+    .aod-skeleton::after {
+        animation: none;
+    }
+
+
+}
+
+.aod-eyebrow {
+    font-size: 10px;
+}
+
+.aod-title-row h1 {
+    font-size: 30px;
+}
+
+.aod-order-reference > span {
+    font-size: 13px;
+}
+
+.aod-header-meta span {
+    font-size: 11px;
+}
+
+.aod-header-meta strong {
+    font-size: 13px;
+}
+
+.aod-status {
+    font-size: 11px;
+}
+
+.aod-summary-label {
+    font-size: 10px;
+}
+
+.aod-summary-value {
+    font-size: 20px;
+}
+
+.aod-summary-date {
+    font-size: 13px;
+}
+
+.aod-card-heading span {
+    font-size: 10px;
+}
+
+.aod-card-heading h2 {
+    font-size: 16px;
+}
+
+.aod-customer-profile strong {
+    font-size: 15px;
+}
+
+.aod-customer-profile span {
+    font-size: 12px;
+}
+
+.aod-detail-row span {
+    font-size: 11px;
+}
+
+.aod-detail-row strong {
+    font-size: 14px;
+}
+
+.aod-shipping-name span {
+    font-size: 11px;
+}
+
+.aod-shipping-name strong {
+    font-size: 15px;
+}
+
+.aod-address {
+    font-size: 13px;
+}
+
+.aod-item-count {
+    font-size: 11px;
+}
+
+.aod-items-table th {
+    font-size: 10px;
+}
+
+.aod-items-table td {
+    font-size: 14px;
+}
+
+.aod-product-cell strong {
+    font-size: 14px;
+}
+
+.aod-product-cell span {
+    font-size: 11px;
+}
+
+.aod-sku {
+    font-size: 12px;
+}
+
+.aod-subtotal {
+    font-size: 14px;
+}
+
+.aod-total-label span {
+    font-size: 14px;
+}
+
+.aod-total-label small {
+    font-size: 11px;
+}
+
+.aod-total-section > strong {
+    font-size: 22px;
+}
+
+.aod-footer-note {
+    font-size: 11px;
+}

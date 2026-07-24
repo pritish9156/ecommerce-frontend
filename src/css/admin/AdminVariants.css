@@ -1,0 +1,1192 @@
+/* =========================================================
+   ADMIN VARIANTS
+========================================================= */
+
+.avm-page {
+    width: 100%;
+    min-height: 100%;
+
+    padding:
+        4px
+        2px
+        30px;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.avm-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    gap: 24px;
+
+    margin-bottom: 24px;
+}
+
+
+.avm-eyebrow {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #8b929d;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 1.2px;
+
+    text-transform: uppercase;
+}
+
+
+.avm-header h1 {
+    margin: 0;
+
+    color: #202731;
+
+    font-size: 30px;
+    font-weight: 800;
+
+    letter-spacing: -.8px;
+}
+
+
+.avm-header p {
+    max-width: 620px;
+
+    margin-top: 8px;
+
+    color: #858c96;
+
+    font-size: 14px;
+
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   RIGHT HEADER
+========================================================= */
+
+.avm-header-actions {
+
+    display: flex;
+    align-items: center;
+
+    gap: 16px;
+}
+
+
+.avm-count-card {
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding:
+        12px
+        16px;
+
+    background: white;
+
+    border:
+        1px solid
+        #e2e5e9;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 6px 18px
+        rgba(0,0,0,.05);
+}
+
+
+.avm-count-icon {
+
+    width: 42px;
+    height: 42px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:12px;
+
+    background:#f2f4f6;
+
+    color:#56606d;
+
+    font-size:16px;
+}
+
+
+.avm-count-card strong {
+
+    display:block;
+
+    color:#232c35;
+
+    font-size:21px;
+
+    font-weight:800;
+}
+
+
+.avm-count-card span {
+
+    color:#949aa4;
+
+    font-size:11px;
+
+    font-weight:700;
+}
+
+
+/* =========================================================
+   ADD BUTTON
+========================================================= */
+
+.avm-add-button{
+
+    height:44px;
+
+    display:flex;
+    align-items:center;
+
+    gap:8px;
+
+    padding:
+        0
+        18px;
+
+    border:none;
+
+    border-radius:11px;
+
+    background:#202731;
+
+    color:white;
+
+    font-size:13px;
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.avm-add-button:hover{
+
+    background:#111827;
+
+    transform:translateY(-2px);
+
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.avm-form-card,
+.avm-table-card{
+
+    background:white;
+
+    border:
+        1px solid
+        #e5e7eb;
+
+    border-radius:18px;
+
+    overflow:visible;
+
+    box-shadow:
+        0 8px 24px
+        rgba(15,23,42,.05);
+
+    margin-bottom:24px;
+
+}
+
+
+/* =========================================================
+   CARD HEADER
+========================================================= */
+
+.avm-card-header{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:
+        22px
+        24px;
+
+    border-bottom:
+        1px solid
+        #eef1f4;
+}
+
+.avm-card-header h2{
+
+    margin:0;
+
+    color:#2f3640;
+
+    font-size:18px;
+
+    font-weight:800;
+}
+
+.avm-card-header p{
+
+    margin-top:6px;
+
+    color:#9aa1aa;
+
+    font-size:12px;
+
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.avm-form{
+
+    padding:24px;
+}
+
+.avm-grid{
+
+    display:grid;
+
+    grid-template-columns:
+
+        repeat(
+            auto-fit,
+            minmax(
+                240px,
+                1fr
+            )
+        );
+
+    gap:18px;
+}
+
+.avm-field{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+}
+
+.avm-field label{
+
+    color:#59616c;
+
+    font-size:12px;
+
+    font-weight:700;
+}
+
+.avm-field input,
+.avm-field select{
+
+    height:46px;
+
+    padding:
+        0
+        14px;
+
+    border:
+        1px solid
+        #dce2e8;
+
+    border-radius:11px;
+
+    outline:none;
+
+    background:white;
+
+    font-size:13px;
+
+    transition:.25s;
+}
+
+.avm-field input:focus,
+.avm-field select:focus{
+
+    border-color:#111827;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(17,24,39,.05);
+}
+
+
+/* =========================================================
+   FORM BUTTONS
+========================================================= */
+
+.avm-form-actions{
+
+    display:flex;
+    justify-content:flex-end;
+
+    gap:12px;
+
+    margin-top:28px;
+}
+
+.avm-cancel{
+
+    height:42px;
+
+    padding:
+        0
+        18px;
+
+    border:
+        1px solid
+        #dce2e8;
+
+    border-radius:10px;
+
+    background:white;
+
+    cursor:pointer;
+
+    font-weight:700;
+
+    transition:.25s;
+}
+
+.avm-cancel:hover{
+
+    background:#f5f6f8;
+}
+
+.avm-save{
+
+    height:42px;
+
+    padding:
+        0
+        22px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#202731;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-weight:700;
+
+    transition:.25s;
+}
+
+.avm-save:hover{
+
+    background:#111827;
+}
+
+
+/* =========================================================
+   FILTER BAR
+========================================================= */
+
+.avm-filter-bar{
+
+    display:flex;
+    align-items:flex-end;
+
+    gap:14px;
+
+    flex-wrap:wrap;
+
+    padding:
+        18px
+        22px;
+
+    border-bottom:
+        1px solid
+        #edf0f2;
+
+    background:#fafbfc;
+}
+
+.avm-search{
+
+    position:relative;
+
+    flex:1;
+
+    min-width:260px;
+
+    max-width:420px;
+}
+
+.avm-search-icon{
+
+    position:absolute;
+
+    left:14px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:#9aa2ab;
+
+    font-size:12px;
+}
+
+.avm-search input{
+
+    width:100%;
+    height:44px;
+
+    padding:
+        0
+        42px
+        0
+        40px;
+
+    border:
+        1px solid
+        #dce2e8;
+
+    border-radius:10px;
+
+    outline:none;
+
+    font-size:13px;
+}
+
+.avm-search button{
+
+    position:absolute;
+
+    right:8px;
+    top:8px;
+
+    width:28px;
+    height:28px;
+
+    border:none;
+
+    border-radius:7px;
+
+    background:#f1f3f5;
+
+    cursor:pointer;
+}
+
+.avm-filter-bar select{
+
+    height:44px;
+
+    min-width:160px;
+
+    padding:
+        0
+        12px;
+
+    border:
+        1px solid
+        #dce2e8;
+
+    border-radius:10px;
+
+    background:white;
+
+    font-size:12px;
+
+    font-weight:600;
+}
+
+.avm-result{
+
+    margin-left:auto;
+
+    color:#8d96a2;
+
+    font-size:12px;
+
+    font-weight:700;
+}
+
+.avm-result strong{
+
+    color:#303741;
+
+    font-size:15px;
+}
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.avm-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.avm-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 950px;
+}
+
+.avm-table thead {
+    background: #f8f9fb;
+}
+
+.avm-table th {
+    padding: 16px 20px;
+
+    border-bottom: 1px solid #e8ebef;
+
+    color: #7a828d;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    text-transform: uppercase;
+    letter-spacing: .6px;
+
+    text-align: left;
+}
+
+.avm-table td {
+    padding: 18px 20px;
+
+    border-bottom: 1px solid #eef1f4;
+
+    color: #4e5662;
+
+    font-size: 13px;
+
+    vertical-align: middle;
+}
+
+.avm-table tbody tr {
+
+    transition:
+        background .2s ease;
+
+}
+
+.avm-table tbody tr:hover {
+
+    background: #fafbfc;
+
+}
+
+.avm-table tbody tr:last-child td {
+
+    border-bottom: none;
+
+}
+
+
+/* =========================================================
+   PRODUCT
+========================================================= */
+
+.avm-product {
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+.avm-product-icon {
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f7f8fa,
+            #eceff3
+        );
+
+    border: 1px solid #e4e8ed;
+
+    color: #616b76;
+
+    font-size: 16px;
+}
+
+.avm-product strong {
+
+    display: block;
+
+    color: #2f3640;
+
+    font-size: 14px;
+    font-weight: 750;
+}
+
+.avm-product span {
+
+    display: block;
+
+    margin-top: 4px;
+
+    color: #9aa2ac;
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   SKU
+========================================================= */
+
+.avm-sku {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    padding:
+        7px
+        11px;
+
+    border-radius: 8px;
+
+    border:
+        1px solid
+        #dce2e8;
+
+    background:
+        #f8f9fb;
+
+    color: #47505c;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: .3px;
+}
+
+
+/* =========================================================
+   STOCK
+========================================================= */
+
+.avm-stock-good,
+.avm-stock-low,
+.avm-stock-out {
+
+    display: inline-flex;
+    align-items: center;
+
+    padding:
+        7px
+        10px;
+
+    border-radius: 8px;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.avm-stock-good {
+
+    background: #eefaf3;
+
+    color: #23814e;
+
+    border:
+        1px solid
+        #cae8d7;
+}
+
+.avm-stock-low {
+
+    background: #fff8eb;
+
+    color: #b67b0d;
+
+    border:
+        1px solid
+        #f4dfb0;
+}
+
+.avm-stock-out {
+
+    background: #fff3f3;
+
+    color: #c34b4b;
+
+    border:
+        1px solid
+        #f0d0d0;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.avm-status {
+
+    display: inline-flex;
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 90px;
+
+    padding:
+        7px
+        12px;
+
+    border-radius: 8px;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.avm-status.active {
+
+    background: #eefaf3;
+
+    color: #23814e;
+
+    border:
+        1px solid
+        #cae8d7;
+}
+
+.avm-status.inactive {
+
+    background: #fff3f3;
+
+    color: #c34b4b;
+
+    border:
+        1px solid
+        #f0d0d0;
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.avm-actions {
+
+    display: flex;
+
+    gap: 8px;
+}
+
+.avm-edit,
+.avm-delete {
+
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    cursor: pointer;
+
+    transition: .25s;
+
+    font-size: 13px;
+}
+
+.avm-edit {
+
+    background: #fff8e6;
+
+    border:
+        1px solid
+        #f1d48a;
+
+    color: #b17609;
+}
+
+.avm-edit:hover {
+
+    background: #ffe8b3;
+
+    transform: translateY(-2px);
+}
+
+.avm-delete {
+
+    background: #fff4f4;
+
+    border:
+        1px solid
+        #efcccc;
+
+    color: #c24848;
+}
+
+.avm-delete:hover {
+
+    background: #ffe5e5;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.avm-loading {
+
+    padding: 12px 0;
+}
+
+.avm-skeleton-row {
+
+    display: grid;
+
+    grid-template-columns:
+
+        2fr
+        1fr
+        .8fr
+        .8fr
+        1fr
+        .8fr;
+
+    gap: 18px;
+
+    align-items: center;
+
+    padding:
+        18px
+        22px;
+
+    border-bottom:
+        1px solid
+        #eef1f4;
+}
+
+.avm-skeleton,
+.avm-skeleton-product,
+.avm-skeleton-action {
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 8px;
+
+    background: #eceff2;
+}
+
+.avm-skeleton {
+
+    height: 14px;
+}
+
+.avm-skeleton-product {
+
+    height: 42px;
+}
+
+.avm-skeleton-action {
+
+    height: 36px;
+}
+
+.avm-skeleton::after,
+.avm-skeleton-product::after,
+.avm-skeleton-action::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+
+            90deg,
+
+            transparent,
+
+            rgba(255,255,255,.75),
+
+            transparent
+
+        );
+
+    animation:
+        avmShimmer
+        1.4s
+        infinite;
+}
+
+@keyframes avmShimmer {
+
+    from {
+
+        transform:
+            translateX(-100%);
+
+    }
+
+    to {
+
+        transform:
+            translateX(100%);
+
+    }
+
+}
+
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.avm-empty {
+
+    min-height: 320px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 40px;
+}
+
+.avm-empty-icon {
+
+    font-size: 48px;
+
+    color: #b2bac3;
+
+    margin-bottom: 18px;
+}
+
+.avm-empty h3 {
+
+    margin: 0;
+
+    color: #2f3640;
+
+    font-size: 20px;
+
+    font-weight: 800;
+}
+
+.avm-empty p {
+
+    margin:
+        10px
+        0
+        24px;
+
+    color: #9098a4;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+.avm-clear {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding:
+        11px
+        18px;
+
+    border:
+        1px solid
+        #dce2e8;
+
+    border-radius: 10px;
+
+    background: white;
+
+    cursor: pointer;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    transition: .25s;
+}
+
+.avm-clear:hover {
+
+    background: #f5f6f8;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 992px) {
+
+    .avm-header {
+
+        flex-direction: column;
+        align-items: flex-start;
+
+    }
+
+    .avm-header-actions {
+
+        width: 100%;
+
+        justify-content: space-between;
+
+    }
+
+    .avm-search {
+
+        max-width: none;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .avm-header h1 {
+
+        font-size: 26px;
+
+    }
+
+    .avm-filter-bar {
+
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .avm-search {
+
+        max-width: none;
+        width: 100%;
+    }
+
+    .avm-filter-bar select {
+
+        width: 100%;
+    }
+
+    .avm-result {
+
+        margin-left: 0;
+    }
+
+    .avm-form-actions {
+
+        flex-direction: column;
+    }
+
+    .avm-save,
+    .avm-cancel {
+
+        width: 100%;
+    }
+
+}
+
+/* ==========================================
+   COMMON SEARCHABLE DROPDOWN
+========================================== */
+
+.avm-field .cf-search-dropdown{
+
+    width:100%;
+
+}
+
+.avm-field .cf-search-trigger{
+
+    width:100%;
+
+    height:46px;
+
+    padding:0 14px;
+
+    border:1px solid #dce2e8;
+
+    border-radius:11px;
+
+    background:#ffffff;
+
+    color:#303743;
+
+    font-size:13px;
+
+    transition:
+        border-color .25s,
+        box-shadow .25s;
+
+}
+
+.avm-field .cf-search-trigger:hover{
+
+    border-color:#111827;
+
+}
+
+.avm-field .cf-search-trigger:focus,
+.avm-field .cf-search-trigger:focus-visible{
+
+    outline:none;
+
+    border-color:#111827;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(17,24,39,.05);
+
+}

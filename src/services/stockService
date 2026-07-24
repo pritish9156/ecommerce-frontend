@@ -1,5 +1,11 @@
 import api from "./api";
 
+export const getDashboardStats =
+    () =>
+        api.get(
+            "/admin/dashboard"
+        );
+
 export const getLowStockProducts =
     () =>
         api.get(

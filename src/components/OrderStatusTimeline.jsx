@@ -1,98 +1,556 @@
-// components/OrderStatusTimeline.jsx
+import {
+    FaClipboardCheck,
+    FaCircleCheck,
+    FaBox,
+    FaTruckFast,
+    FaLocationDot,
+    FaHouse,
+    FaBan
+}
+from "react-icons/fa6";
+
+import "../css/components/OrderStatusTimeline.css";
+
 
 function OrderStatusTimeline({ status }) {
 
     const steps = [
 
-        "PENDING",
+        {
+            key: "PENDING",
+            label: "Order Placed",
+            description: "We've received your order.",
+            icon: <FaClipboardCheck />
+        },
 
-        "CONFIRMED",
+        {
+            key: "CONFIRMED",
+            label: "Confirmed",
+            description: "Your order has been confirmed.",
+            icon: <FaCircleCheck />
+        },
 
-        "PROCESSING",
+        {
+            key: "PROCESSING",
+            label: "Processing",
+            description: "Your items are being prepared.",
+            icon: <FaBox />
+        },
 
-        "SHIPPED",
+        {
+            key: "SHIPPED",
+            label: "Shipped",
+            description: "Your order is on its way.",
+            icon: <FaTruckFast />
+        },
 
-        "OUT_FOR_DELIVERY",
+        {
+            key: "OUT_FOR_DELIVERY",
+            label: "Out for Delivery",
+            description: "Your package is arriving soon.",
+            icon: <FaLocationDot />
+        },
 
-        "DELIVERED"
+        {
+            key: "DELIVERED",
+            label: "Delivered",
+            description: "Your order has been delivered.",
+            icon: <FaHouse />
+        }
+
     ];
 
+
+    /* =========================================
+       CANCELLED ORDER
+    ========================================= */
+
+    if (status === "CANCELLED") {
+
+        return (
+
+            <div className="ost-cancelled">
+
+                <div className="ost-cancelled-icon">
+
+                    <FaBan />
+
+                </div>
+
+
+                <div>
+
+                    <span className="ost-cancelled-label">
+
+                        ORDER CANCELLED
+
+                    </span>
+
+                    <h4>
+
+                        This order was cancelled
+
+                    </h4>
+
+                    <p>
+
+                        This order will no longer proceed
+                        through the delivery process.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        );
+
+    }
+
+
     const currentIndex =
-        steps.indexOf(status);
+        steps.findIndex(
+            step =>
+                step.key === status
+        );
+
 
     return (
 
-        <div className="my-4">
+        <div className="ost-container">
 
-            <div
-                className="
-                    d-flex
-                    justify-content-between
-                    flex-wrap
-                "
-            >
+
+            {/* HEADER */}
+
+            <div className="ost-header">
+
+                <div>
+
+                    <span className="ost-eyebrow">
+
+                        ORDER JOURNEY
+
+                    </span>
+
+                    <h4>
+
+                        Track your order
+
+                    </h4>
+
+                </div>
+
+
+                <div className="ost-current-status">
+
+                    <span className="ost-status-dot" />
+
+                    {
+
+                        status
+                            ?.replaceAll(
+                                "_",
+                                " "
+                            )
+
+                    }
+
+                </div>
+
+            </div>
+
+
+
+            {/* DESKTOP TIMELINE */}
+
+            <div className="ost-desktop-timeline">
 
                 {
+
                     steps.map(
 
-                        (step, index) => (
+                        (step, index) => {
 
-                            <div
-                                key={step}
-                                className="
-                                    text-center
-                                    flex-fill
-                                "
-                            >
+                            const isCompleted =
+                                index < currentIndex;
+
+
+                            const isCurrent =
+                                index === currentIndex;
+
+
+                            const isUpcoming =
+                                index > currentIndex;
+
+
+                            return (
 
                                 <div
-                                    className={
 
-                                        index <= currentIndex
+                                    className="ost-step"
 
-                                        ?
-
-                                        "badge bg-success p-3 rounded-circle"
-
-                                        :
-
-                                        "badge bg-secondary p-3 rounded-circle"
+                                    key={
+                                        step.key
                                     }
+
                                 >
 
+
+                                    {/* CONNECTING LINE */}
+
                                     {
-                                        index + 1
+
+                                        index < steps.length - 1
+
+                                        &&
+
+                                        <div className="ost-line">
+
+                                            <div
+
+                                                className={
+
+                                                    index < currentIndex
+
+                                                        ?
+
+                                                        "ost-line-progress ost-line-completed"
+
+                                                        :
+
+                                                        "ost-line-progress"
+
+                                                }
+
+                                            />
+
+                                        </div>
+
                                     }
+
+
+
+                                    {/* STEP CIRCLE */}
+
+                                    <div
+
+                                        className={
+
+                                            `ost-step-circle
+
+                                            ${
+                                                isCompleted
+
+                                                    ?
+
+                                                    "ost-step-completed"
+
+                                                    :
+
+                                                    ""
+                                            }
+
+                                            ${
+                                                isCurrent
+
+                                                    ?
+
+                                                    "ost-step-current"
+
+                                                    :
+
+                                                    ""
+                                            }
+
+                                            ${
+                                                isUpcoming
+
+                                                    ?
+
+                                                    "ost-step-upcoming"
+
+                                                    :
+
+                                                    ""
+                                            }`
+
+                                        }
+
+                                    >
+
+                                        {
+
+                                            isCompleted
+
+                                                ?
+
+                                                <FaCircleCheck />
+
+                                                :
+
+                                                step.icon
+
+                                        }
+
+
+                                        {
+
+                                            isCurrent
+
+                                            &&
+
+                                            <span className="ost-current-pulse" />
+
+                                        }
+
+                                    </div>
+
+
+
+                                    {/* STEP INFORMATION */}
+
+                                    <div className="ost-step-info">
+
+                                        <span className="ost-step-number">
+
+                                            STEP {
+
+                                                String(
+                                                    index + 1
+                                                )
+                                                .padStart(
+                                                    2,
+                                                    "0"
+                                                )
+
+                                            }
+
+                                        </span>
+
+
+                                        <strong>
+
+                                            {
+                                                step.label
+                                            }
+
+                                        </strong>
+
+
+                                        <p>
+
+                                            {
+                                                step.description
+                                            }
+
+                                        </p>
+
+                                    </div>
+
 
                                 </div>
 
-                                <div
-                                    className="
-                                        mt-2
-                                        small
-                                    "
-                                >
+                            );
 
-                                    {
-                                        step
-                                            .replaceAll(
-                                                "_",
-                                                " "
-                                            )
-                                    }
+                        }
 
-                                </div>
-
-                            </div>
-
-                        )
                     )
+
                 }
 
             </div>
 
+
+
+            {/* MOBILE TIMELINE */}
+
+            <div className="ost-mobile-timeline">
+
+                {
+
+                    steps.map(
+
+                        (step, index) => {
+
+                            const isCompleted =
+                                index < currentIndex;
+
+
+                            const isCurrent =
+                                index === currentIndex;
+
+
+                            const isUpcoming =
+                                index > currentIndex;
+
+
+                            return (
+
+                                <div
+
+                                    className={
+
+                                        `ost-mobile-step
+
+                                        ${
+                                            isCompleted
+
+                                                ?
+
+                                                "ost-mobile-completed"
+
+                                                :
+
+                                                ""
+                                        }
+
+                                        ${
+                                            isCurrent
+
+                                                ?
+
+                                                "ost-mobile-current"
+
+                                                :
+
+                                                ""
+                                        }
+
+                                        ${
+                                            isUpcoming
+
+                                                ?
+
+                                                "ost-mobile-upcoming"
+
+                                                :
+
+                                                ""
+                                        }`
+
+                                    }
+
+                                    key={
+                                        step.key
+                                    }
+
+                                >
+
+
+                                    <div className="ost-mobile-indicator">
+
+
+                                        <div className="ost-mobile-circle">
+
+                                            {
+
+                                                isCompleted
+
+                                                    ?
+
+                                                    <FaCircleCheck />
+
+                                                    :
+
+                                                    step.icon
+
+                                            }
+
+                                        </div>
+
+
+                                        {
+
+                                            index < steps.length - 1
+
+                                            &&
+
+                                            <div
+
+                                                className={
+
+                                                    index < currentIndex
+
+                                                        ?
+
+                                                        "ost-mobile-line ost-mobile-line-active"
+
+                                                        :
+
+                                                        "ost-mobile-line"
+
+                                                }
+
+                                            />
+
+                                        }
+
+
+                                    </div>
+
+
+
+                                    <div className="ost-mobile-info">
+
+
+                                        <div className="ost-mobile-title-row">
+
+                                            <strong>
+
+                                                {
+                                                    step.label
+                                                }
+
+                                            </strong>
+
+
+                                            {
+
+                                                isCurrent
+
+                                                &&
+
+                                                <span className="ost-you-are-here">
+
+                                                    Current
+
+                                                </span>
+
+                                            }
+
+                                        </div>
+
+
+                                        <p>
+
+                                            {
+                                                step.description
+                                            }
+
+                                        </p>
+
+
+                                    </div>
+
+
+                                </div>
+
+                            );
+
+                        }
+
+                    )
+
+                }
+
+            </div>
+
+
         </div>
+
     );
+
 }
+
 
 export default OrderStatusTimeline;

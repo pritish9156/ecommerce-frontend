@@ -1,0 +1,901 @@
+/* =========================================================
+   ADMIN LAYOUT
+   ========================================================= */
+
+.sal-layout {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+
+    background: #f5f6f8;
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.sal-sidebar {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    bottom: 0;
+
+    z-index: 1000;
+
+    width: 245px;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            #111722 0%,
+            #151c28 100%
+        );
+
+    border-right: 1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.05
+        );
+
+    box-shadow:
+        10px 0 35px
+        rgba(
+            15,
+            23,
+            42,
+            0.08
+        );
+}
+
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.sal-brand {
+    min-height: 82px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding:
+        0
+        20px;
+
+    border-bottom: 1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.07
+        );
+}
+
+
+.sal-brand-icon {
+    width: 39px;
+    height: 39px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background: #ffffff;
+
+    color: #151b25;
+
+    font-size: 15px;
+
+    box-shadow:
+        0 6px 18px
+        rgba(
+            0,
+            0,
+            0,
+            0.18
+        );
+}
+
+
+.sal-brand-content {
+    min-width: 0;
+}
+
+
+.sal-brand-content h2 {
+    margin:
+        0
+        0
+        2px;
+
+    color: #ffffff;
+
+    font-size: 15px;
+    font-weight: 800;
+
+    letter-spacing: -0.3px;
+}
+
+
+.sal-brand-content span {
+    display: block;
+
+    color: #727b89;
+
+    font-size: 6px;
+    font-weight: 850;
+
+    letter-spacing: 1.5px;
+}
+
+
+/* =========================================================
+   NAVIGATION LABEL
+   ========================================================= */
+
+.sal-navigation-label {
+    padding:
+        22px
+        23px
+        9px;
+
+    color: #596372;
+
+    font-size: 7px;
+    font-weight: 850;
+
+    letter-spacing: 1.4px;
+}
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.sal-navigation {
+    flex: 1;
+
+    overflow-y: auto;
+
+    padding:
+        0
+        11px
+        20px;
+}
+
+
+.sal-nav-item {
+    position: relative;
+
+    min-height: 43px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 3px;
+
+    padding:
+        0
+        13px;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    color: #8d96a4;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.sal-nav-item:hover {
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.055
+        );
+
+    color: #ffffff;
+
+    transform:
+        translateX(
+            2px
+        );
+}
+
+
+.sal-nav-item-active {
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.095
+        );
+
+    color: #ffffff;
+}
+
+
+.sal-nav-icon {
+    width: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #737d8c;
+
+    font-size: 12px;
+
+    transition:
+        color 0.2s ease;
+}
+
+
+.sal-nav-item:hover
+.sal-nav-icon,
+.sal-nav-item-active
+.sal-nav-icon {
+    color: #ffffff;
+}
+
+
+.sal-nav-label {
+    flex: 1;
+}
+
+
+.sal-active-indicator {
+    position: absolute;
+
+    top: 50%;
+    right: 0;
+
+    width: 3px;
+    height: 18px;
+
+    border-radius:
+        5px
+        0
+        0
+        5px;
+
+    background: #ffffff;
+
+    opacity: 0;
+
+    transform:
+        translateY(
+            -50%
+        );
+
+    transition:
+        opacity 0.2s ease;
+}
+
+
+.sal-nav-item-active
+.sal-active-indicator {
+    opacity: 1;
+}
+
+
+/* =========================================================
+   SIDEBAR SCROLLBAR
+   ========================================================= */
+
+.sal-navigation::-webkit-scrollbar {
+    width: 3px;
+}
+
+
+.sal-navigation::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+
+.sal-navigation::-webkit-scrollbar-thumb {
+    border-radius: 50px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.12
+        );
+}
+
+
+/* =========================================================
+   SIDEBAR FOOTER
+   ========================================================= */
+
+.sal-sidebar-footer {
+    padding:
+        14px
+        12px
+        18px;
+
+    border-top: 1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.07
+        );
+}
+
+
+.sal-store-button,
+.sal-logout-button {
+    width: 100%;
+    height: 41px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    padding:
+        0
+        13px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: transparent;
+
+    font-size: 9px;
+    font-weight: 650;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.sal-store-button {
+    margin-bottom: 4px;
+
+    color: #87909e;
+}
+
+
+.sal-store-button:hover {
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.05
+        );
+
+    color: #ffffff;
+}
+
+
+.sal-logout-button {
+    color: #d47b7b;
+}
+
+
+.sal-logout-button:hover {
+    background:
+        rgba(
+            220,
+            70,
+            70,
+            0.1
+        );
+
+    color: #f19a9a;
+}
+
+
+.sal-store-button svg,
+.sal-logout-button svg {
+    width: 18px;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   MAIN AREA
+   ========================================================= */
+
+.sal-main {
+    width: calc(
+        100% - 245px
+    );
+
+    min-height: 100vh;
+
+    margin-left: 245px;
+}
+
+
+/* =========================================================
+   TOPBAR
+   ========================================================= */
+
+.sal-topbar {
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding:
+        0
+        30px;
+
+    border-bottom: 1px solid #e8eaed;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.94
+        );
+
+    backdrop-filter:
+        blur(
+            14px
+        );
+}
+
+
+.sal-topbar-left {
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+}
+
+
+.sal-topbar-eyebrow {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #a2a8b1;
+
+    font-size: 6px;
+    font-weight: 850;
+
+    letter-spacing: 1.2px;
+}
+
+
+.sal-topbar h1 {
+    margin: 0;
+
+    color: #252b35;
+
+    font-size: 15px;
+    font-weight: 800;
+
+    letter-spacing: -0.3px;
+}
+
+
+/* =========================================================
+   ADMIN PROFILE
+   ========================================================= */
+
+.sal-admin-profile {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.sal-admin-avatar {
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #151c27,
+            #303a49
+        );
+
+    color: #ffffff;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+
+.sal-admin-info {
+    display: flex;
+    flex-direction: column;
+
+    gap: 1px;
+}
+
+
+.sal-admin-info strong {
+    color: #343a44;
+
+    font-size: 9px;
+    font-weight: 750;
+}
+
+
+.sal-admin-info span {
+    color: #9da3ac;
+
+    font-size: 7px;
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.sal-content {
+    width: 100%;
+    min-height: calc(
+        100vh - 70px
+    );
+
+    padding:
+        28px
+        30px
+        45px;
+}
+
+
+/* =========================================================
+   MOBILE MENU BUTTON
+   ========================================================= */
+
+.sal-menu-button,
+.sal-mobile-close {
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+
+    cursor: pointer;
+}
+
+
+.sal-menu-button {
+    width: 36px;
+    height: 36px;
+
+    border: 1px solid #e1e4e8;
+
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    color: #414853;
+
+    font-size: 12px;
+}
+
+
+.sal-mobile-close {
+    width: 33px;
+    height: 33px;
+
+    margin-left: auto;
+
+    border-radius: 9px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.06
+        );
+
+    color: #9ca5b3;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   OVERLAY
+   ========================================================= */
+
+.sal-overlay {
+    display: none;
+}
+
+
+/* =========================================================
+   TABLET / MOBILE
+   ========================================================= */
+
+@media (max-width: 991px) {
+
+    .sal-sidebar {
+        transform:
+            translateX(
+                -100%
+            );
+
+        transition:
+            transform
+            0.3s
+            ease;
+    }
+
+
+    .sal-sidebar-open {
+        transform:
+            translateX(
+                0
+            );
+    }
+
+
+    .sal-main {
+        width: 100%;
+
+        margin-left: 0;
+    }
+
+
+    .sal-menu-button,
+    .sal-mobile-close {
+        display: flex;
+    }
+
+
+    .sal-overlay {
+        position: fixed;
+
+        inset: 0;
+
+        z-index: 999;
+
+        display: block;
+
+        background:
+            rgba(
+                15,
+                23,
+                42,
+                0.48
+            );
+
+        backdrop-filter:
+            blur(
+                3px
+            );
+    }
+
+
+    .sal-topbar {
+        padding:
+            0
+            22px;
+    }
+
+
+    .sal-content {
+        padding:
+            24px
+            22px
+            40px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .sal-sidebar {
+        width: 270px;
+    }
+
+
+    .sal-topbar {
+        height: 64px;
+
+        padding:
+            0
+            15px;
+    }
+
+
+    .sal-topbar h1 {
+        font-size: 13px;
+    }
+
+
+    .sal-topbar-eyebrow {
+        display: none;
+    }
+
+
+    .sal-admin-info {
+        display: none;
+    }
+
+
+    .sal-admin-avatar {
+        width: 34px;
+        height: 34px;
+    }
+
+
+    .sal-content {
+        min-height:
+            calc(
+                100vh - 64px
+            );
+
+        padding:
+            20px
+            14px
+            35px;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (
+    prefers-reduced-motion:
+    reduce
+) {
+
+    .sal-sidebar,
+    .sal-nav-item,
+    .sal-nav-icon,
+    .sal-store-button,
+    .sal-logout-button {
+        transition: none;
+    }
+
+
+    .sal-nav-item:hover {
+        transform: none;
+    }
+
+}
+
+/* =========================================================
+   TYPOGRAPHY READABILITY UPGRADE
+   ========================================================= */
+
+/* BRAND */
+
+.sal-brand-content h2 {
+    font-size: 18px;
+}
+
+.sal-brand-content span {
+    font-size: 10px;
+}
+
+
+/* NAVIGATION */
+
+.sal-navigation-label {
+    font-size: 10px;
+}
+
+.sal-nav-item {
+    font-size: 14px;
+}
+
+.sal-nav-icon {
+    font-size: 15px;
+}
+
+
+/* SIDEBAR FOOTER */
+
+.sal-store-button,
+.sal-logout-button {
+    font-size: 13px;
+}
+
+.sal-store-button svg,
+.sal-logout-button svg {
+    font-size: 14px;
+}
+
+
+/* TOPBAR */
+
+.sal-topbar-eyebrow {
+    font-size: 10px;
+}
+
+.sal-topbar h1 {
+    font-size: 19px;
+}
+
+
+/* ADMIN PROFILE */
+
+.sal-admin-avatar {
+    font-size: 13px;
+}
+
+.sal-admin-info strong {
+    font-size: 13px;
+}
+
+.sal-admin-info span {
+    font-size: 11px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .sal-topbar h1 {
+        font-size: 17px;
+    }
+
+}

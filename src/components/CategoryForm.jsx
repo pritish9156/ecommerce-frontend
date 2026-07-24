@@ -1,87 +1,178 @@
 import { useEffect, useState } from "react";
+
 import {
     Modal,
-    Button,
-    Form,
-    Row,
-    Col
+    Form
 } from "react-bootstrap";
+
+import {
+    FaLayerGroup,
+    FaPen,
+    FaPlus,
+    FaTimes,
+    FaTag,
+    FaAlignLeft,
+    FaSitemap,
+    FaCheck
+} from "react-icons/fa";
+
+import SearchableDropdown from "./common/SearchableDropdown";
+
+import "../css/components/CategoryForm.css";
+
 
 function CategoryForm({
 
     show,
     onHide,
     category,
-    categories,
+    categories = [],
     onSave,
     onEdit
 
 }) {
 
-    const [formData, setFormData] = useState({
+    const [formData, setFormData] =
+        useState({
 
-        id: "",
+            id: "",
 
-        name: "",
+            name: "",
 
-        description: "",
+            description: "",
 
-        parentCategoryId: ""
+            parentCategoryId: ""
 
-    });
+        });
+
+
+    const [submitting, setSubmitting] =
+        useState(false);
+
 
     useEffect(() => {
 
-        if(category) {
+        if (category) {
 
             setFormData({
 
-                id: category.id,
-                name: category.name,
-                description: category.description,
-                parentCategoryId: category.parentCategoryId || ""
+                id:
+                    category.id,
+
+                name:
+                    category.name || "",
+
+                description:
+                    category.description || "",
+
+                parentCategoryId:
+                    category.parentCategoryId || ""
+
             });
-        }
-        else {
+
+        } else {
+
             setFormData({
+
                 id: "",
+
                 name: "",
+
                 description: "",
+
                 parentCategoryId: ""
-            })
+
+            });
+
         }
 
     }, [category, show]);
 
+
     const handleChange = (e) => {
 
-        setFormData({
+        const {
+            name,
+            value
+        } = e.target;
 
-            ...formData,
+        setFormData(prev => ({
 
-            [e.target.name] : e.target.value
+            ...prev,
 
-        })
+            [name]: value
+
+        }));
 
     };
 
-    const handleSubmit = (e) => {
 
-        e.preventDefault();
+    const handleSubmit =
+        async (e) => {
 
-        onSave(formData);
+            e.preventDefault();
+
+            if (submitting)
+                return;
+
+            try {
+
+                setSubmitting(true);
+
+                if (category) {
+
+                    await onEdit(
+                        formData
+                    );
+
+                } else {
+
+                    await onSave(
+                        formData
+                    );
+
+                }
+
+                onHide();
+
+            } catch (error) {
+
+                console.error(
+                    "Category operation failed:",
+                    error
+                );
+
+            } finally {
+
+                setSubmitting(false);
+
+            }
+
+        };
+
+
+    const handleClose = () => {
+
+        if (submitting)
+            return;
 
         onHide();
 
     };
 
-    const handleUpdate = () => {
 
-        onEdit(formData);
+    const selectedParent =
+        categories.find(
 
-        onHide();
+            item =>
+                String(item.id)
+                ===
+                String(
+                    formData.parentCategoryId
+                )
 
-    };
+        );
+
 
     return (
 
@@ -89,216 +180,493 @@ function CategoryForm({
 
             show={show}
 
-            onHide={onHide}
+            onHide={handleClose}
 
             centered
 
             size="lg"
 
+            backdrop={
+                submitting
+                    ?
+                    "static"
+                    :
+                    true
+            }
+
+            keyboard={
+                !submitting
+            }
+
+            dialogClassName="
+                category-form-modal
+            "
+
+            contentClassName="
+                category-form-content
+            "
+
         >
 
             <Form
-                onSubmit={handleSubmit}
+                onSubmit={
+                    handleSubmit
+                }
             >
 
-                <Modal.Header closeButton>
+                {/* HEADER */}
 
-                    <Modal.Title>
+                <div className="cf-header">
 
-                        {
+                    <div className="cf-header-content">
 
-                            category
+                        <div className="cf-header-icon">
 
-                                ?
+                            {
+                                category
 
-                                "Update Category"
+                                    ?
 
-                                :
+                                    <FaPen />
 
-                                "Create Category"
+                                    :
 
+                                    <FaPlus />
+
+                            }
+
+                        </div>
+
+
+                        <div>
+
+                            <span className="cf-eyebrow">
+
+                                Category Management
+
+                            </span>
+
+                            <h2 className="cf-title">
+
+                                {
+                                    category
+
+                                        ?
+
+                                        "Edit Category"
+
+                                        :
+
+                                        "Create New Category"
+                                }
+
+                            </h2>
+
+                            <p className="cf-subtitle">
+
+                                {
+                                    category
+
+                                        ?
+
+                                        "Update category information and hierarchy."
+
+                                        :
+
+                                        "Organize your catalog with a new product category."
+                                }
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+
+                        type="button"
+
+                        className="cf-close-btn"
+
+                        onClick={
+                            handleClose
                         }
 
-                    </Modal.Title>
+                        disabled={
+                            submitting
+                        }
 
-                </Modal.Header>
+                        aria-label="Close"
 
-                <Modal.Body>
+                    >
 
-                    <Row>
+                        <FaTimes />
 
-                        <Col md={12}>
+                    </button>
 
-                            <Form.Group
-                                className="mb-3"
+                </div>
+
+
+                {/* BODY */}
+
+                <div className="cf-body">
+
+                    <div className="cf-form-section">
+
+                        <div className="cf-section-heading">
+
+                            <div className="cf-section-icon">
+
+                                <FaLayerGroup />
+
+                            </div>
+
+                            <div>
+
+                                <h5>
+
+                                    Category Details
+
+                                </h5>
+
+                                <p>
+
+                                    Add the basic information
+                                    used to identify this category.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div className="cf-field">
+
+                            <label
+                                htmlFor="category-name"
+                                className="cf-label"
                             >
 
-                                <Form.Label>
+                                <FaTag />
 
-                                    Category Name
+                                Category Name
 
-                                </Form.Label>
+                                <span className="cf-required">
 
-                                <Form.Control
+                                    *
+
+                                </span>
+
+                            </label>
+
+
+                            <div className="cf-input-wrapper">
+
+                                <input
+
+                                    id="category-name"
 
                                     type="text"
 
                                     name="name"
 
-                                    placeholder="Enter category name"
+                                    className="cf-input"
 
-                                    value={formData.name}
+                                    placeholder="
+                                        e.g. Smartphones, Laptops, Footwear
+                                    "
 
-                                    onChange={handleChange}
+                                    value={
+                                        formData.name
+                                    }
+
+                                    onChange={
+                                        handleChange
+                                    }
 
                                     required
 
-                                />
+                                    autoComplete="off"
 
-                            </Form.Group>
-
-                        </Col>
-
-                        <Col md={12}>
-
-                            <Form.Group
-                                className="mb-3"
-                            >
-
-                                <Form.Label>
-
-                                    Parent Category
-
-                                </Form.Label>
-
-                                <Form.Select
-
-                                    name="parentCategoryId"
-
-                                    value={formData.parentCategoryId}
-
-                                    onChange={handleChange}
-
-                                >
-
-                                    <option value="">
-
-                                        None
-
-                                    </option>
-
-                                    {
-
-                                        categories
-
-                                            .filter(c => c.id !== formData.id)
-
-                                            .map(category => (
-
-                                                <option
-
-                                                    key={category.id}
-
-                                                    value={category.id}
-
-                                                >
-
-                                                    {category.name}
-
-                                                </option>
-
-                                            ))
-
+                                    disabled={
+                                        submitting
                                     }
 
-                                </Form.Select>
+                                />
 
-                            </Form.Group>
+                            </div>
 
-                        </Col>
 
-                        <Col md={12}>
+                            <span className="cf-field-hint">
 
-                            <Form.Group>
+                                Use a clear and concise
+                                category name.
 
-                                <Form.Label>
+                            </span>
+
+                        </div>
+
+
+                        <div className="cf-field">
+
+                            <label
+                                htmlFor="parent-category"
+                                className="cf-label"
+                            >
+
+                                <FaSitemap />
+
+                                Parent Category
+
+                            </label>
+
+
+                            <SearchableDropdown
+                                items={categories}
+                                value={formData.parentCategoryId}
+                                onChange={(id) =>
+                                    setFormData(prev => ({
+                                        ...prev,
+                                        parentCategoryId: id
+                                    }))
+                                }
+                                icon={<FaSitemap />}
+                                placeholder="Search parent category..."
+                                emptyText="No Parent Category"
+                            />
+
+
+                            {
+
+                                selectedParent
+
+                                &&
+
+                                <div className="cf-parent-preview">
+
+                                    <div className="cf-parent-preview-icon">
+
+                                        <FaSitemap />
+
+                                    </div>
+
+                                    <div>
+
+                                        <span>
+
+                                            This category will appear under
+
+                                        </span>
+
+                                        <strong>
+
+                                            {
+                                                selectedParent.name
+                                            }
+
+                                        </strong>
+
+                                    </div>
+
+                                </div>
+
+                            }
+
+                        </div>
+
+
+                        <div className="cf-field cf-field-last">
+
+                            <div className="cf-label-row">
+
+                                <label
+                                    htmlFor="category-description"
+                                    className="cf-label"
+                                >
+
+                                    <FaAlignLeft />
 
                                     Description
 
-                                </Form.Label>
+                                </label>
 
-                                <Form.Control
 
-                                    as="textarea"
+                                <span className="cf-character-count">
 
-                                    rows={4}
+                                    {
+                                        formData
+                                            .description
+                                            .length
+                                    }
 
-                                    name="description"
+                                    / 500
 
-                                    placeholder="Enter category description"
+                                </span>
 
-                                    value={formData.description}
+                            </div>
 
-                                    onChange={handleChange}
 
-                                />
+                            <textarea
 
-                            </Form.Group>
+                                id="category-description"
 
-                        </Col>
+                                rows="5"
 
-                    </Row>
+                                maxLength="500"
 
-                </Modal.Body>
+                                name="description"
 
-                <Modal.Footer>
+                                className="cf-textarea"
 
-                    <Button
+                                placeholder="
+                                    Describe what kind of
+                                    products belong in this
+                                    category...
+                                "
 
-                        variant="secondary"
+                                value={
+                                    formData.description
+                                }
 
-                        onClick={onHide}
+                                onChange={
+                                    handleChange
+                                }
+
+                                disabled={
+                                    submitting
+                                }
+
+                            />
+
+                        </div>
+
+                    </div>
+
+
+                    {/* INFORMATION PANEL */}
+
+                    <div className="cf-info-panel">
+
+                        <div className="cf-info-icon">
+
+                            <FaLayerGroup />
+
+                        </div>
+
+                        <div>
+
+                            <strong>
+
+                                Catalog organization matters
+
+                            </strong>
+
+                            <p>
+
+                                A clear category hierarchy
+                                helps customers discover
+                                relevant products and improves
+                                related-product recommendations.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                {/* FOOTER */}
+
+                <div className="cf-footer">
+
+                    <button
+
+                        type="button"
+
+                        className="cf-btn cf-btn-cancel"
+
+                        onClick={
+                            handleClose
+                        }
+
+                        disabled={
+                            submitting
+                        }
 
                     >
 
                         Cancel
 
-                    </Button>
+                    </button>
 
-                    {
 
-                        category
+                    <button
 
-                            ?
+                        type="submit"
 
-                        <Button
+                        className="cf-btn cf-btn-primary"
 
-                            variant="dark"
+                        disabled={
+                            submitting
+                            ||
+                            !formData.name.trim()
+                        }
 
-                            onClick={handleUpdate}
+                    >
 
-                        >
+                        {
 
-                            Update Category
+                            submitting
 
-                        </Button>
+                                ?
 
-                            :
+                                <>
 
-                        <Button
+                                    <span className="cf-spinner" />
 
-                            variant="dark"
+                                    {
+                                        category
 
-                            type="submit"
+                                            ?
 
-                        >
-                            Create Category
+                                            "Updating..."
 
-                        </Button>
+                                            :
+
+                                            "Creating..."
+                                    }
+
+                                </>
+
+                                :
+
+                                <>
+
+                                    <FaCheck />
+
+                                    {
+                                        category
+
+                                            ?
+
+                                            "Save Changes"
+
+                                            :
+
+                                            "Create Category"
+                                    }
+
+                                </>
 
                         }
 
-                </Modal.Footer>
+                    </button>
+
+                </div>
 
             </Form>
 

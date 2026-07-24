@@ -1,0 +1,429 @@
+/* =========================================================
+   SEARCH BAR
+   ========================================================= */
+
+.ssb-wrapper {
+    width: 100%;
+
+    margin-bottom: 28px;
+}
+
+
+/* =========================================================
+   SEARCH CONTAINER
+   ========================================================= */
+
+.ssb-search-box {
+    position: relative;
+
+    width: 100%;
+    min-height: 58px;
+
+    display: flex;
+    align-items: center;
+
+    padding:
+        6px
+        6px
+        6px
+        19px;
+
+    border: 1px solid #e2e5e9;
+
+    border-radius: 16px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 6px 24px
+        rgba(
+            15,
+            23,
+            42,
+            0.055
+        );
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.ssb-search-box:focus-within {
+    border-color: #aeb4bd;
+
+    box-shadow:
+        0 10px 32px
+        rgba(
+            15,
+            23,
+            42,
+            0.09
+        );
+}
+
+
+/* =========================================================
+   SEARCH ICON
+   ========================================================= */
+
+.ssb-search-icon {
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-right: 13px;
+
+    color: #9299a4;
+
+    font-size: 15px;
+
+    transition:
+        color 0.2s ease;
+}
+
+
+.ssb-search-box:focus-within
+.ssb-search-icon {
+    color: #111827;
+}
+
+
+/* =========================================================
+   INPUT
+   ========================================================= */
+
+.ssb-input {
+    flex: 1;
+
+    min-width: 0;
+
+    padding:
+        10px
+        5px;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: #222936;
+
+    font-family: inherit;
+
+    font-size: 13px;
+    font-weight: 500;
+}
+
+
+.ssb-input::placeholder {
+    color: #a7adb6;
+
+    font-weight: 450;
+}
+
+
+/* REMOVE DEFAULT SEARCH CLEAR BUTTON */
+
+.ssb-input::-webkit-search-cancel-button {
+    display: none;
+}
+
+
+/* =========================================================
+   CLEAR BUTTON
+   ========================================================= */
+
+.ssb-clear-button {
+    width: 32px;
+    height: 32px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-right: 7px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: transparent;
+
+    color: #9299a4;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.ssb-clear-button:hover {
+    background: #f1f3f5;
+
+    color: #111827;
+
+    transform:
+        rotate(
+            90deg
+        );
+}
+
+
+/* =========================================================
+   SEARCH BUTTON
+   ========================================================= */
+
+.ssb-search-button {
+    min-width: 118px;
+    height: 46px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding:
+        0
+        20px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #111827,
+            #293243
+        );
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 11px;
+    font-weight: 750;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 6px 16px
+        rgba(
+            17,
+            24,
+            39,
+            0.15
+        );
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.ssb-search-button:hover {
+    transform:
+        translateY(
+            -1px
+        );
+
+    background:
+        linear-gradient(
+            135deg,
+            #1f2937,
+            #374151
+        );
+
+    box-shadow:
+        0 9px 20px
+        rgba(
+            17,
+            24,
+            39,
+            0.2
+        );
+}
+
+
+.ssb-search-button:active {
+    transform:
+        translateY(
+            0
+        );
+}
+
+
+.ssb-search-button svg {
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   SEARCH HINT
+   ========================================================= */
+
+.ssb-hint {
+    display: none;
+
+    align-items: center;
+
+    gap: 6px;
+
+    margin:
+        8px
+        0
+        0
+        5px;
+
+    color: #a0a6af;
+
+    font-size: 8px;
+    font-weight: 550;
+}
+
+
+.ssb-hint svg {
+    font-size: 7px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .ssb-wrapper {
+        margin-bottom: 22px;
+    }
+
+
+    .ssb-search-box {
+        min-height: 54px;
+
+        padding:
+            5px
+            5px
+            5px
+            15px;
+
+        border-radius: 14px;
+    }
+
+
+    .ssb-search-icon {
+        margin-right: 9px;
+
+        font-size: 13px;
+    }
+
+
+    .ssb-input {
+        font-size: 11px;
+    }
+
+
+    .ssb-search-button {
+        min-width: 46px;
+        width: 46px;
+        height: 44px;
+
+        padding: 0;
+
+        border-radius: 10px;
+    }
+
+
+    .ssb-search-button span {
+        display: none;
+    }
+
+
+    .ssb-clear-button {
+        margin-right: 4px;
+    }
+
+
+    .ssb-hint {
+        display: flex;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (
+    prefers-reduced-motion:
+    reduce
+) {
+
+    .ssb-search-box,
+    .ssb-clear-button,
+    .ssb-search-button {
+        transition: none;
+    }
+
+
+    .ssb-clear-button:hover {
+        transform: none;
+    }
+
+}
+
+/* =========================================================
+   TYPOGRAPHY READABILITY UPGRADE
+   ========================================================= */
+
+.ssb-input {
+    font-size: 14px;
+}
+
+.ssb-clear-button {
+    font-size: 13px;
+}
+
+.ssb-search-button {
+    font-size: 13px;
+}
+
+.ssb-search-button svg {
+    font-size: 12px;
+}
+
+.ssb-hint {
+    font-size: 11px;
+}
+
+.ssb-hint svg {
+    font-size: 9px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .ssb-input {
+        font-size: 14px;
+    }
+
+}

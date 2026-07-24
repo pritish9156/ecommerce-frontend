@@ -1,249 +1,738 @@
-import { useEffect, useState } from "react";
+import {
+    useEffect,
+    useState
+}
+from "react";
+
 import {
     Modal,
-    Button,
-    Form,
-    Row,
-    Col
-} from "react-bootstrap";
+    Form
+}
+from "react-bootstrap";
+
+import {
+    FaTags,
+    FaPen,
+    FaPlus,
+    FaTimes,
+    FaTag,
+    FaAlignLeft,
+    FaCheck
+}
+from "react-icons/fa";
+
+import "../css/admin/TagForm.css";
+
 
 function TagForm({
 
     show,
+
     onHide,
+
     tag,
-    tags,
+
     onSave,
+
     onEdit
 
 }) {
 
-    const [formData, setFormData] = useState({
+
+    const [
+        formData,
+        setFormData
+    ] = useState({
 
         id: "",
 
         name: "",
 
-        description: "",
+        description: ""
 
     });
 
+
+    const [
+        submitting,
+        setSubmitting
+    ] = useState(false);
+
+
     useEffect(() => {
 
-        if(tag) {
+
+        if (tag) {
+
 
             setFormData({
 
-                id: tag.id,
-                name: tag.name,
-                description: tag.description,
+                id:
+                    tag.id,
+
+                name:
+                    tag.name || "",
+
+                description:
+                    tag.description || ""
+
             });
+
+
         }
         else {
+
+
             setFormData({
+
                 id: "",
+
                 name: "",
-                description: "",
-            })
+
+                description: ""
+
+            });
+
+
         }
 
-    }, [tag, show]);
 
-    const handleChange = (e) => {
+    }, [
+        tag,
+        show
+    ]);
 
-        setFormData({
 
-            ...formData,
+    const handleChange =
+        e => {
 
-            [e.target.name] : e.target.value
 
-        })
+            const {
 
-    };
+                name,
 
-    const handleSubmit = (e) => {
+                value
 
-        e.preventDefault();
+            } = e.target;
 
-        onSave(formData);
 
-        onHide();
+            setFormData(
 
-    };
+                previous => ({
 
-    const handleUpdate = () => {
+                    ...previous,
 
-        onEdit(formData);
+                    [name]:
+                        value
 
-        onHide();
+                })
 
-    };
+            );
+
+
+        };
+
+
+    const handleSubmit =
+        async e => {
+
+
+            e.preventDefault();
+
+
+            if (submitting) {
+
+                return;
+
+            }
+
+
+            try {
+
+
+                setSubmitting(
+                    true
+                );
+
+
+                if (tag) {
+
+
+                    await onEdit(
+                        formData
+                    );
+
+
+                }
+                else {
+
+
+                    await onSave(
+                        formData
+                    );
+
+
+                }
+
+
+            }
+            catch (error) {
+
+
+                console.error(
+
+                    "Tag operation failed:",
+
+                    error
+
+                );
+
+
+            }
+            finally {
+
+
+                setSubmitting(
+                    false
+                );
+
+
+            }
+
+
+        };
+
+
+    const handleClose =
+        () => {
+
+
+            if (submitting) {
+
+                return;
+
+            }
+
+
+            onHide();
+
+
+        };
+
 
     return (
 
         <Modal
 
-            show={show}
+            show={
+                show
+            }
 
-            onHide={onHide}
+            onHide={
+                handleClose
+            }
 
             centered
 
             size="lg"
 
+            backdrop={
+
+                submitting
+
+                    ? "static"
+
+                    : true
+
+            }
+
+            keyboard={
+                !submitting
+            }
+
+            dialogClassName="tag-form-modal"
+
+            contentClassName="tag-form-content"
+
         >
 
+
             <Form
-                onSubmit={handleSubmit}
+
+                onSubmit={
+                    handleSubmit
+                }
+
             >
 
-                <Modal.Header closeButton>
 
-                    <Modal.Title>
+                {/* HEADER */}
 
-                        {
+                <div className="tf-header">
 
-                            tag
 
-                                ?
+                    <div className="tf-header-content">
 
-                                "Update Tag"
 
-                                :
+                        <div className="tf-header-icon">
 
-                                "Create Tag"
 
+                            {
+
+                                tag
+
+                                    ?
+
+                                    <FaPen />
+
+                                    :
+
+                                    <FaPlus />
+
+                            }
+
+
+                        </div>
+
+
+                        <div>
+
+
+                            <span className="tf-eyebrow">
+
+                                Tag Management
+
+                            </span>
+
+
+                            <h2 className="tf-title">
+
+
+                                {
+
+                                    tag
+
+                                        ?
+
+                                        "Edit Tag"
+
+                                        :
+
+                                        "Create New Tag"
+
+                                }
+
+
+                            </h2>
+
+
+                            <p className="tf-subtitle">
+
+
+                                {
+
+                                    tag
+
+                                        ?
+
+                                        "Update tag information and product classification."
+
+                                        :
+
+                                        "Create a reusable label for organizing related products."
+
+                                }
+
+
+                            </p>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                    <button
+
+                        type="button"
+
+                        className="tf-close-btn"
+
+                        onClick={
+                            handleClose
                         }
 
-                    </Modal.Title>
+                        disabled={
+                            submitting
+                        }
 
-                </Modal.Header>
+                        aria-label="Close"
 
-                <Modal.Body>
+                    >
 
-                    <Row>
+                        <FaTimes />
 
-                        <Col md={12}>
+                    </button>
 
-                            <Form.Group
-                                className="mb-3"
+
+                </div>
+
+
+
+                {/* BODY */}
+
+                <div className="tf-body">
+
+
+                    <div className="tf-form-section">
+
+
+                        <div className="tf-section-heading">
+
+
+                            <div className="tf-section-icon">
+
+                                <FaTags />
+
+                            </div>
+
+
+                            <div>
+
+
+                                <h5>
+
+                                    Tag Details
+
+                                </h5>
+
+
+                                <p>
+
+                                    Add the basic information
+                                    used to identify this tag.
+
+                                </p>
+
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        {/* NAME */}
+
+                        <div className="tf-field">
+
+
+                            <label
+
+                                htmlFor="tag-name"
+
+                                className="tf-label"
+
                             >
 
-                                <Form.Label>
+                                <FaTag />
 
-                                    Tag Name
+                                Tag Name
 
-                                </Form.Label>
 
-                                <Form.Control
+                                <span className="tf-required">
+
+                                    *
+
+                                </span>
+
+
+                            </label>
+
+
+                            <div className="tf-input-wrapper">
+
+
+                                <input
+
+                                    id="tag-name"
 
                                     type="text"
 
                                     name="name"
 
-                                    placeholder="Enter tag name"
+                                    className="tf-input"
 
-                                    value={formData.name}
+                                    placeholder="e.g. Premium, Gaming, Wireless"
 
-                                    onChange={handleChange}
+                                    value={
+                                        formData.name
+                                    }
+
+                                    onChange={
+                                        handleChange
+                                    }
 
                                     required
 
+                                    autoComplete="off"
+
+                                    disabled={
+                                        submitting
+                                    }
+
                                 />
 
-                            </Form.Group>
 
-                        </Col>
+                            </div>
 
-                        <Col md={12}>
 
-                            <Form.Group>
+                            <span className="tf-field-hint">
 
-                                <Form.Label>
+                                Use a short and meaningful
+                                label that can be reused
+                                across related products.
+
+                            </span>
+
+
+                        </div>
+
+
+
+                        {/* DESCRIPTION */}
+
+                        <div className="tf-field tf-field-last">
+
+
+                            <div className="tf-label-row">
+
+
+                                <label
+
+                                    htmlFor="tag-description"
+
+                                    className="tf-label"
+
+                                >
+
+                                    <FaAlignLeft />
 
                                     Description
 
-                                </Form.Label>
+                                </label>
 
-                                <Form.Control
 
-                                    as="textarea"
+                                <span className="tf-character-count">
 
-                                    rows={4}
+                                    {
+                                        formData
+                                            .description
+                                            .length
+                                    }
 
-                                    name="description"
+                                    / 500
 
-                                    placeholder="Enter tag description"
+                                </span>
 
-                                    value={formData.description}
 
-                                    onChange={handleChange}
+                            </div>
 
-                                />
 
-                            </Form.Group>
+                            <textarea
 
-                        </Col>
+                                id="tag-description"
 
-                    </Row>
+                                rows="5"
 
-                </Modal.Body>
+                                maxLength="500"
 
-                <Modal.Footer>
+                                name="description"
 
-                    <Button
+                                className="tf-textarea"
 
-                        variant="secondary"
+                                placeholder="Describe when this tag should be used..."
 
-                        onClick={onHide}
+                                value={
+                                    formData.description
+                                }
+
+                                onChange={
+                                    handleChange
+                                }
+
+                                disabled={
+                                    submitting
+                                }
+
+                            />
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    {/* INFORMATION PANEL */}
+
+                    <div className="tf-info-panel">
+
+
+                        <div className="tf-info-icon">
+
+                            <FaTags />
+
+                        </div>
+
+
+                        <div>
+
+
+                            <strong>
+
+                                Keep your tags meaningful
+
+                            </strong>
+
+
+                            <p>
+
+                                Reusable tags help connect
+                                products across categories
+                                and make catalogue organization
+                                more flexible.
+
+                            </p>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                {/* FOOTER */}
+
+                <div className="tf-footer">
+
+
+                    <button
+
+                        type="button"
+
+                        className="tf-btn tf-btn-cancel"
+
+                        onClick={
+                            handleClose
+                        }
+
+                        disabled={
+                            submitting
+                        }
 
                     >
 
                         Cancel
 
-                    </Button>
+                    </button>
 
-                    {
 
-                        tag
+                    <button
 
-                            ?
+                        type="submit"
 
-                        <Button
+                        className="tf-btn tf-btn-primary"
 
-                            variant="dark"
+                        disabled={
 
-                            onClick={handleUpdate}
+                            submitting
 
-                        >
+                            ||
 
-                            Update Tag
-
-                        </Button>
-
-                            :
-
-                        <Button
-
-                            variant="dark"
-
-                            type="submit"
-
-                        >
-                            Create Tag
-
-                        </Button>
+                            !formData.name.trim()
 
                         }
 
-                </Modal.Footer>
+                    >
+
+
+                        {
+
+                            submitting
+
+                                ?
+
+                                <>
+
+                                    <span className="tf-spinner" />
+
+
+                                    {
+
+                                        tag
+
+                                            ?
+
+                                            "Updating..."
+
+                                            :
+
+                                            "Creating..."
+
+                                    }
+
+
+                                </>
+
+                                :
+
+                                <>
+
+
+                                    <FaCheck />
+
+
+                                    {
+
+                                        tag
+
+                                            ?
+
+                                            "Save Changes"
+
+                                            :
+
+                                            "Create Tag"
+
+                                    }
+
+
+                                </>
+
+                        }
+
+
+                    </button>
+
+
+                </div>
+
 
             </Form>
+
 
         </Modal>
 
     );
 
 }
+
 
 export default TagForm;

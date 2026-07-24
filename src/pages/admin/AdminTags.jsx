@@ -1,26 +1,83 @@
-import { useEffect, useState } from "react";
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
-import { FaPlus } from "react-icons/fa";
+import {
+    useEffect,
+    useState,
+    useMemo
+}
+    from "react";
 
-import TagForm from "../../components/TagForm";
-import TagTable from "../../components/TagTable";
+import {
+    FaPlus,
+    FaTags,
+    FaCheck,
+    FaTriangleExclamation,
+    FaXmark,
+}
+    from "react-icons/fa6";
+
+import {
+    FaSearch
+}
+    from "react-icons/fa";
+
+import TagForm
+    from "../../components/TagForm";
+
+import TagTable
+    from "../../components/TagTable";
 
 import {
     createTag,
     getAllTags,
     updateTag,
     deleteTag
-} from "../../services/tagsService";
+}
+    from "../../services/tagsService";
+
+import "../../css/admin/AdminTags.css";
+
 
 function AdminTags() {
 
-    const [tags, setTags] = useState([]);
+    const [
+        tags,
+        setTags
+    ] = useState([]);
 
-    const [showModal, setShowModal] = useState(false);
 
-    const [selectedTag, setSelectedTag] = useState(null);
+    const [
+        showModal,
+        setShowModal
+    ] = useState(false);
 
-    const [loading, setLoading] = useState(true);
+
+    const [
+        selectedTag,
+        setSelectedTag
+    ] = useState(null);
+
+
+    const [
+        loading,
+        setLoading
+    ] = useState(true);
+
+
+    const [
+        deletingId,
+        setDeletingId
+    ] = useState(null);
+
+
+    const [
+        notification,
+        setNotification
+    ] = useState(null);
+
+    const [
+        searchTerm,
+        setSearchTerm
+    ] = useState("");
+
 
     useEffect(() => {
 
@@ -28,170 +85,875 @@ function AdminTags() {
 
     }, []);
 
-    const fetchTags = async () => {
 
-        try{
-            const response = await getAllTags();
+    useEffect(() => {
 
-            setTags(response.data.data);
+        if (!notification) {
+
+            return;
 
         }
-        catch(error) {
-            console.log(error);
-        }
+
+
+        const timer =
+            setTimeout(
+                () => {
+
+                    setNotification(
+                        null
+                    );
+
+                },
+                4000
+            );
+
+
+        return () =>
+            clearTimeout(
+                timer
+            );
+
+    }, [notification]);
+
+
+    const showNotification = (
+        type,
+        message
+    ) => {
+
+        setNotification({
+
+            type,
+
+            message
+
+        });
 
     };
 
-    const handleAdd = () => {
 
-        setSelectedTag(null);
+    const fetchTags =
+        async () => {
 
-        setShowModal(true);
+            try {
 
-    };
+                setLoading(
+                    true
+                );
 
-    const handleEdit = (tag) => {
 
-        setSelectedTag(tag);
+                const response =
+                    await getAllTags();
 
-        setShowModal(true);
 
-    };
+                setTags(
 
-    const handleDelete = async (id) => {
+                    response.data?.data
 
-        try{
+                    ||
 
-            const response = await deleteTag(id);
+                    []
 
-            alert(response.data.message);
+                );
 
-            fetchTags();
+            }
+            catch (error) {
 
-        }
-        catch(error) {
-            console.log(error);
-        }
+                console.error(
+                    error
+                );
 
-    };
 
-    const handleSave = async (formData) => {
+                showNotification(
 
-        try{
+                    "error",
 
-            const response = await createTag(formData);
+                    "Unable to load tags."
 
-            alert(response.data.message);
+                );
 
-            fetchTags();
+            }
+            finally {
 
-        }
-        catch(error) {
-            console.log(error);
-        }
+                setLoading(
+                    false
+                );
 
-    };
+            }
 
-    const handleUpdate = async (formData) => {
+        };
 
-        try{
 
-            const response = await updateTag(formData);
+    const handleAdd =
+        () => {
 
-            alert(response.data.message);
+            setSelectedTag(
+                null
+            );
 
-            fetchTags();
-        }
-        catch(error){
-            console.log(error);
-        }
-    };
+            setShowModal(
+                true
+            );
+
+        };
+
+
+    const handleEdit =
+        tag => {
+
+            setSelectedTag(
+                tag
+            );
+
+            setShowModal(
+                true
+            );
+
+        };
+
+
+    const handleCloseModal =
+        () => {
+
+            setShowModal(
+                false
+            );
+
+            setSelectedTag(
+                null
+            );
+
+        };
+
+
+    const handleDelete =
+        async id => {
+
+            const confirmed =
+                window.confirm(
+
+                    "Are you sure you want to delete this tag?"
+
+                );
+
+
+            if (!confirmed) {
+
+                return;
+
+            }
+
+
+            try {
+
+                setDeletingId(
+                    id
+                );
+
+
+                const response =
+                    await deleteTag(
+                        id
+                    );
+
+
+                showNotification(
+
+                    "success",
+
+                    response.data?.message
+
+                    ||
+
+                    "Tag deleted successfully."
+
+                );
+
+
+                await fetchTags();
+
+            }
+            catch (error) {
+
+                console.error(
+                    error
+                );
+
+
+                showNotification(
+
+                    "error",
+
+                    error.response?.data?.message
+
+                    ||
+
+                    "Unable to delete tag."
+
+                );
+
+            }
+            finally {
+
+                setDeletingId(
+                    null
+                );
+
+            }
+
+        };
+
+
+    const handleSave =
+        async formData => {
+
+            try {
+
+                const response =
+                    await createTag(
+                        formData
+                    );
+
+
+                showNotification(
+
+                    "success",
+
+                    response.data?.message
+
+                    ||
+
+                    "Tag created successfully."
+
+                );
+
+
+                await fetchTags();
+
+
+                handleCloseModal();
+
+            }
+            catch (error) {
+
+                console.error(
+                    error
+                );
+
+
+                showNotification(
+
+                    "error",
+
+                    error.response?.data?.message
+
+                    ||
+
+                    "Unable to create tag."
+
+                );
+
+
+                throw error;
+
+            }
+
+        };
+
+
+    const handleUpdate =
+        async formData => {
+
+            try {
+
+                const response =
+                    await updateTag(
+                        formData
+                    );
+
+
+                showNotification(
+
+                    "success",
+
+                    response.data?.message
+
+                    ||
+
+                    "Tag updated successfully."
+
+                );
+
+
+                await fetchTags();
+
+
+                handleCloseModal();
+
+            }
+            catch (error) {
+
+                console.error(
+                    error
+                );
+
+
+                showNotification(
+
+                    "error",
+
+                    error.response?.data?.message
+
+                    ||
+
+                    "Unable to update tag."
+
+                );
+
+
+                throw error;
+
+            }
+
+        };
+
+    const filteredTags =
+        useMemo(() => {
+
+            const search =
+                searchTerm
+                    .trim()
+                    .toLowerCase();
+
+
+            if (!search) {
+
+                return tags;
+
+            }
+
+
+            return tags.filter(
+
+                tag => {
+
+                    const name =
+                        tag.name
+                            ?.toLowerCase()
+                        || "";
+
+
+                    const description =
+                        tag.description
+                            ?.toLowerCase()
+                        || "";
+
+
+                    return (
+
+                        name.includes(
+                            search
+                        )
+
+                        ||
+
+                        description.includes(
+                            search
+                        )
+
+                    );
+
+                }
+
+            );
+
+        }, [
+            tags,
+            searchTerm
+        ]);
+
 
     return (
 
-        <>
-            <Container fluid>
+        <div className="atm-page">
 
-                <Row className="mb-4 align-items-center">
 
-                    <Col>
+            {/* PAGE HEADER */}
 
-                        <h2 className="fw-bold">
+            <div className="atm-header">
 
-                            Tags Management
+
+                <div className="atm-header-content">
+
+
+                    <span className="atm-eyebrow">
+
+                        CATALOG MANAGEMENT
+
+                    </span>
+
+
+                    <h1>
+
+                        Tag Management
+
+                    </h1>
+
+
+                    <p>
+
+                        Create and manage reusable product
+                        tags to improve catalog organization
+                        and product discovery.
+
+                    </p>
+
+
+                </div>
+
+
+                <div className="atm-header-actions">
+
+
+                    <div className="atm-tag-count">
+
+
+                        <div className="atm-count-icon">
+
+                            <FaTags />
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+
+                                {tags.length}
+
+                            </strong>
+
+
+                            <span>
+
+                                Total Tags
+
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <button
+
+                        type="button"
+
+                        className="atm-add-button"
+
+                        onClick={
+                            handleAdd
+                        }
+
+                    >
+
+                        <FaPlus />
+
+                        Add Tag
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            {/* NOTIFICATION */}
+
+            {
+
+                notification
+
+                &&
+
+                <div
+
+                    className={
+
+                        notification.type ===
+                            "success"
+
+                            ?
+
+                            "atm-notification atm-notification-success"
+
+                            :
+
+                            "atm-notification atm-notification-error"
+
+                    }
+
+                >
+
+
+                    <div className="atm-notification-icon">
+
+
+                        {
+
+                            notification.type ===
+                                "success"
+
+                                ?
+
+                                <FaCheck />
+
+                                :
+
+                                <FaTriangleExclamation />
+
+                        }
+
+
+                    </div>
+
+
+                    <span>
+
+                        {
+                            notification.message
+                        }
+
+                    </span>
+
+
+                    <button
+
+                        type="button"
+
+                        onClick={
+                            () =>
+                                setNotification(
+                                    null
+                                )
+                        }
+
+                    >
+
+                        <FaXmark />
+
+                    </button>
+
+
+                </div>
+
+            }
+
+
+
+            {/* TAG CONTENT */}
+
+            <section className="atm-content-card">
+
+
+                <div className="atm-card-header">
+
+
+                    <div>
+
+
+                        <h2>
+
+                            Tag Directory
 
                         </h2>
 
-                        <p className="text-muted mb-0">
 
-                            Manage product Tags.
+                        <p>
+
+                            View and manage reusable labels
+                            available across your product catalog.
 
                         </p>
 
-                    </Col>
 
-                    <Col
-                        xs="auto"
-                    >
+                    </div>
 
-                        <Button
-                            variant="dark"
-                            onClick={handleAdd}
-                        >
 
-                            <FaPlus className="me-2" />
+                    <span className="atm-directory-count">
 
-                            Add Tag
+                        {tags.length}
 
-                        </Button>
+                        {" "}
 
-                    </Col>
+                        {
+                            tags.length === 1
 
-                </Row>
+                                ? "tag"
 
-                <Card
-                    className="shadow-sm border-0 rounded-4"
-                >
+                                : "tags"
+                        }
 
-                    <Card.Body>
+                    </span>
 
-                        <TagTable
 
-                            tags={tags}
+                </div>
 
-                            loading={loading}
+                {/* QUICK SEARCH */}
 
-                            onEdit={handleEdit}
+                <div className="atm-search-section">
 
-                            onDelete={handleDelete}
+
+                    <div className="atm-search-wrapper">
+
+
+                        <FaSearch className="atm-search-icon" />
+
+
+                        <input
+
+                            type="text"
+
+                            className="atm-search-input"
+
+                            placeholder="Quick search by tag name or description..."
+
+                            value={
+                                searchTerm
+                            }
+
+                            onChange={
+                                e =>
+                                    setSearchTerm(
+                                        e.target.value
+                                    )
+                            }
 
                         />
 
-                    </Card.Body>
 
-                </Card>
+                        {
 
-            </Container>
+                            searchTerm
+
+                            &&
+
+                            <button
+
+                                type="button"
+
+                                className="atm-search-clear"
+
+                                onClick={
+                                    () =>
+                                        setSearchTerm("")
+                                }
+
+                                aria-label="Clear search"
+
+                            >
+
+                                <FaXmark />
+
+                            </button>
+
+                        }
+
+
+                    </div>
+
+
+                    <div className="atm-search-result">
+
+
+                        {
+
+                            searchTerm
+
+                                ?
+
+                                <>
+
+                                    <strong>
+
+                                        {
+                                            filteredTags.length
+                                        }
+
+                                    </strong>
+
+                                    {" "}
+
+                                    {
+                                        filteredTags.length === 1
+
+                                            ? "result"
+
+                                            : "results"
+                                    }
+
+                                </>
+
+                                :
+
+                                <span>
+
+                                    Search directory
+
+                                </span>
+
+                        }
+
+
+                    </div>
+
+
+                </div>
+
+
+                <div className="atm-table-container">
+
+
+                    {
+
+                        loading
+
+                            ?
+
+                            <div className="atm-loading-table">
+
+
+                                {
+
+                                    Array.from({
+
+                                        length: 6
+
+                                    }).map(
+
+                                        (_, index) => (
+
+                                            <div
+
+                                                className="atm-skeleton-row"
+
+                                                key={
+                                                    index
+                                                }
+
+                                            >
+
+
+                                                <div className="atm-skeleton-number" />
+
+
+                                                <div className="atm-skeleton-tag">
+
+
+                                                    <div className="atm-skeleton-icon" />
+
+
+                                                    <div className="atm-skeleton-text atm-skeleton-name" />
+
+
+                                                </div>
+
+
+                                                <div className="atm-skeleton-text atm-skeleton-description" />
+
+
+                                                <div className="atm-skeleton-status" />
+
+
+                                                <div className="atm-skeleton-actions" />
+
+
+                                            </div>
+
+                                        )
+
+                                    )
+
+                                }
+
+
+                            </div>
+
+                            :
+
+                            <TagTable
+       
+                                tags={filteredTags}
+
+                                onEdit={
+                                    handleEdit
+                                }
+
+                                searchTerm={
+                                    searchTerm
+                                }
+
+                                onClearSearch={
+                                    () =>
+                                        setSearchTerm("")
+                                }
+
+                                onDelete={
+                                    handleDelete
+                                }
+
+                                deletingId={
+                                    deletingId
+                                }
+
+                            />
+
+                    }
+
+
+                </div>
+
+
+            </section>
+
+
+
+            {/* TAG MODAL */}
 
             <TagForm
 
-                show={showModal}
+                show={
+                    showModal
+                }
 
-                onHide={() => setShowModal(false)}
+                onHide={
+                    handleCloseModal
+                }
 
-                tag={selectedTag}
+                tag={
+                    selectedTag
+                }
 
-                tags={tags}
+                onSave={
+                    handleSave
+                }
 
-                onSave={handleSave}
-
-                onEdit={handleUpdate}
+                onEdit={
+                    handleUpdate
+                }
 
             />
-        </>
+
+
+        </div>
 
     );
 
 }
+
 
 export default AdminTags;

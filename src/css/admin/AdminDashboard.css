@@ -1,0 +1,1271 @@
+/* =========================================================
+   ADMIN DASHBOARD
+   ========================================================= */
+
+.adb-page {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.adb-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 25px;
+
+    margin-bottom: 25px;
+}
+
+
+.adb-eyebrow {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #9ca3ad;
+
+    font-size: 7px;
+    font-weight: 850;
+
+    letter-spacing: 1.5px;
+}
+
+
+.adb-header h1 {
+    margin: 0 0 6px;
+
+    color: #222934;
+
+    font-size: 25px;
+    font-weight: 850;
+
+    letter-spacing: -0.8px;
+}
+
+
+.adb-header p {
+    max-width: 560px;
+
+    margin: 0;
+
+    color: #8d949e;
+
+    font-size: 10px;
+
+    line-height: 1.6;
+}
+
+
+.adb-refresh-button {
+    min-height: 42px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 0 16px;
+
+    border: 1px solid #dfe3e7;
+
+    border-radius: 10px;
+
+    background: #ffffff;
+
+    color: #5d6570;
+
+    font-size: 8px;
+    font-weight: 750;
+
+    box-shadow:
+        0 5px 16px
+        rgba(15, 23, 42, 0.04);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.adb-refresh-button:hover:not(:disabled) {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(15, 23, 42, 0.07);
+}
+
+
+.adb-refresh-button:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+}
+
+
+.adb-refresh-spinning {
+    animation:
+        adb-spin
+        0.8s
+        linear
+        infinite;
+}
+
+
+/* =========================================================
+   NOTIFICATION
+   ========================================================= */
+
+.adb-notification {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 20px;
+
+    padding: 12px 14px;
+
+    border-radius: 11px;
+
+    font-size: 9px;
+    font-weight: 650;
+}
+
+
+.adb-notification-success {
+    border: 1px solid #cbe9da;
+
+    background: #f0faf5;
+
+    color: #267b57;
+}
+
+
+.adb-notification-error {
+    border: 1px solid #f0d0d0;
+
+    background: #fff5f5;
+
+    color: #b94d4d;
+}
+
+
+.adb-notification-icon {
+    width: 25px;
+    height: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 7px;
+
+    background:
+        rgba(255, 255, 255, 0.7);
+}
+
+
+.adb-notification > span {
+    flex: 1;
+}
+
+
+.adb-notification button {
+    border: none;
+
+    background: transparent;
+
+    color: inherit;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   STATISTICS
+   ========================================================= */
+
+.adb-stats-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            minmax(0, 1fr)
+        );
+
+    gap: 15px;
+
+    margin-bottom: 24px;
+}
+
+
+.adb-stat-card {
+    position: relative;
+
+    min-height: 165px;
+
+    overflow: hidden;
+
+    padding: 19px;
+
+    border: 1px solid #e6e9ed;
+
+    border-radius: 16px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 7px 25px
+        rgba(15, 23, 42, 0.035);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.adb-stat-card:hover {
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 13px 30px
+        rgba(15, 23, 42, 0.07);
+}
+
+
+.adb-stat-card::after {
+    content: "";
+
+    position: absolute;
+
+    top: -45px;
+    right: -45px;
+
+    width: 110px;
+    height: 110px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(17, 24, 39, 0.018);
+}
+
+
+.adb-stat-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 16px;
+}
+
+
+.adb-stat-icon {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    font-size: 12px;
+}
+
+
+.adb-stat-products .adb-stat-icon {
+    background: #f0f3fa;
+
+    color: #52658d;
+}
+
+
+.adb-stat-customers .adb-stat-icon {
+    background: #f3f0fa;
+
+    color: #70598d;
+}
+
+
+.adb-stat-orders .adb-stat-icon {
+    background: #fff6e8;
+
+    color: #a16e26;
+}
+
+
+.adb-stat-revenue .adb-stat-icon {
+    background: #edf8f2;
+
+    color: #39805d;
+}
+
+
+.adb-stat-number {
+    color: #d8dce1;
+
+    font-size: 8px;
+    font-weight: 850;
+
+    letter-spacing: 1px;
+}
+
+
+.adb-stat-title {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #9198a2;
+
+    font-size: 8px;
+    font-weight: 700;
+}
+
+
+.adb-stat-value {
+    display: block;
+
+    overflow: hidden;
+
+    color: #262d37;
+
+    font-size: 24px;
+    font-weight: 850;
+
+    letter-spacing: -0.8px;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+.adb-stat-footer {
+    display: flex;
+    align-items: center;
+
+    gap: 5px;
+
+    margin-top: 12px;
+
+    color: #9ba1aa;
+
+    font-size: 7px;
+}
+
+
+.adb-stat-footer svg {
+    color: #69a484;
+
+    font-size: 7px;
+}
+
+
+/* =========================================================
+   MAIN GRID
+   ========================================================= */
+
+.adb-dashboard-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 0.9fr)
+        minmax(0, 1.3fr);
+
+    gap: 18px;
+
+    align-items: start;
+}
+
+
+/* =========================================================
+   PANELS
+   ========================================================= */
+
+.adb-panel {
+    overflow: hidden;
+
+    border: 1px solid #e7eaee;
+
+    border-radius: 17px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 8px 28px
+        rgba(15, 23, 42, 0.035);
+}
+
+
+.adb-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 18px 20px;
+
+    border-bottom: 1px solid #eceef1;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #fbfcfd
+        );
+}
+
+
+.adb-panel-heading {
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+}
+
+
+.adb-panel-icon {
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 9px;
+
+    background: #f2f4f6;
+
+    color: #68717b;
+
+    font-size: 10px;
+}
+
+
+.adb-warning-icon {
+    background: #fff6e8;
+
+    color: #aa762d;
+}
+
+
+.adb-panel-header h2 {
+    margin: 0 0 3px;
+
+    color: #303741;
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+
+.adb-panel-header p {
+    margin: 0;
+
+    color: #9aa1aa;
+
+    font-size: 7px;
+}
+
+
+.adb-count-badge {
+    flex-shrink: 0;
+
+    padding: 5px 8px;
+
+    border: 1px solid #e1e5e9;
+
+    border-radius: 50px;
+
+    background: #f8f9fa;
+
+    color: #8e959f;
+
+    font-size: 7px;
+    font-weight: 750;
+}
+
+
+.adb-warning-count {
+    border-color: #f0dfbd;
+
+    background: #fff9ef;
+
+    color: #a8782f;
+}
+
+
+/* =========================================================
+   TABLES
+   ========================================================= */
+
+.adb-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+
+.adb-table {
+    width: 100%;
+
+    min-width: 480px;
+
+    border-collapse: collapse;
+}
+
+
+.adb-orders-table {
+    min-width: 600px;
+}
+
+
+.adb-table th {
+    padding: 12px 16px;
+
+    border-bottom: 1px solid #e9ecef;
+
+    background: #fafbfc;
+
+    color: #969da7;
+
+    font-size: 6.5px;
+    font-weight: 850;
+
+    letter-spacing: 0.7px;
+
+    text-align: left;
+
+    text-transform: uppercase;
+}
+
+
+.adb-table td {
+    padding: 14px 16px;
+
+    border-bottom: 1px solid #f0f1f3;
+
+    color: #5d6570;
+
+    font-size: 8px;
+
+    vertical-align: middle;
+}
+
+
+.adb-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+.adb-table tbody tr {
+    transition:
+        background 0.2s ease;
+}
+
+
+.adb-table tbody tr:hover {
+    background: #fafbfc;
+}
+
+
+/* =========================================================
+   LOW STOCK
+   ========================================================= */
+
+.adb-product-cell {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+}
+
+
+.adb-product-icon {
+    width: 31px;
+    height: 31px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 8px;
+
+    background: #f3f5f7;
+
+    color: #7d858f;
+
+    font-size: 9px;
+}
+
+
+.adb-product-cell span {
+    color: #414852;
+
+    font-size: 8px;
+    font-weight: 700;
+}
+
+
+.adb-sku {
+    padding: 4px 7px;
+
+    border-radius: 5px;
+
+    background: #f5f6f8;
+
+    color: #737b85;
+
+    font-family: monospace;
+
+    font-size: 7px;
+}
+
+
+.adb-stock-badge {
+    display: inline-flex;
+
+    padding: 5px 7px;
+
+    border-radius: 50px;
+
+    font-size: 7px;
+    font-weight: 800;
+}
+
+
+.adb-stock-critical {
+    background: #fff0f0;
+
+    color: #c65353;
+}
+
+
+.adb-stock-low {
+    background: #fff7e9;
+
+    color: #a8752c;
+}
+
+
+/* =========================================================
+   RECENT ORDERS
+   ========================================================= */
+
+.adb-order-number {
+    color: #3d4652;
+
+    font-size: 8px;
+    font-weight: 800;
+}
+
+
+.adb-customer-cell {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+.adb-customer-avatar {
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 8px;
+
+    background: #f0f2f5;
+
+    color: #68717d;
+
+    font-size: 8px;
+    font-weight: 850;
+}
+
+
+.adb-customer-cell span {
+    color: #505863;
+
+    font-size: 8px;
+    font-weight: 650;
+}
+
+
+.adb-order-amount {
+    color: #353d47;
+
+    font-size: 8px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   ORDER STATUS
+   ========================================================= */
+
+.adb-status {
+    display: inline-flex;
+
+    padding: 5px 8px;
+
+    border-radius: 50px;
+
+    font-size: 6.5px;
+    font-weight: 800;
+
+    white-space: nowrap;
+}
+
+
+.adb-status-delivered {
+    background: #edf8f2;
+
+    color: #39805d;
+}
+
+
+.adb-status-shipped {
+    background: #eef4fa;
+
+    color: #4d7195;
+}
+
+
+.adb-status-processing {
+    background: #f2f0fa;
+
+    color: #715e91;
+}
+
+
+.adb-status-confirmed {
+    background: #eef6f7;
+
+    color: #4b7c82;
+}
+
+
+.adb-status-pending {
+    background: #fff7e9;
+
+    color: #a8752c;
+}
+
+
+.adb-status-cancelled {
+    background: #fff0f0;
+
+    color: #c65353;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.adb-empty-state {
+    padding: 55px 20px;
+
+    text-align: center;
+}
+
+
+.adb-empty-icon {
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 12px;
+
+    border: 1px solid #e2e5e9;
+
+    border-radius: 14px;
+
+    background: #f7f9fa;
+
+    color: #949ba5;
+
+    font-size: 15px;
+}
+
+
+.adb-stock-safe {
+    border-color: #d9ebe2;
+
+    background: #f1faf5;
+
+    color: #5a9676;
+}
+
+
+.adb-empty-state h3 {
+    margin: 0 0 5px;
+
+    color: #303741;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+
+.adb-empty-state p {
+    max-width: 300px;
+
+    margin: auto;
+
+    color: #9aa1aa;
+
+    font-size: 7px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   SKELETONS
+   ========================================================= */
+
+.adb-stat-skeleton-top {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 25px;
+}
+
+
+.adb-skeleton-icon,
+.adb-skeleton-small,
+.adb-skeleton-value,
+.adb-skeleton-description,
+.adb-skeleton-product,
+.adb-skeleton-sku,
+.adb-skeleton-stock,
+.adb-skeleton-order,
+.adb-skeleton-customer,
+.adb-skeleton-amount,
+.adb-skeleton-order-status {
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 6px;
+
+    background: #edf0f3;
+}
+
+
+.adb-skeleton-icon {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 10px;
+}
+
+
+.adb-skeleton-small {
+    width: 20px;
+    height: 7px;
+}
+
+
+.adb-skeleton-value {
+    width: 80px;
+    height: 24px;
+
+    margin-bottom: 13px;
+}
+
+
+.adb-skeleton-description {
+    width: 70%;
+    height: 7px;
+}
+
+
+.adb-table-loading {
+    padding: 3px 16px;
+}
+
+
+.adb-table-skeleton {
+    min-height: 59px;
+
+    display: grid;
+
+    grid-template-columns:
+        1.5fr
+        1fr
+        70px;
+
+    align-items: center;
+
+    gap: 15px;
+
+    border-bottom: 1px solid #f0f1f3;
+}
+
+
+.adb-order-skeleton {
+    min-height: 59px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1.4fr
+        1fr
+        90px;
+
+    align-items: center;
+
+    gap: 15px;
+
+    border-bottom: 1px solid #f0f1f3;
+}
+
+
+.adb-skeleton-product {
+    width: 120px;
+    height: 10px;
+}
+
+
+.adb-skeleton-sku {
+    width: 70px;
+    height: 9px;
+}
+
+
+.adb-skeleton-stock {
+    width: 45px;
+    height: 20px;
+
+    border-radius: 50px;
+}
+
+
+.adb-skeleton-order {
+    width: 80px;
+    height: 9px;
+}
+
+
+.adb-skeleton-customer {
+    width: 100px;
+    height: 9px;
+}
+
+
+.adb-skeleton-amount {
+    width: 65px;
+    height: 9px;
+}
+
+
+.adb-skeleton-order-status {
+    width: 70px;
+    height: 20px;
+
+    border-radius: 50px;
+}
+
+
+.adb-skeleton-icon::after,
+.adb-skeleton-small::after,
+.adb-skeleton-value::after,
+.adb-skeleton-description::after,
+.adb-skeleton-product::after,
+.adb-skeleton-sku::after,
+.adb-skeleton-stock::after,
+.adb-skeleton-order::after,
+.adb-skeleton-customer::after,
+.adb-skeleton-amount::after,
+.adb-skeleton-order-status::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    transform:
+        translateX(-100%);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.75),
+            transparent
+        );
+
+    animation:
+        adb-shimmer
+        1.5s
+        infinite;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes adb-shimmer {
+
+    100% {
+        transform:
+            translateX(100%);
+    }
+
+}
+
+
+@keyframes adb-spin {
+
+    to {
+        transform:
+            rotate(360deg);
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1150px) {
+
+    .adb-stats-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+    }
+
+
+    .adb-dashboard-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .adb-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .adb-refresh-button {
+        width: 100%;
+    }
+
+
+    .adb-stats-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .adb-stat-card {
+        min-height: 150px;
+    }
+
+
+    .adb-panel-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+}
+
+
+@media (
+    prefers-reduced-motion:
+    reduce
+) {
+
+    .adb-refresh-spinning,
+    .adb-skeleton-icon::after,
+    .adb-skeleton-small::after,
+    .adb-skeleton-value::after,
+    .adb-skeleton-description::after,
+    .adb-skeleton-product::after,
+    .adb-skeleton-sku::after,
+    .adb-skeleton-stock::after,
+    .adb-skeleton-order::after,
+    .adb-skeleton-customer::after,
+    .adb-skeleton-amount::after,
+    .adb-skeleton-order-status::after {
+        animation: none;
+    }
+
+}
+
+/* =========================================================
+   TYPOGRAPHY READABILITY UPGRADE
+   ========================================================= */
+
+/* HEADER */
+
+.adb-eyebrow {
+    font-size: 10px;
+}
+
+.adb-header h1 {
+    font-size: 30px;
+}
+
+.adb-header p {
+    font-size: 14px;
+}
+
+.adb-refresh-button {
+    font-size: 13px;
+}
+
+
+/* NOTIFICATION */
+
+.adb-notification {
+    font-size: 13px;
+}
+
+
+/* STAT CARDS */
+
+.adb-stat-number {
+    font-size: 11px;
+}
+
+.adb-stat-title {
+    font-size: 13px;
+}
+
+.adb-stat-value {
+    font-size: 28px;
+}
+
+.adb-stat-footer {
+    font-size: 11px;
+}
+
+.adb-stat-footer svg {
+    font-size: 10px;
+}
+
+
+/* PANEL HEADERS */
+
+.adb-panel-header h2 {
+    font-size: 17px;
+}
+
+.adb-panel-header p {
+    font-size: 12px;
+}
+
+.adb-count-badge {
+    font-size: 11px;
+}
+
+
+/* TABLE */
+
+.adb-table th {
+    font-size: 10px;
+}
+
+.adb-table td {
+    font-size: 13px;
+}
+
+
+/* LOW STOCK PRODUCTS */
+
+.adb-product-cell span {
+    font-size: 13px;
+}
+
+.adb-sku {
+    font-size: 11px;
+}
+
+.adb-stock-badge {
+    font-size: 11px;
+}
+
+
+/* RECENT ORDERS */
+
+.adb-order-number {
+    font-size: 13px;
+}
+
+.adb-customer-avatar {
+    font-size: 11px;
+}
+
+.adb-customer-cell span {
+    font-size: 13px;
+}
+
+.adb-order-amount {
+    font-size: 13px;
+}
+
+
+/* ORDER STATUS */
+
+.adb-status {
+    font-size: 10px;
+}
+
+
+/* EMPTY STATE */
+
+.adb-empty-state h3 {
+    font-size: 17px;
+}
+
+.adb-empty-state p {
+    font-size: 12px;
+}
+

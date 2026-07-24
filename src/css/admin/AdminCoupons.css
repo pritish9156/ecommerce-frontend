@@ -1,0 +1,1393 @@
+.aco-page {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+
+/* HEADER */
+
+.aco-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 25px;
+
+    margin-bottom: 25px;
+}
+
+
+.aco-eyebrow {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #9ca3ad;
+
+    font-size: 7px;
+    font-weight: 850;
+
+    letter-spacing: 1.5px;
+}
+
+
+.aco-header h1 {
+    margin: 0 0 6px;
+
+    color: #222934;
+
+    font-size: 25px;
+    font-weight: 850;
+
+    letter-spacing: -0.8px;
+}
+
+
+.aco-header p {
+    max-width: 520px;
+
+    margin: 0;
+
+    color: #8d949e;
+
+    font-size: 10px;
+
+    line-height: 1.6;
+}
+
+
+.aco-coupon-count {
+    min-width: 145px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 10px 14px;
+
+    border: 1px solid #e4e7eb;
+
+    border-radius: 13px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 5px 18px
+        rgba(15, 23, 42, 0.04);
+}
+
+
+.aco-count-icon {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background: #f2f4f6;
+
+    color: #606874;
+
+    font-size: 11px;
+}
+
+
+.aco-coupon-count > div:last-child {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.aco-coupon-count strong {
+    color: #252c36;
+
+    font-size: 16px;
+    font-weight: 850;
+}
+
+
+.aco-coupon-count span {
+    color: #9aa1ab;
+
+    font-size: 7px;
+    font-weight: 700;
+}
+
+
+/* NOTIFICATION */
+
+.aco-notification {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 20px;
+
+    padding: 12px 14px;
+
+    border-radius: 11px;
+
+    font-size: 9px;
+    font-weight: 650;
+}
+
+
+.aco-notification-success {
+    border: 1px solid #cbe9da;
+
+    background: #f0faf5;
+
+    color: #267b57;
+}
+
+
+.aco-notification-error {
+    border: 1px solid #f0d0d0;
+
+    background: #fff5f5;
+
+    color: #b94d4d;
+}
+
+
+.aco-notification-icon {
+    width: 25px;
+    height: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 7px;
+
+    background:
+        rgba(255, 255, 255, 0.7);
+}
+
+
+.aco-notification > span {
+    flex: 1;
+}
+
+
+.aco-notification button {
+    border: none;
+
+    background: transparent;
+
+    color: inherit;
+
+    cursor: pointer;
+}
+
+
+/* CARDS */
+
+.aco-form-card,
+.aco-table-card {
+    overflow: hidden;
+
+    border: 1px solid #e7eaee;
+
+    border-radius: 18px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 8px 30px
+        rgba(15, 23, 42, 0.04);
+}
+
+
+.aco-form-card {
+    margin-bottom: 25px;
+}
+
+
+/* SECTION HEADER */
+
+.aco-section-header,
+.aco-table-header {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 20px 23px;
+
+    border-bottom: 1px solid #eceef1;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #fbfcfd
+        );
+}
+
+
+.aco-section-icon {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border: 1px solid #e1e5e9;
+
+    border-radius: 10px;
+
+    background: #f6f8fa;
+
+    color: #4b535e;
+
+    font-size: 11px;
+}
+
+
+.aco-section-header h2,
+.aco-table-header h2 {
+    margin: 0 0 3px;
+
+    color: #303741;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+
+.aco-section-header p,
+.aco-table-header p {
+    margin: 0;
+
+    color: #9aa1aa;
+
+    font-size: 8px;
+}
+
+
+/* FORM */
+
+.aco-form {
+    padding: 24px;
+}
+
+
+.aco-form-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(0, 1fr)
+        );
+
+    gap: 19px 16px;
+}
+
+
+.aco-field label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #505762;
+
+    font-size: 9px;
+    font-weight: 750;
+}
+
+
+.aco-field label span {
+    margin-left: 3px;
+
+    color: #d85656;
+}
+
+
+.aco-input-wrapper {
+    position: relative;
+}
+
+
+.aco-input-wrapper svg {
+    position: absolute;
+
+    top: 50%;
+    left: 14px;
+
+    z-index: 1;
+
+    transform:
+        translateY(-50%);
+
+    color: #9ba2ac;
+
+    font-size: 10px;
+
+    pointer-events: none;
+}
+
+
+.aco-input-wrapper input,
+.aco-input-wrapper select,
+.aco-field textarea {
+    width: 100%;
+
+    border: 1px solid #e0e4e8;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    background: #fafbfc;
+
+    color: #303741;
+
+    font-family: inherit;
+
+    font-size: 10px;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.aco-input-wrapper input,
+.aco-input-wrapper select {
+    height: 44px;
+
+    padding:
+        0
+        14px
+        0
+        39px;
+}
+
+
+.aco-input-wrapper select {
+    cursor: pointer;
+}
+
+
+.aco-field textarea {
+    min-height: 44px;
+    height: 44px;
+
+    padding:
+        13px
+        14px;
+
+    resize: vertical;
+}
+
+
+.aco-input-wrapper input:focus,
+.aco-input-wrapper select:focus,
+.aco-field textarea:focus {
+    border-color: #aeb4bc;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(17, 24, 39, 0.04);
+}
+
+
+/* ACTIONS */
+
+.aco-form-actions {
+    display: flex;
+    justify-content: flex-end;
+
+    gap: 9px;
+
+    margin-top: 22px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #eef0f2;
+}
+
+
+.aco-cancel-button,
+.aco-submit-button {
+    min-height: 40px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    padding: 0 17px;
+
+    border-radius: 9px;
+
+    font-size: 9px;
+    font-weight: 750;
+
+    cursor: pointer;
+}
+
+
+.aco-cancel-button {
+    border: 1px solid #dfe3e7;
+
+    background: #ffffff;
+
+    color: #68707b;
+}
+
+
+.aco-submit-button {
+    min-width: 130px;
+
+    border: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            #111827,
+            #2c3543
+        );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 6px 15px
+        rgba(17, 24, 39, 0.14);
+}
+
+
+.aco-submit-button:disabled {
+    opacity: 0.65;
+
+    cursor: not-allowed;
+}
+
+
+/* TABLE HEADER */
+
+.aco-table-header {
+    justify-content: space-between;
+}
+
+
+.aco-table-header > span {
+    padding: 5px 9px;
+
+    border: 1px solid #e1e5e9;
+
+    border-radius: 50px;
+
+    background: #f8f9fa;
+
+    color: #8e959f;
+
+    font-size: 7px;
+    font-weight: 750;
+}
+
+
+/* TABLE */
+
+.aco-table-wrapper {
+    overflow-x: auto;
+}
+
+
+.aco-table {
+    width: 100%;
+
+    min-width: 750px;
+
+    border-collapse: collapse;
+}
+
+
+.aco-table th {
+    padding: 13px 18px;
+
+    border-bottom: 1px solid #e9ecef;
+
+    background: #fafbfc;
+
+    color: #969da7;
+
+    font-size: 7px;
+    font-weight: 850;
+
+    letter-spacing: 0.7px;
+
+    text-align: left;
+
+    text-transform: uppercase;
+}
+
+
+.aco-table td {
+    padding: 15px 18px;
+
+    border-bottom: 1px solid #f0f1f3;
+
+    color: #5d6570;
+
+    font-size: 9px;
+
+    vertical-align: middle;
+}
+
+
+.aco-table tbody tr {
+    transition:
+        background 0.2s ease;
+}
+
+
+.aco-table tbody tr:hover {
+    background: #fafbfc;
+}
+
+
+/* COUPON INFORMATION */
+
+.aco-coupon-info {
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+}
+
+
+.aco-ticket-icon {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border: 1px solid #e3e6e9;
+
+    border-radius: 10px;
+
+    background: #f6f8fa;
+
+    color: #68717c;
+
+    font-size: 11px;
+}
+
+
+.aco-coupon-info > div:last-child {
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+
+.aco-coupon-info strong {
+    color: #303741;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 0.4px;
+}
+
+
+.aco-coupon-info span {
+    max-width: 260px;
+
+    overflow: hidden;
+
+    color: #9ca2ab;
+
+    font-size: 7px;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+/* BADGES */
+
+.aco-discount-badge {
+    display: inline-flex;
+
+    padding: 5px 8px;
+
+    border-radius: 50px;
+
+    font-size: 7px;
+    font-weight: 800;
+}
+
+
+.aco-percentage {
+    background: #edf8f2;
+
+    color: #39805d;
+}
+
+
+.aco-fixed {
+    background: #f0f3fa;
+
+    color: #52658d;
+}
+
+
+.aco-money {
+    color: #4d5560;
+
+    font-weight: 700;
+}
+
+
+.aco-usage {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 6px;
+
+    color: #626a75;
+}
+
+
+.aco-usage svg {
+    color: #a1a7af;
+
+    font-size: 8px;
+}
+
+
+/* TABLE ACTIONS */
+
+.aco-actions {
+    display: flex;
+
+    gap: 7px;
+}
+
+
+.aco-action-button {
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    font-size: 9px;
+
+    cursor: pointer;
+}
+
+
+.aco-edit-button {
+    border: 1px solid #dfe3e7;
+
+    color: #555e69;
+}
+
+
+.aco-edit-button:hover {
+    background: #f4f6f8;
+
+    color: #171d25;
+}
+
+
+.aco-delete-button {
+    border: 1px solid #efd5d5;
+
+    color: #c75d5d;
+}
+
+
+.aco-delete-button:hover {
+    background: #fff4f4;
+
+    color: #b63d3d;
+}
+
+
+/* EMPTY STATE */
+
+.aco-empty-state {
+    padding: 65px 20px;
+
+    text-align: center;
+}
+
+
+.aco-empty-icon {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 14px;
+
+    border: 1px solid #e2e5e9;
+
+    border-radius: 15px;
+
+    background: #f7f9fa;
+
+    color: #949ba5;
+
+    font-size: 18px;
+}
+
+
+.aco-empty-state h3 {
+    margin-bottom: 6px;
+
+    color: #303741;
+
+    font-size: 13px;
+}
+
+
+.aco-empty-state p {
+    max-width: 350px;
+
+    margin: auto;
+
+    color: #9aa1aa;
+
+    font-size: 8px;
+
+    line-height: 1.6;
+}
+
+
+/* LOADING */
+
+.aco-loading {
+    padding: 5px 18px;
+}
+
+
+.aco-skeleton-row {
+    min-height: 70px;
+
+    display: grid;
+
+    grid-template-columns:
+        1.5fr
+        130px
+        130px
+        100px
+        80px;
+
+    align-items: center;
+
+    gap: 15px;
+
+    border-bottom: 1px solid #f0f1f3;
+}
+
+
+.aco-skeleton-code,
+.aco-skeleton-line,
+.aco-skeleton-actions {
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 7px;
+
+    background: #edf0f3;
+}
+
+
+.aco-skeleton-code {
+    width: 150px;
+    height: 38px;
+}
+
+
+.aco-skeleton-line {
+    width: 80px;
+    height: 9px;
+}
+
+
+.aco-skeleton-actions {
+    width: 70px;
+    height: 30px;
+}
+
+
+.aco-skeleton-code::after,
+.aco-skeleton-line::after,
+.aco-skeleton-actions::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    transform:
+        translateX(-100%);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.75),
+            transparent
+        );
+
+    animation:
+        aco-shimmer
+        1.5s
+        infinite;
+}
+
+
+@keyframes aco-shimmer {
+
+    100% {
+        transform:
+            translateX(100%);
+    }
+
+}
+
+
+/* SPINNERS */
+
+.aco-spinner,
+.aco-small-spinner {
+    display: inline-block;
+
+    border-style: solid;
+
+    border-radius: 50%;
+
+    animation:
+        aco-spin
+        0.7s
+        linear
+        infinite;
+}
+
+
+.aco-spinner {
+    width: 12px;
+    height: 12px;
+
+    border-width: 2px;
+
+    border-color:
+        rgba(255, 255, 255, 0.35);
+
+    border-top-color: #ffffff;
+}
+
+
+.aco-small-spinner {
+    width: 11px;
+    height: 11px;
+
+    border-width: 2px;
+
+    border-color: #e4baba;
+
+    border-top-color: #b74747;
+}
+
+
+@keyframes aco-spin {
+
+    to {
+        transform:
+            rotate(360deg);
+    }
+
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+
+    .aco-form-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .aco-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .aco-coupon-count {
+        width: 100%;
+    }
+
+
+    .aco-form-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .aco-form {
+        padding: 18px;
+    }
+
+
+    .aco-section-header,
+    .aco-table-header {
+        padding: 17px 18px;
+    }
+
+
+    .aco-form-actions {
+        flex-direction: column-reverse;
+    }
+
+
+    .aco-cancel-button,
+    .aco-submit-button {
+        width: 100%;
+    }
+
+}
+
+
+@media (
+    prefers-reduced-motion:
+    reduce
+) {
+
+    .aco-skeleton-code::after,
+    .aco-skeleton-line::after,
+    .aco-skeleton-actions::after,
+    .aco-spinner,
+    .aco-small-spinner {
+        animation: none;
+    }
+
+}
+
+/* =========================================================
+   TYPOGRAPHY READABILITY UPGRADE
+   ========================================================= */
+
+.aco-eyebrow {
+    font-size: 10px;
+}
+
+.aco-header h1 {
+    font-size: 30px;
+}
+
+.aco-header p {
+    font-size: 14px;
+}
+
+/* COUNT CARD */
+
+.aco-coupon-count strong {
+    font-size: 20px;
+}
+
+.aco-coupon-count span {
+    font-size: 11px;
+}
+
+/* NOTIFICATION */
+
+.aco-notification {
+    font-size: 13px;
+}
+
+/* SECTION HEADERS */
+
+.aco-section-header h2,
+.aco-table-header h2 {
+    font-size: 17px;
+}
+
+.aco-section-header p,
+.aco-table-header p {
+    font-size: 12px;
+}
+
+/* FORM */
+
+.aco-field label {
+    font-size: 13px;
+}
+
+.aco-input-wrapper input,
+.aco-input-wrapper select,
+.aco-field textarea {
+    font-size: 14px;
+}
+
+.aco-cancel-button,
+.aco-submit-button {
+    font-size: 13px;
+}
+
+/* TABLE HEADER COUNT */
+
+.aco-table-header > span {
+    font-size: 11px;
+}
+
+/* TABLE */
+
+.aco-table th {
+    font-size: 10px;
+}
+
+.aco-table td {
+    font-size: 13px;
+}
+
+/* COUPON DETAILS */
+
+.aco-coupon-info strong {
+    font-size: 14px;
+}
+
+.aco-coupon-info span {
+    font-size: 11px;
+}
+
+.aco-discount-badge {
+    font-size: 11px;
+}
+
+.aco-money {
+    font-size: 13px;
+}
+
+.aco-usage {
+    font-size: 13px;
+}
+
+.aco-usage svg {
+    font-size: 11px;
+}
+
+/* ACTION BUTTONS */
+
+.aco-action-button {
+    font-size: 12px;
+}
+
+/* EMPTY STATE */
+
+.aco-empty-state h3 {
+    font-size: 17px;
+}
+
+.aco-empty-state p {
+    font-size: 12px;
+}
+
+/* =========================================================
+   HEADER ACTIONS
+   ========================================================= */
+
+.aco-header-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    flex-shrink: 0;
+}
+
+
+.aco-add-button {
+    height: 45px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 0 17px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background: #202731;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 750;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.aco-add-button:hover {
+    transform: translateY(-1px);
+
+    background: #111820;
+
+    box-shadow:
+        0 8px 18px
+        rgba(17, 24, 39, 0.15);
+}
+
+
+/* =========================================================
+   QUICK SEARCH
+   ========================================================= */
+
+.aco-search-section {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 14px 22px;
+
+    border-bottom: 1px solid #eceef1;
+
+    background: #fafbfc;
+}
+
+
+.aco-search-wrapper {
+    position: relative;
+
+    flex: 1;
+
+    max-width: 520px;
+
+    display: flex;
+    align-items: center;
+}
+
+
+.aco-search-icon {
+    position: absolute;
+
+    left: 14px;
+
+    color: #969da7;
+
+    font-size: 12px;
+
+    pointer-events: none;
+}
+
+
+.aco-search-input {
+    width: 100%;
+    height: 42px;
+
+    padding:
+        0
+        42px
+        0
+        40px;
+
+    border: 1px solid #dfe3e8;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    background: #ffffff;
+
+    color: #303743;
+
+    font-size: 13px;
+}
+
+
+.aco-search-input::placeholder {
+    color: #a4aab3;
+}
+
+
+.aco-search-input:focus {
+    border-color: #aeb5bf;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(17, 24, 39, 0.04);
+}
+
+
+.aco-search-clear {
+    position: absolute;
+
+    right: 8px;
+
+    width: 27px;
+    height: 27px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #f1f3f5;
+
+    color: #7d8590;
+
+    font-size: 10px;
+
+    cursor: pointer;
+}
+
+
+.aco-search-result {
+    flex-shrink: 0;
+
+    color: #969da7;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+.aco-search-result strong {
+    color: #3d4551;
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   CLEAR SEARCH BUTTON
+   ========================================================= */
+
+.aco-clear-search-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    margin-top: 16px;
+
+    padding: 9px 14px;
+
+    border: 1px solid #dfe3e7;
+
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    color: #555e69;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+.aco-clear-search-button:hover {
+    background: #f4f6f8;
+
+    color: #171d25;
+}
+
+
+@media (max-width: 700px) {
+
+    .aco-header-actions {
+        width: 100%;
+    }
+
+
+    .aco-coupon-count,
+    .aco-add-button {
+        flex: 1;
+    }
+
+
+    .aco-search-section {
+        align-items: stretch;
+        flex-direction: column;
+
+        gap: 8px;
+
+        padding: 13px 16px;
+    }
+
+
+    .aco-search-wrapper {
+        max-width: none;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .aco-header-actions {
+        flex-direction: column;
+    }
+
+
+    .aco-coupon-count,
+    .aco-add-button {
+        width: 100%;
+    }
+
+}

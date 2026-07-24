@@ -1,0 +1,2397 @@
+/* =========================================================
+   ADMIN PRODUCTS
+   ========================================================= */
+
+.apr-page {
+    width: 100%;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.apr-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 24px;
+
+    margin-bottom: 26px;
+}
+
+
+.apr-eyebrow {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #9aa1ab;
+
+    font-size: 10px;
+    font-weight: 850;
+
+    letter-spacing: 1.5px;
+}
+
+
+.apr-header h1 {
+    margin: 0;
+
+    color: #1c2330;
+
+    font-size: 30px;
+    font-weight: 850;
+
+    letter-spacing: -1px;
+}
+
+
+.apr-header p {
+    max-width: 650px;
+
+    margin: 8px 0 0;
+
+    color: #858d99;
+
+    font-size: 14px;
+
+    line-height: 1.65;
+}
+
+
+.apr-header-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    flex-shrink: 0;
+}
+
+
+.apr-refresh-button,
+.apr-add-button {
+    height: 42px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 0 15px;
+
+    border-radius: 11px;
+
+    font-size: 12px;
+    font-weight: 750;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.apr-refresh-button {
+    border: 1px solid #dfe3e8;
+
+    background: #ffffff;
+
+    color: #454d59;
+}
+
+
+.apr-add-button {
+    border: 1px solid #202731;
+
+    background: #202731;
+
+    color: #ffffff;
+}
+
+
+.apr-refresh-button:hover,
+.apr-add-button:hover {
+    transform: translateY(-1px);
+}
+
+
+.apr-refresh-button:hover {
+    box-shadow:
+        0 6px 16px
+        rgba(15, 23, 42, 0.07);
+}
+
+
+.apr-add-button:hover {
+    background: #111820;
+
+    box-shadow:
+        0 7px 18px
+        rgba(17, 24, 39, 0.15);
+}
+
+
+/* =========================================================
+   SUMMARY
+   ========================================================= */
+
+.apr-summary-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            minmax(0, 1fr)
+        );
+
+    gap: 14px;
+
+    margin-bottom: 20px;
+}
+
+
+.apr-summary-card {
+    min-height: 92px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 17px;
+
+    border: 1px solid #e6e9ed;
+
+    border-radius: 15px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 5px 18px
+        rgba(15, 23, 42, 0.035);
+}
+
+
+.apr-summary-icon {
+    width: 41px;
+    height: 41px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background: #f2f4f7;
+
+    color: #626b78;
+
+    font-size: 14px;
+}
+
+
+.apr-summary-active {
+    background: #edf9f3;
+
+    color: #25805a;
+}
+
+
+.apr-summary-inactive {
+    background: #fff1f1;
+
+    color: #b75656;
+}
+
+
+.apr-summary-reviews {
+    background: #fff8e8;
+
+    color: #a87316;
+}
+
+
+.apr-summary-card > div:last-child {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+
+.apr-summary-card span {
+    color: #9299a4;
+
+    font-size: 11px;
+    font-weight: 650;
+}
+
+
+.apr-summary-card strong {
+    color: #242b36;
+
+    font-size: 19px;
+    font-weight: 850;
+}
+
+
+/* =========================================================
+   FORM CARD
+   ========================================================= */
+
+.apr-form-card {
+    margin-bottom: 20px;
+
+    overflow: visible;
+
+    border: 1px solid #e6e9ed;
+
+    border-radius: 18px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 8px 28px
+        rgba(15, 23, 42, 0.04);
+}
+
+
+.apr-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 20px 22px;
+
+    border-bottom: 1px solid #eceef1;
+}
+
+
+.apr-section-title {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.apr-section-icon {
+    width: 39px;
+    height: 39px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background: #f2f4f7;
+
+    color: #5f6875;
+
+    font-size: 13px;
+}
+
+
+.apr-section-header h2 {
+    margin: 0;
+
+    color: #252c37;
+
+    font-size: 17px;
+    font-weight: 800;
+}
+
+
+.apr-section-header p {
+    margin: 4px 0 0;
+
+    color: #969da7;
+
+    font-size: 12px;
+}
+
+
+.apr-cancel-edit {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 8px 11px;
+
+    border: 1px solid #eadada;
+
+    border-radius: 9px;
+
+    background: #fffafa;
+
+    color: #a95757;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.apr-form {
+    padding: 22px;
+}
+
+
+.apr-form-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0, 1fr)
+        );
+
+    gap: 19px;
+}
+
+
+.apr-field {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+.apr-field-full {
+    grid-column: 1 / -1;
+}
+
+
+.apr-field label {
+    color: #555d69;
+
+    font-size: 11px;
+    font-weight: 750;
+}
+
+
+.apr-field label > span {
+    margin-left: 3px;
+
+    color: #c45d5d;
+}
+
+
+.apr-field input,
+.apr-field select,
+.apr-field textarea {
+    width: 100%;
+
+    border: 1px solid #e0e4e8;
+
+    border-radius: 11px;
+
+    outline: none;
+
+    background: #ffffff;
+
+    color: #303743;
+
+    font-size: 13px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.apr-field input,
+.apr-field select {
+    height: 44px;
+
+    padding: 0 13px;
+}
+
+
+.apr-field textarea {
+    min-height: 120px;
+
+    padding: 12px 13px;
+
+    line-height: 1.6;
+
+    resize: vertical;
+}
+
+
+.apr-field input:focus,
+.apr-field select:focus,
+.apr-field textarea:focus {
+    border-color: #aeb5bf;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(17, 24, 39, 0.04);
+}
+
+
+.apr-field input::placeholder,
+.apr-field textarea::placeholder {
+    color: #adb2ba;
+}
+
+
+/* =========================================================
+   TAG SELECTOR
+   ========================================================= */
+
+.apr-tags-selector {
+    position: relative;
+
+    z-index: 20;
+}
+
+
+.apr-tags-trigger {
+    width: 100%;
+    min-height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 0 12px;
+
+    border: 1px solid #e0e4e8;
+
+    border-radius: 11px;
+
+    background: #ffffff;
+
+    color: #626a76;
+
+    cursor: pointer;
+}
+
+
+.apr-tags-trigger > div {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    font-size: 12px;
+    font-weight: 650;
+}
+
+
+.apr-tags-trigger svg {
+    color: #9299a4;
+}
+
+
+.apr-tags-count {
+    min-width: 24px;
+    height: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 7px;
+
+    border-radius: 50px;
+
+    background: #f0f2f5;
+
+    color: #69717d;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+
+.apr-tags-dropdown {
+    position: absolute;
+
+    z-index: 100;
+
+    top: calc(100% + 7px);
+    left: 0;
+
+    width: 100%;
+
+    overflow: hidden;
+
+    border: 1px solid #e1e4e8;
+
+    border-radius: 13px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 14px 35px
+        rgba(15, 23, 42, 0.12);
+}
+
+
+.apr-tag-search {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    padding: 11px;
+
+    border-bottom: 1px solid #eceef1;
+}
+
+
+.apr-tag-search svg {
+    position: absolute;
+
+    z-index: 2;
+
+    left: 25px;
+
+    color: #9da4ae;
+
+    font-size: 12px;
+}
+
+
+.apr-tag-search input {
+    height: 39px;
+
+    padding-left: 36px;
+}
+
+
+.apr-tag-options {
+    max-height: 230px;
+
+    overflow-y: auto;
+
+    padding: 7px;
+}
+
+
+.apr-tag-option {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 9px 10px;
+
+    border-radius: 8px;
+
+    color: #626a76;
+
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+
+.apr-tag-option:hover,
+.apr-tag-option-selected {
+    background: #f6f7f9;
+}
+
+
+.apr-tag-option input {
+    display: none;
+}
+
+
+.apr-custom-checkbox {
+    width: 18px;
+    height: 18px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #d5d9df;
+
+    border-radius: 5px;
+
+    background: #ffffff;
+
+    color: #ffffff;
+
+    font-size: 8px;
+}
+
+
+.apr-tag-option-selected
+.apr-custom-checkbox {
+    border-color: #59616d;
+
+    background: #59616d;
+}
+
+
+.apr-no-tags {
+    padding: 25px 10px;
+
+    color: #9ba1aa;
+
+    font-size: 12px;
+
+    text-align: center;
+}
+
+
+.apr-selected-tags {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    margin-top: 10px;
+}
+
+
+.apr-selected-tag {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 6px 9px;
+
+    border: 1px solid #e1e4e8;
+
+    border-radius: 50px;
+
+    background: #f7f8fa;
+
+    color: #626a76;
+
+    font-size: 10px;
+    font-weight: 650;
+}
+
+
+.apr-selected-tag button {
+    width: 16px;
+    height: 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #e8eaed;
+
+    color: #777f89;
+
+    font-size: 7px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   FORM ACTIONS
+   ========================================================= */
+
+.apr-form-actions {
+    display: flex;
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 22px;
+
+    padding-top: 18px;
+
+    border-top: 1px solid #eff1f3;
+}
+
+
+.apr-primary-button,
+.apr-secondary-button {
+    min-height: 40px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 0 15px;
+
+    border-radius: 10px;
+
+    font-size: 12px;
+    font-weight: 750;
+
+    cursor: pointer;
+}
+
+
+.apr-primary-button {
+    border: 1px solid #262d37;
+
+    background: #262d37;
+
+    color: #ffffff;
+}
+
+
+.apr-primary-button:hover:not(:disabled) {
+    background: #161c24;
+}
+
+
+.apr-primary-button:disabled {
+    opacity: 0.7;
+
+    cursor: wait;
+}
+
+
+.apr-secondary-button {
+    border: 1px solid #dfe3e8;
+
+    background: #ffffff;
+
+    color: #5d6571;
+}
+
+
+/* =========================================================
+   TOOLBAR
+   ========================================================= */
+
+.apr-toolbar {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    margin-bottom: 20px;
+}
+
+
+.apr-search {
+    position: relative;
+
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+}
+
+
+.apr-search > svg {
+    position: absolute;
+
+    left: 15px;
+
+    color: #a0a6af;
+
+    font-size: 13px;
+}
+
+
+.apr-search input {
+    width: 100%;
+    height: 46px;
+
+    padding: 0 44px 0 42px;
+
+    border: 1px solid #e1e4e8;
+
+    border-radius: 12px;
+
+    outline: none;
+
+    background: #ffffff;
+
+    color: #29303b;
+
+    font-size: 14px;
+}
+
+
+.apr-search input:focus {
+    border-color: #aeb5bf;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(17, 24, 39, 0.04);
+}
+
+
+.apr-search button {
+    position: absolute;
+
+    right: 10px;
+
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #f3f4f6;
+
+    color: #7f8792;
+
+    cursor: pointer;
+}
+
+
+.apr-filter {
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 0 13px;
+
+    border: 1px solid #e1e4e8;
+
+    border-radius: 12px;
+
+    background: #ffffff;
+}
+
+
+.apr-filter > span {
+    color: #999fa9;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+.apr-filter select {
+    min-width: 130px;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: #343b46;
+
+    font-size: 13px;
+    font-weight: 650;
+}
+
+
+/* =========================================================
+   CATALOGUE CONTAINER
+   ========================================================= */
+
+.apr-catalogue-card {
+    overflow: hidden;
+
+    border: 1px solid #e6e9ed;
+
+    border-radius: 18px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 8px 28px
+        rgba(15, 23, 42, 0.04);
+}
+
+
+.apr-catalogue-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 20px 22px;
+
+    border-bottom: 1px solid #eceef1;
+}
+
+
+.apr-catalogue-header h2 {
+    margin: 0;
+
+    color: #252c37;
+
+    font-size: 17px;
+    font-weight: 800;
+}
+
+
+.apr-catalogue-header p {
+    margin: 5px 0 0;
+
+    color: #969da7;
+
+    font-size: 12px;
+}
+
+
+.apr-catalogue-header > span {
+    padding: 6px 10px;
+
+    border-radius: 50px;
+
+    background: #f3f4f6;
+
+    color: #737b86;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   PRODUCT GRID
+   ========================================================= */
+
+.apr-product-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            minmax(0, 1fr)
+        );
+
+    gap: 18px;
+
+    padding: 22px;
+}
+
+
+/* =========================================================
+   PRODUCT CARD
+   ========================================================= */
+
+.apr-product-card {
+    min-width: 0;
+
+    overflow: hidden;
+
+    border: 1px solid #e9ebef;
+
+    border-radius: 18px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 5px 20px
+        rgba(15, 23, 42, 0.045);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.apr-product-card:hover {
+    transform: translateY(-5px);
+
+    border-color: #d9dde4;
+
+    box-shadow:
+        0 18px 42px
+        rgba(15, 23, 42, 0.1);
+}
+
+
+/* =========================================================
+   PRODUCT IMAGE
+   ========================================================= */
+
+.apr-card-image-wrapper {
+    position: relative;
+
+    width: 100%;
+    height: 220px;
+
+    overflow: hidden;
+
+    background: #f5f6f8;
+}
+
+
+.apr-card-image {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.55s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+}
+
+
+.apr-product-card:hover
+.apr-card-image {
+    transform: scale(1.055);
+}
+
+
+.apr-card-placeholder {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f6f7f9,
+            #eceff3
+        );
+
+    color: #a3a9b3;
+}
+
+
+.apr-card-placeholder svg {
+    font-size: 25px;
+}
+
+
+.apr-card-placeholder span {
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   IMAGE BADGES
+   ========================================================= */
+
+.apr-card-brand-badge,
+.apr-card-status {
+    position: absolute;
+
+    top: 13px;
+
+    z-index: 2;
+
+    border: 1px solid
+        rgba(255, 255, 255, 0.7);
+
+    backdrop-filter: blur(10px);
+}
+
+
+.apr-card-brand-badge {
+    left: 13px;
+
+    max-width: 55%;
+
+    overflow: hidden;
+
+    padding: 6px 9px;
+
+    border-radius: 7px;
+
+    background:
+        rgba(255, 255, 255, 0.9);
+
+    color: #343b47;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 0.4px;
+
+    text-overflow: ellipsis;
+
+    text-transform: uppercase;
+
+    white-space: nowrap;
+}
+
+
+.apr-card-status {
+    right: 13px;
+
+    display: inline-flex;
+    align-items: center;
+
+    gap: 5px;
+
+    padding: 6px 8px;
+
+    border-radius: 50px;
+
+    font-size: 9px;
+    font-weight: 750;
+}
+
+
+.apr-card-status > span {
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+}
+
+
+.apr-card-status-active {
+    background:
+        rgba(237, 249, 243, 0.94);
+
+    color: #25805a;
+}
+
+
+.apr-card-status-active > span {
+    background: #2ca66f;
+}
+
+
+.apr-card-status-inactive {
+    background:
+        rgba(255, 240, 240, 0.94);
+
+    color: #b84d4d;
+}
+
+
+.apr-card-status-inactive > span {
+    background: #d45d5d;
+}
+
+
+/* =========================================================
+   CARD CONTENT
+   ========================================================= */
+
+.apr-card-content {
+    display: flex;
+    flex-direction: column;
+
+    padding: 17px 18px 18px;
+}
+
+
+.apr-card-meta {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    margin-bottom: 7px;
+
+    overflow: hidden;
+}
+
+
+.apr-card-meta span {
+    max-width: 50%;
+
+    overflow: hidden;
+
+    color: #9ba1ac;
+
+    font-size: 9px;
+    font-weight: 750;
+
+    letter-spacing: 0.4px;
+
+    text-overflow: ellipsis;
+
+    text-transform: uppercase;
+
+    white-space: nowrap;
+}
+
+
+.apr-card-meta span + span::before {
+    content: "•";
+
+    margin-right: 7px;
+
+    color: #c3c7cd;
+}
+
+
+.apr-card-name {
+    display: -webkit-box;
+
+    min-height: 43px;
+
+    margin: 0;
+
+    overflow: hidden;
+
+    color: #242b36;
+
+    font-size: 15px;
+    font-weight: 750;
+
+    line-height: 1.45;
+
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+
+.apr-card-slug {
+    display: block;
+
+    margin-top: 5px;
+
+    overflow: hidden;
+
+    color: #a1a7b1;
+
+    font-size: 10px;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   CARD RATING
+   ========================================================= */
+
+.apr-card-rating-row {
+    min-height: 27px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    margin-top: 10px;
+}
+
+
+.apr-card-rating {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 4px;
+
+    padding: 4px 7px;
+
+    border-radius: 6px;
+
+    background: #fff8e6;
+
+    color: #b7791f;
+}
+
+
+.apr-card-rating svg {
+    color: #f5b301;
+
+    font-size: 10px;
+}
+
+
+.apr-card-rating strong {
+    font-size: 10px;
+    font-weight: 850;
+}
+
+
+.apr-card-rating-row > span {
+    color: #a1a7b1;
+
+    font-size: 10px;
+}
+
+
+.apr-card-new {
+    display: inline-flex;
+
+    padding: 4px 7px;
+
+    border-radius: 6px;
+
+    background: #f4f5f7;
+
+    color: #858c98 !important;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+
+.apr-card-divider {
+    width: 100%;
+    height: 1px;
+
+    margin: 13px 0;
+
+    background: #eff1f4;
+}
+
+
+/* =========================================================
+   PRICE AND ACTIONS
+   ========================================================= */
+
+.apr-card-bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 12px;
+}
+
+
+.apr-card-price {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+.apr-card-price span {
+    margin-bottom: 2px;
+
+    color: #a2a8b2;
+
+    font-size: 9px;
+    font-weight: 650;
+}
+
+
+.apr-card-price strong {
+    overflow: hidden;
+
+    color: #111827;
+
+    font-size: 18px;
+    font-weight: 850;
+
+    letter-spacing: -0.6px;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+.apr-card-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    flex-shrink: 0;
+}
+
+
+.apr-card-edit {
+    height: 36px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    padding: 0 11px;
+
+    border: 1px solid #dfe3e8;
+
+    border-radius: 9px;
+
+    background: #f8f9fa;
+
+    color: #59616d;
+
+    font-size: 10px;
+    font-weight: 750;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.apr-card-delete {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #efd4d4;
+
+    border-radius: 9px;
+
+    background: #fff5f5;
+
+    color: #b95858;
+
+    font-size: 10px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.apr-card-edit:hover,
+.apr-card-delete:hover:not(:disabled) {
+    transform: translateY(-1px);
+}
+
+
+.apr-card-edit:hover {
+    box-shadow:
+        0 5px 12px
+        rgba(15, 23, 42, 0.07);
+}
+
+
+.apr-card-delete:hover:not(:disabled) {
+    box-shadow:
+        0 5px 12px
+        rgba(185, 88, 88, 0.1);
+}
+
+
+.apr-card-delete:disabled {
+    opacity: 0.6;
+
+    cursor: wait;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.apr-empty-state {
+    padding: 70px 20px;
+
+    text-align: center;
+}
+
+
+.apr-empty-icon {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 16px;
+
+    border-radius: 17px;
+
+    background: #f3f5f7;
+
+    color: #8f97a2;
+
+    font-size: 20px;
+}
+
+
+.apr-empty-state h3 {
+    margin: 0 0 7px;
+
+    color: #29303b;
+
+    font-size: 17px;
+}
+
+
+.apr-empty-state p {
+    max-width: 420px;
+
+    margin: auto;
+
+    color: #949ba5;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   LOADERS
+   ========================================================= */
+
+.apr-button-loader,
+.apr-small-loader {
+    display: inline-block;
+
+    border-radius: 50%;
+
+    animation:
+        apr-spin
+        0.8s
+        linear
+        infinite;
+}
+
+
+.apr-button-loader {
+    width: 13px;
+    height: 13px;
+
+    border: 2px solid
+        rgba(255, 255, 255, 0.35);
+
+    border-top-color: #ffffff;
+}
+
+
+.apr-small-loader {
+    width: 13px;
+    height: 13px;
+
+    border: 2px solid #e1bcbc;
+
+    border-top-color: #b95858;
+}
+
+
+@keyframes apr-spin {
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1400px) {
+
+    .apr-product-grid {
+        grid-template-columns:
+            repeat(
+                3,
+                minmax(0, 1fr)
+            );
+    }
+
+}
+
+
+@media (max-width: 1100px) {
+
+    .apr-summary-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+    }
+
+
+    .apr-product-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+    }
+
+}
+
+
+@media (max-width: 768px) {
+
+    .apr-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+
+    .apr-header-actions {
+        width: 100%;
+    }
+
+
+    .apr-header-actions button {
+        flex: 1;
+    }
+
+
+    .apr-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .apr-field-full {
+        grid-column: auto;
+    }
+
+
+    .apr-section-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+
+    .apr-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+
+    .apr-filter {
+        width: 100%;
+    }
+
+
+    .apr-filter select {
+        flex: 1;
+    }
+
+
+    .apr-product-grid {
+        padding: 17px;
+    }
+
+}
+
+
+@media (max-width: 620px) {
+
+    .apr-product-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .apr-catalogue-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+
+    .apr-card-image-wrapper {
+        height: 230px;
+    }
+
+}
+
+
+@media (max-width: 520px) {
+
+    .apr-summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .apr-header-actions {
+        flex-direction: column;
+    }
+
+
+    .apr-header-actions button {
+        width: 100%;
+    }
+
+
+    .apr-form {
+        padding: 17px;
+    }
+
+
+    .apr-section-header {
+        padding: 17px;
+    }
+
+
+    .apr-form-actions {
+        flex-direction: column-reverse;
+    }
+
+
+    .apr-primary-button,
+    .apr-secondary-button {
+        width: 100%;
+    }
+
+
+    .apr-card-bottom {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+
+    .apr-card-actions {
+        width: 100%;
+    }
+
+
+    .apr-card-edit {
+        flex: 1;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (
+    prefers-reduced-motion:
+    reduce
+) {
+
+    .apr-refresh-button,
+    .apr-add-button,
+    .apr-product-card,
+    .apr-card-image,
+    .apr-card-edit,
+    .apr-card-delete {
+        transition: none;
+    }
+
+
+    .apr-product-card:hover,
+    .apr-refresh-button:hover,
+    .apr-add-button:hover,
+    .apr-card-edit:hover,
+    .apr-card-delete:hover {
+        transform: none;
+    }
+
+
+    .apr-button-loader,
+    .apr-small-loader {
+        animation: none;
+    }
+
+} 
+
+/* =========================================================
+   ADMIN PRODUCT CARD
+   ========================================================= */
+
+.apr-product-card {
+    min-width: 0;
+
+    overflow: hidden;
+
+    border: 1px solid #e8ebef;
+
+    border-radius: 17px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 5px 20px
+        rgba(15, 23, 42, 0.04);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.apr-product-card:hover {
+    transform: translateY(-4px);
+
+    border-color: #d9dde3;
+
+    box-shadow:
+        0 16px 35px
+        rgba(15, 23, 42, 0.08);
+}
+
+
+/* =========================================================
+   CARD TOP
+   ========================================================= */
+
+.apr-card-top {
+    min-height: 72px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    padding: 15px 17px;
+
+    border-bottom: 1px solid #eff1f3;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fafbfc,
+            #f6f7f9
+        );
+}
+
+
+.apr-card-brand {
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.apr-card-brand img,
+.apr-card-brand-placeholder {
+    width: 39px;
+    height: 39px;
+
+    flex-shrink: 0;
+
+    border: 1px solid #e4e7eb;
+
+    border-radius: 10px;
+
+    background: #ffffff;
+}
+
+
+.apr-card-brand img {
+    padding: 5px;
+
+    object-fit: contain;
+}
+
+
+.apr-card-brand-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #969da7;
+
+    font-size: 13px;
+}
+
+
+.apr-card-brand > div:last-child {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+
+.apr-card-brand span {
+    color: #a0a6af;
+
+    font-size: 8px;
+    font-weight: 750;
+
+    letter-spacing: 0.5px;
+
+    text-transform: uppercase;
+}
+
+
+.apr-card-brand strong {
+    overflow: hidden;
+
+    color: #353c47;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.apr-card-status {
+    flex-shrink: 0;
+
+    display: inline-flex;
+    align-items: center;
+
+    gap: 5px;
+
+    padding: 6px 8px;
+
+    border-radius: 50px;
+
+    font-size: 9px;
+    font-weight: 750;
+}
+
+
+.apr-card-status > span {
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+}
+
+
+.apr-card-status-active {
+    background: #edf9f3;
+
+    color: #25805a;
+}
+
+
+.apr-card-status-active > span {
+    background: #2ca66f;
+}
+
+
+.apr-card-status-inactive {
+    background: #fff0f0;
+
+    color: #b84d4d;
+}
+
+
+.apr-card-status-inactive > span {
+    background: #d45d5d;
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.apr-card-content {
+    padding: 17px;
+}
+
+
+.apr-card-category {
+    display: inline-flex;
+
+    margin-bottom: 8px;
+
+    padding: 5px 8px;
+
+    border-radius: 6px;
+
+    background: #f2f4f7;
+
+    color: #727a86;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 0.4px;
+
+    text-transform: uppercase;
+}
+
+
+.apr-card-name {
+    display: -webkit-box;
+
+    min-height: 43px;
+
+    margin: 0;
+
+    overflow: hidden;
+
+    color: #242b36;
+
+    font-size: 15px;
+    font-weight: 800;
+
+    line-height: 1.45;
+
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+
+.apr-card-slug {
+    display: block;
+
+    margin-top: 4px;
+
+    overflow: hidden;
+
+    color: #a0a6af;
+
+    font-size: 10px;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+.apr-card-description {
+    display: -webkit-box;
+
+    min-height: 54px;
+
+    margin: 12px 0 0;
+
+    overflow: hidden;
+
+    color: #7d8591;
+
+    font-size: 11px;
+
+    line-height: 1.65;
+
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+
+
+/* =========================================================
+   TAGS
+   ========================================================= */
+
+.apr-card-tags {
+    min-height: 27px;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 5px;
+
+    margin-top: 13px;
+}
+
+
+.apr-card-tags > span {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 5px 7px;
+
+    border: 1px solid #e6e8ec;
+
+    border-radius: 6px;
+
+    background: #fafafa;
+
+    color: #747c87;
+
+    font-size: 8px;
+    font-weight: 700;
+}
+
+
+.apr-card-more-tags {
+    background: #f1f3f5 !important;
+
+    color: #5f6874 !important;
+}
+
+
+.apr-card-no-tags {
+    color: #a1a7b0 !important;
+}
+
+
+/* =========================================================
+   DIVIDER
+   ========================================================= */
+
+.apr-card-divider {
+    width: 100%;
+    height: 1px;
+
+    margin: 14px 0;
+
+    background: #eff1f4;
+}
+
+
+/* =========================================================
+   PRODUCT STATS
+   ========================================================= */
+
+.apr-card-stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(0, 1fr)
+        );
+
+    gap: 8px;
+}
+
+
+.apr-card-stats > div {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+.apr-card-stats > div:not(:last-child) {
+    border-right: 1px solid #eceef1;
+}
+
+
+.apr-card-stats span {
+    color: #a0a6af;
+
+    font-size: 8px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+}
+
+
+.apr-card-stats strong {
+    display: flex;
+    align-items: center;
+
+    gap: 4px;
+
+    color: #343b46;
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+
+.apr-card-stats strong svg {
+    color: #f5b301;
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
+
+.apr-card-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+}
+
+
+.apr-card-edit {
+    height: 37px;
+
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    border: 1px solid #dfe3e8;
+
+    border-radius: 9px;
+
+    background: #f8f9fa;
+
+    color: #59616d;
+
+    font-size: 10px;
+    font-weight: 750;
+
+    cursor: pointer;
+}
+
+
+.apr-card-delete {
+    width: 37px;
+    height: 37px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #efd4d4;
+
+    border-radius: 9px;
+
+    background: #fff5f5;
+
+    color: #b95858;
+
+    font-size: 10px;
+
+    cursor: pointer;
+}
+
+
+.apr-card-edit,
+.apr-card-delete {
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.apr-card-edit:hover,
+.apr-card-delete:hover:not(:disabled) {
+    transform: translateY(-1px);
+}
+
+
+.apr-card-edit:hover {
+    box-shadow:
+        0 5px 12px
+        rgba(15, 23, 42, 0.07);
+}
+
+
+.apr-card-delete:hover:not(:disabled) {
+    box-shadow:
+        0 5px 12px
+        rgba(185, 88, 88, 0.1);
+}
+
+.apr-card-no-price {
+    color: #9aa1ab !important;
+
+    font-size: 12px !important;
+    font-weight: 700 !important;
+
+    letter-spacing: 0 !important;
+}
+
+/* =========================================================
+   COMMON SEARCHABLE DROPDOWN
+========================================================= */
+
+.apr-field .cf-search-dropdown{
+
+    width:100%;
+
+}
+
+.apr-field .cf-search-trigger{
+
+    width:100%;
+
+    height:44px;
+
+    padding:0 13px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    border:1px solid #e0e4e8;
+
+    border-radius:11px;
+
+    background:#ffffff;
+
+    color:#303743;
+
+    font-size:13px;
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease;
+
+}
+
+.apr-field .cf-search-trigger:hover{
+
+    border-color:#aeb5bf;
+
+}
+
+.apr-field .cf-search-trigger:focus,
+.apr-field .cf-search-trigger:focus-visible{
+
+    outline:none;
+
+    border-color:#aeb5bf;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(17,24,39,.04);
+
+}

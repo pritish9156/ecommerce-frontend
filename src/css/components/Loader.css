@@ -1,0 +1,417 @@
+/* =========================================================
+   SHOPVERSE LOADER
+   ========================================================= */
+
+.shop-loader-wrapper {
+    width: 100%;
+    min-height: 320px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 50px 20px;
+
+    background: transparent;
+}
+
+
+.shop-loader-fullscreen {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(99, 102, 241, 0.07),
+            transparent 30%
+        ),
+        rgba(255, 255, 255, 0.97);
+
+    backdrop-filter: blur(8px);
+}
+
+
+.shop-loader-content {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   LOADER ANIMATION
+   ========================================================= */
+
+.shop-loader-animation {
+    position: relative;
+
+    width: 92px;
+    height: 92px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.shop-loader-orbit {
+    position: absolute;
+
+    inset: 0;
+
+    border: 1px solid #e7e9ee;
+    border-radius: 50%;
+
+    animation:
+        shop-loader-rotate
+        2.2s
+        linear
+        infinite;
+}
+
+
+.shop-loader-orbit::before {
+    position: absolute;
+
+    inset: 8px;
+
+    border:
+        1px dashed
+        #d9dde5;
+
+    border-radius: 50%;
+
+    content: "";
+
+    animation:
+        shop-loader-reverse
+        3.2s
+        linear
+        infinite;
+}
+
+
+.shop-loader-logo {
+    position: relative;
+
+    z-index: 3;
+
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #111827,
+            #293142
+        );
+
+    color: #ffffff;
+
+    font-size: 22px;
+    font-weight: 900;
+
+    box-shadow:
+        0 12px 30px
+        rgba(17, 24, 39, 0.2);
+
+    animation:
+        shop-loader-logo-pulse
+        1.8s
+        ease-in-out
+        infinite;
+}
+
+
+/* =========================================================
+   ORBIT DOTS
+   ========================================================= */
+
+.shop-loader-dot {
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #6366f1;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(99, 102, 241, 0.1);
+}
+
+
+.shop-loader-dot-one {
+    top: -3px;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+}
+
+
+.shop-loader-dot-two {
+    right: 5px;
+    bottom: 16px;
+
+    width: 5px;
+    height: 5px;
+
+    background: #111827;
+}
+
+
+.shop-loader-dot-three {
+    bottom: 16px;
+    left: 5px;
+
+    width: 5px;
+    height: 5px;
+
+    background: #9ca3af;
+}
+
+
+/* =========================================================
+   TEXT
+   ========================================================= */
+
+.shop-loader-text {
+    margin-top: 22px;
+}
+
+
+.shop-loader-text h3 {
+    margin: 0;
+
+    color: #202633;
+
+    font-size: 15px;
+    font-weight: 800;
+
+    letter-spacing: -0.2px;
+}
+
+
+.shop-loader-text p {
+    margin:
+        7px
+        0
+        0;
+
+    color: #9299a6;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   ANIMATED DOTS
+   ========================================================= */
+
+.shop-loader-dots {
+    display: inline-flex;
+
+    margin-left: 2px;
+}
+
+
+.shop-loader-dots span {
+    animation:
+        shop-loader-dot-fade
+        1.4s
+        infinite;
+
+    opacity: 0.2;
+}
+
+
+.shop-loader-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+
+.shop-loader-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+
+/* =========================================================
+   SIZE OPTIONS
+   ========================================================= */
+
+.shop-loader-small
+.shop-loader-animation {
+    transform: scale(0.75);
+}
+
+
+.shop-loader-large {
+    transform: scale(1.2);
+
+    margin: 10px;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes shop-loader-rotate {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+@keyframes shop-loader-reverse {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(-360deg);
+    }
+
+}
+
+
+@keyframes shop-loader-logo-pulse {
+
+    0%,
+    100% {
+
+        transform:
+            scale(1);
+
+        box-shadow:
+            0 12px 30px
+            rgba(17, 24, 39, 0.18);
+
+    }
+
+    50% {
+
+        transform:
+            scale(1.06);
+
+        box-shadow:
+            0 16px 38px
+            rgba(17, 24, 39, 0.25);
+
+    }
+
+}
+
+
+@keyframes shop-loader-dot-fade {
+
+    0%,
+    60%,
+    100% {
+
+        opacity: 0.2;
+
+    }
+
+    30% {
+
+        opacity: 1;
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .shop-loader-wrapper {
+        min-height: 260px;
+    }
+
+
+    .shop-loader-animation {
+        width: 80px;
+        height: 80px;
+    }
+
+
+    .shop-loader-logo {
+        width: 47px;
+        height: 47px;
+
+        border-radius: 14px;
+
+        font-size: 19px;
+    }
+
+
+    .shop-loader-text {
+        margin-top: 18px;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION ACCESSIBILITY
+   ========================================================= */
+
+@media (
+    prefers-reduced-motion:
+    reduce
+) {
+
+    .shop-loader-orbit,
+    .shop-loader-orbit::before,
+    .shop-loader-logo,
+    .shop-loader-dots span {
+
+        animation: none;
+
+    }
+
+}
+
+/* =========================================================
+   TYPOGRAPHY READABILITY UPGRADE
+   ========================================================= */
+
+.shop-loader-text h3 {
+    font-size: 17px;
+}
+
+.shop-loader-text p {
+    font-size: 13px;
+}
